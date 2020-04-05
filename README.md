@@ -1,3 +1,3 @@
 # WeltChef
 
-Propuesta grafica [aquí](design/muckups)
+Propuesta gráfica [aquí](design/muckups)
