@@ -6,27 +6,14 @@ import java.util.ArrayList;
 /**
  * Class AcountManager
  */
-public class AcountManager {
-
-  //
-  // Fields
-  //
+public class UsersManager {
 
   private ArrayList<User> users;
   
-  //
-  // Constructors
-  //
-  public AcountManager () { };
-  
-  //
-  // Methods
-  //
+  public UsersManager() {
+    users = new ArrayList<>();
 
-
-  //
-  // Accessor methods
-  //
+  }
 
   /**
    * Set the value of users
@@ -74,6 +61,14 @@ public class AcountManager {
     	return false; 
   }
 
+  public User getUserByEmail(String email){
+    for (int i= 0; i < users.size(); i++){
+      if(users.get(i).getEmail().equals(email))
+        return users.get(i);
+    }
+    return null;
+  }
+
 
   /**
    * calculate and update the ranking to the user
@@ -82,7 +77,7 @@ public class AcountManager {
    * 
    */
   public double updateRanking(int ranking) {
-    return 0.0; 
+    return 0.0;
   }
 
 

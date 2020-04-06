@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import appmoviles.com.weltchef.view.LogingActivity;
 import appmoviles.com.weltchef.view.MapsActivity;
 import appmoviles.com.weltchef.R;
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(
                 this,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            Intent i = new Intent(this, MapsActivity.class);
+            Intent i = new Intent(this, LogingActivity.class);
             startActivity(i);
         }
 
@@ -42,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                     && ContextCompat.checkSelfPermission(
                     this,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-                Intent i = new Intent(this, MapsActivity.class);
-                startActivity(i);
+
             }
         }
     }
