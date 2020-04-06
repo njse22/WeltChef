@@ -19,7 +19,7 @@ public class Order {
    * llave : nombre del plato 
    * valor : cantidad de platos   */
 
-  private entity.Menu plates;
+  private Menu plates;
   /**
    * Valor o costo total del pedido 
    */
@@ -112,7 +112,7 @@ public class Order {
    * valor : cantidad de platos
    * @param newVar the new value of plates
    */
-  public void setPlates (entity.Menu newVar) {
+  public void setPlates (Menu newVar) {
     plates = newVar;
   }
 
@@ -123,7 +123,7 @@ public class Order {
    * valor : cantidad de platos
    * @return the value of plates
    */
-  public entity.Menu getPlates () {
+  public Menu getPlates () {
     return plates;
   }
 

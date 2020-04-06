@@ -6,7 +6,6 @@ import android.view.View;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.entity.UsersManager;
 import appmoviles.com.weltchef.view.LogingActivity;
-import appmoviles.com.weltchef.view.MapsActivity;
 import appmoviles.com.weltchef.view.ProfileChefActivity;
 
 public class LoginController implements View.OnClickListener {

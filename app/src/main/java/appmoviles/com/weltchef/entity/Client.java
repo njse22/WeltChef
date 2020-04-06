@@ -14,20 +14,11 @@ public class Client extends User {
    * el cliente tiene una lista de pedidos
    */
   private Order orders;
-  
-  //
-  // Constructors
-  //
-  public Client () { };
-  
-  //
-  // Methods
-  //
 
-
-  //
-  // Accessor methods
-  //
+  public Client(String name, String email, String phone, double ranking, String password, Order orders) {
+    super(name, email, phone, ranking, password);
+    this.orders = orders;
+  }
 
   /**
    * Set the value of orders

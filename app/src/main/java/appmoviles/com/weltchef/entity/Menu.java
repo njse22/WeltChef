@@ -13,22 +13,21 @@ public class Menu {
   /**
    * Representa el tipo de comida China
    */
-  public int CHINA = 4;
+
   /**
    * Representa el tipo de comida colombiana
    */
   public int COLOMBIANA = 1;
-  /**
-   * Representa el tipo de comida Italiana
-   */
-  public int ITALIANA = 7;
   public int MEXICANA = 2;
   public int MEDITERRANEA = 3;
-  public int JAPONESA = 5;  /**
+  public int CHINA = 4;
+  public int JAPONESA = 5;
+  private int FRANCESA = 6;
+  public int ITALIANA = 7;
 
+  /**
    * tipe of the plate or menu 
    *    */
-
   private int tipe;
   /**
    * price if the plate or menu 
@@ -38,21 +37,9 @@ public class Menu {
    * descripción del plato
    */
   private String description;
-  private int FRANCESA = 6;
-  
-  //
-  // Constructors
-  //
+
+
   public Menu () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
 
   /**
    * Set the value of CHINA
