@@ -1,4 +1,4 @@
-package appmoviles.com.weltchef;
+package appmoviles.com.weltchef.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.control.viewcontrollers.CameraController;
 
 public class CameraActivity  extends AppCompatActivity {
 

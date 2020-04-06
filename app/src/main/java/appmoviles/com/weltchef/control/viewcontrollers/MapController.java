@@ -1,4 +1,4 @@
-package appmoviles.com.weltchef;
+package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.annotation.SuppressLint;
 import android.location.Location;
@@ -12,6 +12,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.HashMap;
+
+import appmoviles.com.weltchef.view.MapsActivity;
 
 import static android.content.Context.LOCATION_SERVICE;
 
@@ -53,7 +55,6 @@ public class MapController implements LocationProvider.OnLocationReceivedListene
 
         markers = new HashMap<>();
 
-        mMap.setOnMapLongClickListener(this.activity);
         mMap.setOnMarkerClickListener(this.activity);
         LocationManager manager = (LocationManager) activity.getSystemService(LOCATION_SERVICE);
 

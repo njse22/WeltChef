@@ -1,4 +1,4 @@
-package appmoviles.com.weltchef;
+package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.Manifest;
 import android.content.Intent;
@@ -13,6 +13,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
+
+import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.view.CameraActivity;
+import appmoviles.com.weltchef.util.UtilDomi;
 
 import static android.app.Activity.RESULT_OK;
 

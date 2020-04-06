@@ -1,28 +1,21 @@
-package appmoviles.com.weltchef;
+package appmoviles.com.weltchef.view;
 
 import androidx.fragment.app.FragmentActivity;
 
-import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.Locale;
+
+import appmoviles.com.weltchef.control.viewcontrollers.MapController;
+import appmoviles.com.weltchef.R;
 
 public class MapsActivity extends FragmentActivity implements
         OnMapReadyCallback,

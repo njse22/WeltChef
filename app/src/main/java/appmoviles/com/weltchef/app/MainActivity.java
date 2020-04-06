@@ -1,4 +1,4 @@
-package appmoviles.com.weltchef;
+package appmoviles.com.weltchef.app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+
+import appmoviles.com.weltchef.view.MapsActivity;
+import appmoviles.com.weltchef.R;
 
 public class MainActivity extends AppCompatActivity {
 

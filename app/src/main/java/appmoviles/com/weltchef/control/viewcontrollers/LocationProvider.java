@@ -1,4 +1,4 @@
-package appmoviles.com.weltchef;
+package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.location.Location;
 import android.location.LocationListener;

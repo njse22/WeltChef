@@ -1,4 +1,4 @@
-package appmoviles.com.weltchef;
+package appmoviles.com.weltchef.util;
 
 import android.content.ContentUris;
 import android.content.Context;
