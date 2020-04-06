@@ -21,7 +21,7 @@ public class Chef extends User {
   private String description;
 
   public Chef(String name, String email, String phone, double ranking, String password,
-              boolean chefHome, boolean chefKitchen) {
+              boolean chefHome, boolean chefKitchen,String description) {
     super(name, email, phone, ranking, password);
     this.chefHome = chefHome;
     this.chefKitchen = chefKitchen;
@@ -88,8 +88,5 @@ public class Chef extends User {
     return description;
   }
 
-  //
-  // Other methods
-  //
 
 }

@@ -6,23 +6,12 @@ package appmoviles.com.weltchef.entity;
  */
 public class Menu {
 
-  //
-  // Fields
-  //
-
-  /**
-   * Representa el tipo de comida China
-   */
-
-  /**
-   * Representa el tipo de comida colombiana
-   */
   public int COLOMBIANA = 1;
   public int MEXICANA = 2;
   public int MEDITERRANEA = 3;
   public int CHINA = 4;
   public int JAPONESA = 5;
-  private int FRANCESA = 6;
+  public int FRANCESA = 6;
   public int ITALIANA = 7;
 
   /**
@@ -39,108 +28,10 @@ public class Menu {
   private String description;
 
 
-  public Menu () { };
-
-  /**
-   * Set the value of CHINA
-   * Representa el tipo de comida China
-   * @param newVar the new value of CHINA
-   */
-  public void setCHINA (int newVar) {
-    CHINA = newVar;
-  }
-
-  /**
-   * Get the value of CHINA
-   * Representa el tipo de comida China
-   * @return the value of CHINA
-   */
-  public int getCHINA () {
-    return CHINA;
-  }
-
-  /**
-   * Set the value of COLOMBIANA
-   * Representa el tipo de comida colombiana
-   * @param newVar the new value of COLOMBIANA
-   */
-  public void setCOLOMBIANA (int newVar) {
-    COLOMBIANA = newVar;
-  }
-
-  /**
-   * Get the value of COLOMBIANA
-   * Representa el tipo de comida colombiana
-   * @return the value of COLOMBIANA
-   */
-  public int getCOLOMBIANA () {
-    return COLOMBIANA;
-  }
-
-  /**
-   * Set the value of ITALIANA
-   * Representa el tipo de comida Italiana
-   * @param newVar the new value of ITALIANA
-   */
-  public void setITALIANA (int newVar) {
-    ITALIANA = newVar;
-  }
-
-  /**
-   * Get the value of ITALIANA
-   * Representa el tipo de comida Italiana
-   * @return the value of ITALIANA
-   */
-  public int getITALIANA () {
-    return ITALIANA;
-  }
-
-  /**
-   * Set the value of MEXICANA
-   * @param newVar the new value of MEXICANA
-   */
-  public void setMEXICANA (int newVar) {
-    MEXICANA = newVar;
-  }
-
-  /**
-   * Get the value of MEXICANA
-   * @return the value of MEXICANA
-   */
-  public int getMEXICANA () {
-    return MEXICANA;
-  }
-
-  /**
-   * Set the value of MEDITERRANEA
-   * @param newVar the new value of MEDITERRANEA
-   */
-  public void setMEDITERRANEA (int newVar) {
-    MEDITERRANEA = newVar;
-  }
-
-  /**
-   * Get the value of MEDITERRANEA
-   * @return the value of MEDITERRANEA
-   */
-  public int getMEDITERRANEA () {
-    return MEDITERRANEA;
-  }
-
-  /**
-   * Set the value of JAPONESA
-   * @param newVar the new value of JAPONESA
-   */
-  public void setJAPONESA (int newVar) {
-    JAPONESA = newVar;
-  }
-
-  /**
-   * Get the value of JAPONESA
-   * @return the value of JAPONESA
-   */
-  public int getJAPONESA () {
-    return JAPONESA;
+  public Menu(int tipe, int price, String description) {
+    this.tipe = tipe;
+    this.price = price;
+    this.description = description;
   }
 
   /**
@@ -199,24 +90,6 @@ public class Menu {
     return description;
   }
 
-  /**
-   * Set the value of FRANCESA
-   * @param newVar the new value of FRANCESA
-   */
-  public void setFRANCESA (int newVar) {
-    FRANCESA = newVar;
-  }
 
-  /**
-   * Get the value of FRANCESA
-   * @return the value of FRANCESA
-   */
-  public int getFRANCESA () {
-    return FRANCESA;
-  }
-
-  //
-  // Other methods
-  //
 
 }

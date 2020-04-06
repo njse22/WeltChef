@@ -38,8 +38,5 @@ public class Client extends User {
     return orders;
   }
 
-  //
-  // Other methods
-  //
 
 }

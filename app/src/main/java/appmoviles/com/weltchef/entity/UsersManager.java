@@ -13,7 +13,7 @@ public class UsersManager {
   public UsersManager() {
     users = new ArrayList<>();
     Chef andres = new Chef("andres", "azo_67@hotmail.es","315 4163438",
-            0.0 , "****", true, false );
+            0.0 , "****", true, false , "ffff");
 
     users.add(andres);
   }
@@ -33,10 +33,6 @@ public class UsersManager {
   public ArrayList<User> getUsers () {
     return users;
   }
-
-  //
-  // Other methods
-  //
 
   /**
    * register a new user and add to list of users

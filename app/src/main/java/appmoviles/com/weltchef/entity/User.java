@@ -41,9 +41,7 @@ public class User {
 
   private ArrayList<Integer> califications;
   
-  //
-  // Constructors
-  //
+
 
   public User(String name, String email, String phone, double ranking, String password) {
     this.name = name;
@@ -56,14 +54,6 @@ public class User {
   }
 
 
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
 
   /**
    * Set the value of name
