@@ -12,7 +12,10 @@ public class UsersManager {
   
   public UsersManager() {
     users = new ArrayList<>();
+    Chef andres = new Chef("andres", "azo_67@hotmail.es","315 4163438",
+            0.0 , "****", true, false );
 
+    users.add(andres);
   }
 
   /**

@@ -44,8 +44,18 @@ public class User {
   //
   // Constructors
   //
-  public User () { };
-  
+
+  public User(String name, String email, String phone, double ranking, String password) {
+    this.name = name;
+    this.email = email;
+    this.phone = phone;
+    this.ranking = ranking;
+    this.password = password;
+    califications = new ArrayList<>();
+
+  }
+
+
   //
   // Methods
   //

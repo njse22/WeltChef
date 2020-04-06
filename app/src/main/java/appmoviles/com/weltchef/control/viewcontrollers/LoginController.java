@@ -22,14 +22,12 @@ public class LoginController implements View.OnClickListener {
     public void init(){
         activity.getLoginBtn().setOnClickListener(this);
         manager = new UsersManager();
-
     }
 
     @Override
     public void onClick(View v) {
         if (v.equals(activity.getLoginBtn())){
             User user = this.manager.getUserByEmail(activity.getUserNameEditText().getText().toString());
-
             if(manager.identifyUser(user)){
                 Intent i = new Intent(activity, ProfileChefActivity.class);
                 activity.startActivity(i);

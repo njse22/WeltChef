@@ -6,15 +6,10 @@ package appmoviles.com.weltchef.entity;
  */
 public class Chef extends User {
 
-  //
-  // Fields
-  //
   /**
-
    * indica si el chef es un chef a domicilio 
    * true : si lo es 
    * false: si no lo es    */
-
   private boolean chefHome;
   /**
    * indica si el chef ofrece el servicio de clases de cocina 
@@ -24,20 +19,16 @@ public class Chef extends User {
    * Descripción o información del chef 
    */
   private String description;
-  
-  //
-  // Constructors
-  //
-  public Chef () { };
-  
-  //
-  // Methods
-  //
 
+  public Chef(String name, String email, String phone, double ranking, String password,
+              boolean chefHome, boolean chefKitchen) {
+    super(name, email, phone, ranking, password);
+    this.chefHome = chefHome;
+    this.chefKitchen = chefKitchen;
+    this.description = description;
 
-  //
-  // Accessor methods
-  //
+  }
+
 
   /**
    * Set the value of chefHome
