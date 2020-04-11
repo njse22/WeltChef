@@ -24,7 +24,7 @@ public class FoodOrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.food_order_activity);
+        setContentView(R.layout.activity_food_order);
 
         foodImage = findViewById(R.id.foodImage);
         chef = findViewById(R.id.chef);
