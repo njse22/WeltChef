@@ -6,13 +6,13 @@ package appmoviles.com.weltchef.entity;
  */
 public class Menu {
 
-  public int COLOMBIANA = 1;
-  public int MEXICANA = 2;
-  public int MEDITERRANEA = 3;
-  public int CHINA = 4;
-  public int JAPONESA = 5;
-  public int FRANCESA = 6;
-  public int ITALIANA = 7;
+  public final static int COLOMBIANA = 1;
+  public final static int MEXICANA = 2;
+  public final static int MEDITERRANEA = 3;
+  public final static int CHINA = 4;
+  public final static int JAPONESA = 5;
+  public final static int FRANCESA = 6;
+  public final static int ITALIANA = 7;
 
   /**
    * tipe of the plate or menu 
@@ -89,6 +89,7 @@ public class Menu {
   public String getDescription () {
     return description;
   }
+
 
 
 

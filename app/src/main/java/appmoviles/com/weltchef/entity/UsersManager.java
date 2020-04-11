@@ -9,13 +9,16 @@ import java.util.ArrayList;
 public class UsersManager {
 
   private ArrayList<User> users;
-  
+  private static User cunrrently;
+
   public UsersManager() {
     users = new ArrayList<>();
     Chef andres = new Chef("andres", "azo_67@hotmail.es","315 4163438",
-            0.0 , "****", true, false , "ffff");
+            "****", true, false , "ffff");
 
     users.add(andres);
+
+    cunrrently = new User();
   }
 
   /**
@@ -62,11 +65,18 @@ public class UsersManager {
 
   public User getUserByEmail(String email){
     for (int i= 0; i < users.size(); i++){
-      if(users.get(i).getEmail().equals(email))
+      if(users.get(i).getEmail().equals(email)){
+        initCurrentlyUser(email);
         return users.get(i);
+      }
     }
     return null;
   }
+
+  public void initCurrentlyUser(String email){
+    cunrrently = getUserByEmail(email);
+  }
+
 
 
   /**

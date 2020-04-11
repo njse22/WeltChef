@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">WeltChef</string>
     <string name="title_activity_maps">Map</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="description">Descripción</string>
+    <string name="info_plate">Información sobre el plato</string>
+    <string name="name">Nombre</string>
+    <string name="price">Valor</string>
+    <string name="type">Tipo</string>
+    <string name="name_chef">Chef</string>
+    <!-- String Array of Menu Types -->
+    <string-array name="types_array">
+        <item>Colombiana</item>
+        <item>Mexicana</item>
+        <item>Mediterranea</item>
+        <item>China</item>
+        <item>Japonesa</item>
+        <item>Francesa</item>
+        <item>Italiana</item>
+    </string-array>
 </resources>

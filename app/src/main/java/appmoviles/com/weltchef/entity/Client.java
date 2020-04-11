@@ -6,17 +6,14 @@ package appmoviles.com.weltchef.entity;
  */
 public class Client extends User {
 
-  //
-  // Fields
-  //
 
   /**
    * el cliente tiene una lista de pedidos
    */
   private Order orders;
 
-  public Client(String name, String email, String phone, double ranking, String password, Order orders) {
-    super(name, email, phone, ranking, password);
+  public Client(String name, String email, String phone, String password, Order orders) {
+    super(name, email, phone, password);
     this.orders = orders;
   }
 

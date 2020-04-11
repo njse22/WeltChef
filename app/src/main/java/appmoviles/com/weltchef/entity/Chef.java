@@ -1,6 +1,8 @@
 package appmoviles.com.weltchef.entity;
 
 
+import java.util.ArrayList;
+
 /**
  * Class Chef
  */
@@ -20,15 +22,16 @@ public class Chef extends User {
    */
   private String description;
 
-  public Chef(String name, String email, String phone, double ranking, String password,
+  private ArrayList<Menu> menus;
+
+  public Chef(String name, String email, String phone, String password,
               boolean chefHome, boolean chefKitchen,String description) {
-    super(name, email, phone, ranking, password);
+    super(name, email, phone, password);
     this.chefHome = chefHome;
     this.chefKitchen = chefKitchen;
     this.description = description;
-
+    this.menus = new ArrayList<>();
   }
-
 
   /**
    * Set the value of chefHome
@@ -86,6 +89,41 @@ public class Chef extends User {
    */
   public String getDescription () {
     return description;
+  }
+
+  public boolean addMenu(int type, int price, String description){
+    boolean typeB = false, priceB = false, descriptrionB = false;
+    if(type >= 1 && type <= 7)
+      typeB = true;
+    if(price >= 0)
+      priceB = true;
+    if(description != null && description != " ")
+      descriptrionB = true;
+
+    Menu menu = new Menu(type, price, description);
+    menus.add(menu);
+
+    return (typeB & priceB) & descriptrionB;
+  }
+
+  public int identifyType(String type){
+    int typeP = 0;
+    if(type.equals("Colombiana"))
+      typeP = Menu.COLOMBIANA;
+    else if (type.equals("Mexicana"))
+      typeP = Menu.MEXICANA;
+    else if (type.equals("Mediterranea"))
+      typeP = Menu.MEDITERRANEA;
+    else if (type.equals("China"))
+      typeP = Menu.CHINA;
+    else if (type.equals("Japonesa"))
+      typeP = Menu.JAPONESA;
+    else if (type.equals("Francesa"))
+      typeP = Menu.FRANCESA;
+    else if (type.equals("Italiana"))
+      typeP = Menu.ITALIANA;
+
+    return typeP;
   }
 
 

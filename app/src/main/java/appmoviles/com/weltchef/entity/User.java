@@ -8,49 +8,50 @@ import java.util.ArrayList;
  */
 public class User {
 
-  //
-  // Fields
-  //
+
   /**
-
    * Nombre de la persona
-   *    */
+   * */
+  private String name;
 
-  private String name;  /**
-
+  /**
    * correo electronico de la persona 
-   *    */
+   * */
+  private String email;
 
-  private String email;  /**
-
-   * telefono de la persona 
-   *    */
-
+  /**
+   * telefono de la persona
+   * */
   private String phone;
+
   /**
    * Ranking of the user 
    */
   private double ranking;
+
   /**
    * the password of the user
    */
-  private String password;  /**
+  private String password;
 
+  /**
    * Array of the califications that the user has been received 
-   *    */
-
+   * */
   private ArrayList<Integer> califications;
-  
 
+  private String id;
 
-  public User(String name, String email, String phone, double ranking, String password) {
+  public User() {
+  }
+
+  public User(String name, String email, String phone, String password) {
     this.name = name;
     this.email = email;
     this.phone = phone;
-    this.ranking = ranking;
+    this.ranking = 0.0;
     this.password = password;
+    this.id = "";
     califications = new ArrayList<>();
-
   }
 
 
