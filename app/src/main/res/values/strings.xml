@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<resources>
-    <string name="app_name">WeltChef</string>
-</resources>
-=======
 <resources>
     <string name="app_name">WeltChef</string>
     <string name="title_activity_maps">Map</string>
@@ -25,4 +20,3 @@
         <item>Italiana</item>
     </string-array>
 </resources>
->>>>>>> e0ee5e05d74624a3e43485b30742a012e5e25c5f
