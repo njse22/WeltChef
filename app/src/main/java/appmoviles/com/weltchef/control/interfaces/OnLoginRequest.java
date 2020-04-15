@@ -1,4 +1,6 @@
 package appmoviles.com.weltchef.control.interfaces;
 
-public class OnLoginRequest {
+public interface OnLoginRequest {
+
+    void onLogin(String response);
 }
