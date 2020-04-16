@@ -1,16 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.ProfileChefActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="174dp"
+        android:layout_height="158dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+
+    <ImageView
+        android:id="@+id/tituloTxt"
+        android:layout_width="97dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="60dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nomUsuarioTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I AM A CHEF LOOK AT ME "
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="356dp" />
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="28dp"
+        android:text="Nombre"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/tituloTxt" />
+
+    <EditText
+        android:id="@+id/correoTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
+        android:text="Correo"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/nomUsuarioTxt" />
+
+    <EditText
+        android:id="@+id/telefonoTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
+        android:text="Teléfono"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/correoTxt" />
+
+    <TextView
+        android:id="@+id/infochefTxt"
+        android:layout_width="140dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="52dp"
+        android:text="Información sobre el Chef"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/recetasTxt"
+        android:layout_width="140dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="40dp"
+        android:text="Recetas"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriciónTxt" />
+
+    <TextView
+        android:id="@+id/descriciónTxt"
+        android:layout_width="294dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="32dp"
+        android:text="Descripción"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infochefTxt" />
+
+    <Button
+        android:id="@+id/receta1Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="64dp"
+        android:background="#2D47CC"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recetasTxt" />
+
+    <ImageView
+        android:id="@+id/showrecipView"
+        android:layout_width="102dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="112dp"
+        app:layout_constraintEnd_toStartOf="@+id/receta1Btn"
+        app:layout_constraintTop_toBottomOf="@+id/recetasTxt"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.958" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
