@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "519458052022",
+    "firebase_url": "https://weltchef-f7c7c.firebaseio.com",
+    "project_id": "weltchef-f7c7c",
+    "storage_bucket": "weltchef-f7c7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519458052022:android:66466b5abfcf0b68cdd317",
+        "android_client_info": {
+          "package_name": "appmoviles.com.weltchef"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "519458052022-j7d1pabt92p8e98ikg4g34q4hlhl3tr3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeYCY_x1Qwg8-8mXTLsc3cVSka_UqIP2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "519458052022-j7d1pabt92p8e98ikg4g34q4hlhl3tr3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

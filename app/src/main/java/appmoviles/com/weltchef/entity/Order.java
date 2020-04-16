@@ -7,11 +7,11 @@ import java.util.ArrayList;
  * Class Order
  */
 public class Order {
-  public int NONE = 0;
-  public int WATING = 1;
-  public int ACEPTED = 2;
-  private int COMPLETED = 3;
-  public int CANCELED = 4;
+  public final static  int NONE = 0;
+  public final static int WAITING = 1;
+  public final static int ACCEPTED = 2;
+  private final static int COMPLETED = 3;
+  public final static int CANCELED = 4;
   /**
    * HashMap de los platos que se han pedido 
    * llave : nombre del plato 
