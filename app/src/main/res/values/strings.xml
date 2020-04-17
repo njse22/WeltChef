@@ -9,6 +9,7 @@
     <string name="price">Valor</string>
     <string name="type">Tipo</string>
     <string name="name_chef">Chef</string>
+    <string name="register">Registrase</string>
     <!-- String Array of Menu Types -->
     <string-array name="types_array">
         <item>Colombiana</item>
