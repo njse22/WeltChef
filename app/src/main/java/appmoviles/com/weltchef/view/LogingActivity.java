@@ -14,6 +14,8 @@ public class LogingActivity extends AppCompatActivity {
     private EditText userNameEditText;
     private EditText passwordEditText;
     private Button loginBtn;
+    private Button registerTextButton;
+
     private LoginController controller;
 
     @Override
@@ -24,6 +26,7 @@ public class LogingActivity extends AppCompatActivity {
         userNameEditText = findViewById(R.id.userNameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginBtn = findViewById(R.id.loginBtn);
+        registerTextButton = findViewById(R.id.registerTextButton);
         controller = new LoginController(this);
 
     }
@@ -50,5 +53,13 @@ public class LogingActivity extends AppCompatActivity {
 
     public void setLoginBtn(Button loginBtn) {
         this.loginBtn = loginBtn;
+    }
+
+    public Button getRegisterTextButton() {
+        return registerTextButton;
+    }
+
+    public void setRegisterTextButton(Button registerTextButton) {
+        this.registerTextButton = registerTextButton;
     }
 }

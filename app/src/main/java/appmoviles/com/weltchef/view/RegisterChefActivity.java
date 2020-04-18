@@ -30,7 +30,7 @@ public class RegisterChefActivity extends AppCompatActivity {
         emailET = findViewById(R.id.emailET);
         phoneET = findViewById(R.id.phoneET);
         passwordET = findViewById(R.id.passwordET);
-        registerBtn = findViewById(R.id.registerBtn);
+        registerBtn = findViewById(R.id.registerChefBtn);
         descriptionET = findViewById(R.id.descriptionET);
 
         controller = new RegisterChefController(this);

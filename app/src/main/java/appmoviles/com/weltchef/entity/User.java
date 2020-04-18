@@ -44,13 +44,13 @@ public class User {
   public User() {
   }
 
-  public User(String name, String email, String phone, String password) {
+  public User(String name, String email, String phone, String password, String id) {
     this.name = name;
     this.email = email;
     this.phone = phone;
     this.ranking = 0.0;
     this.password = password;
-    this.id = "";
+    this.id = id;
     califications = new ArrayList<>();
   }
 

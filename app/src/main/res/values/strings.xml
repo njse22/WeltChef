@@ -10,6 +10,9 @@
     <string name="type">Tipo</string>
     <string name="name_chef">Chef</string>
     <string name="register">Registrase</string>
+    <string name="email">Correo</string>
+    <string name="phone">Telefono</string>
+    <string name="password">Contraseña</string>
     <!-- String Array of Menu Types -->
     <string-array name="types_array">
         <item>Colombiana</item>

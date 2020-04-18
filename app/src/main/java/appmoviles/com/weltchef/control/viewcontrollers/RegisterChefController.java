@@ -2,38 +2,49 @@ package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.view.View;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.db.FirebaseDB;
 import appmoviles.com.weltchef.entity.Chef;
-import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.Constans;
 import appmoviles.com.weltchef.view.RegisterChefActivity;
 
 public class RegisterChefController implements View.OnClickListener {
 
-    private RegisterChefActivity activity;
+    private RegisterChefActivity chefActivity;
+
     private FirebaseDB firebaseDB;
 
     public RegisterChefController(RegisterChefActivity activity) {
-        this.activity = activity;
-        firebaseDB = new FirebaseDB();
+        this.chefActivity = activity;
+        init();
     }
 
     public void init(){
-        activity.getRegisterBtn().setOnClickListener(this);
+        chefActivity.getRegisterBtn().setOnClickListener(this);
+        firebaseDB = new FirebaseDB();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.registerBtn:
-                String name = activity.getNameET().getText().toString();
-                String email = activity.getEmailET().getText().toString();
-                String phone = activity.getPhoneET().getText().toString();
-                String password = activity.getPasswordET().getText().toString();
-                String description = activity.getDescriptionET().getText().toString();
-                Chef chef = new Chef(name,email,phone,password,false,true,description);
-                firebaseDB.sendUser(chef, Constans.FIREBASE_CHEF_BRANCH);
+
+            case R.id.registerChefBtn:
+                String name = chefActivity.getNameET().getText().toString();
+                String email = chefActivity.getEmailET().getText().toString();
+                String phone = chefActivity.getPhoneET().getText().toString();
+                String password = chefActivity.getPasswordET().getText().toString();
+                String description = chefActivity.getDescriptionET().getText().toString();
+                String id = FirebaseDatabase.getInstance().getReference().child(Constans.FIREBASE_CHEF_BRANCH).push().getKey();
+                Chef chef = new Chef(name,email,phone,password,id,false,true,description);
+
+                FirebaseDatabase.getInstance().getReference()
+                        .child(Constans.FIREBASE_CHEF_BRANCH)
+                        .child(id)
+                        .setValue(chef);
+
+                //firebaseDB.sendUser(chef, Constans.FIREBASE_CHEF_BRANCH);
                 break;
 
         }
