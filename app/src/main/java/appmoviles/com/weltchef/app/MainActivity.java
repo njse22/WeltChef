@@ -20,21 +20,15 @@ import appmoviles.com.weltchef.view.MapsActivity;
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.view.ProfileChefActivity;
 
-public class MainActivity extends AppCompatActivity implements OnDataSubmitted {
+public class MainActivity extends AppCompatActivity {
 
-    private LinearLayout fragmentContainer;
-    private ProgressBar progressBar;
-    private Fragment ProfileChefActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragmentContainer = findViewById(R.id.fragmentContainer);
-        ProfileChefActivity = new ProfileChefActivity();
-        ((ProfileChefActivity)ProfileChefActivity).setListener(this);
-        loadFragment(ProfileChefActivity);
+
 
         ActivityCompat.requestPermissions(this, new String[]{
                 Manifest.permission.ACCESS_FINE_LOCATION,
@@ -63,15 +57,5 @@ public class MainActivity extends AppCompatActivity implements OnDataSubmitted {
         }
     }
 
-    @Override
-    public void onData(Fragment fragment, String... args) {
-        loadFragment(ProfileChefActivity);
-    }
 
-    private void loadFragment(Fragment profileChefActivity) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction= manager.beginTransaction();
-        transaction.replace(R.id.fragmentContainer, ProfileChefActivity);
-        transaction.commit();
-    }
 }
