@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "519458052022",
-    "firebase_url": "https://weltchef-f7c7c.firebaseio.com",
-    "project_id": "weltchef-f7c7c",
-    "storage_bucket": "weltchef-f7c7c.appspot.com"
+    "project_number": "450441517404",
+    "firebase_url": "https://weltchef-912c4.firebaseio.com",
+    "project_id": "weltchef-912c4",
+    "storage_bucket": "weltchef-912c4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:519458052022:android:66466b5abfcf0b68cdd317",
+        "mobilesdk_app_id": "1:450441517404:android:eb5df9c7290ea369390999",
         "android_client_info": {
           "package_name": "appmoviles.com.weltchef"
         }
       },
       "oauth_client": [
         {
-          "client_id": "519458052022-j7d1pabt92p8e98ikg4g34q4hlhl3tr3.apps.googleusercontent.com",
+          "client_id": "450441517404-6tghkn3uoh316rkva5a62n2g92929dqv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCeYCY_x1Qwg8-8mXTLsc3cVSka_UqIP2o"
+          "current_key": "AIzaSyCv5LFkNJm9KdcebFL4p-8WP3-qZF344C4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "519458052022-j7d1pabt92p8e98ikg4g34q4hlhl3tr3.apps.googleusercontent.com",
+              "client_id": "450441517404-6tghkn3uoh316rkva5a62n2g92929dqv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

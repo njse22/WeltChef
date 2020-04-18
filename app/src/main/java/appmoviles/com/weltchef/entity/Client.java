@@ -12,8 +12,11 @@ public class Client extends User {
    */
   private Order orders;
 
-  public Client(String name, String email, String phone, String password, Order orders) {
-    super(name, email, phone, password);
+  public Client() {
+  }
+
+  public Client(String name, String email, String phone, String password, String id,Order orders) {
+    super(name, email, phone, password, id);
     this.orders = orders;
   }
 

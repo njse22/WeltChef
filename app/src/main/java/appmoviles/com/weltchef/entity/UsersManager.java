@@ -13,11 +13,6 @@ public class UsersManager {
 
   public UsersManager() {
     users = new ArrayList<>();
-    Chef andres = new Chef("andres", "azo_67@hotmail.es","315 4163438",
-            "****", true, false , "ffff");
-
-    users.add(andres);
-
     cunrrently = new User();
   }
 
