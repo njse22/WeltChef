@@ -1,48 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/background_app">
 
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="32dp"
-        android:text="Aceptar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="32dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/loginBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <EditText
         android:id="@+id/userNameEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="32dp"
+        android:backgroundTint="#000000"
+        android:textIsSelectable="false"
+        android:clickable="false"
         android:ems="10"
+        android:fontFamily="sans-serif-light"
+        android:hint="Correo"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
+        android:textColor="#000000"
+        android:textColorHighlight="#FF0000"
+        android:textColorHint="#989494"
+        android:textColorLink="#FF0000"
+        android:textCursorDrawable="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginTxt" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="146dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/round_button"
+        android:fontFamily="sans-serif-medium"
+        android:text="Aceptar"
+        android:textColor="#FFFFFF"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/welt_chef_logo" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@mipmap/welt_chef_name" />
+
+    <TextView
+        android:id="@+id/loginTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="sans-serif-black"
+        android:text="INICIAR SESIÓN"
+        android:textColor="#FF0303"
+        android:textColorHighlight="#000000"
+        android:textColorHint="#FD0505"
+        android:textColorLink="#FF0404"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="283dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:fontFamily="sans-serif-light"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#989494"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameEditText" />
+
+    <Button
+        android:id="@+id/forgotPasswordTextButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="232dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="23dp"
+        android:background="#000000"
+        android:backgroundTint="#000000"
+        android:clickable="true"
+        android:editable="false"
+        android:fontFamily="sans-serif-black"
+        android:foregroundTint="#000000"
+        android:text="¿Olvidaste tu contraseña?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#000000"
+        android:textColorHighlight="#FA0000"
+        android:textColorHint="#FF0000"
+        android:textColorLink="#FF0202"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/witchAccountTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="70dp"
+        android:fontFamily="sans-serif-black"
+        android:text="¿No tienes cuenta?"
+        android:textColor="#050505"
+        android:textColorHighlight="#FB0000"
+        android:textColorHint="#000000"
+        android:textColorLink="#FF0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.354"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextButton" />
+
+    <Button
+        android:id="@+id/registerTextButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="120dp"
+        android:clickable="true"
+        android:fontFamily="sans-serif-black"
+        android:linksClickable="true"
+        android:text="Regístrate"
+        android:textColor="#FF0101"
+        android:textColorHighlight="#000000"
+        android:textColorHint="#000000"
+        android:textColorLink="#FF0000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toEndOf="@+id/witchAccountTxt"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextButton"
+        tools:ignore="MissingConstraints" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

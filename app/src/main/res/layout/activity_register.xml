@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background_app">
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@mipmap/welt_chef_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:src="@mipmap/welt_chef_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/welcomeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="sans-serif-black"
+        android:text=" ¡BIENVENIDO A WELT CHEF! "
+        android:textColor="#FF0000"
+        android:textCursorDrawable="@color/colorPrimaryDark"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+    <TextView
+        android:id="@+id/chefOrClientTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="REGÍSTRATE COMO CHEF O CLIENTE"
+        android:textColor="#000000"
+        android:textCursorDrawable="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTxt" />
+
+    <Button
+        android:id="@+id/chefBtn"
+        android:layout_width="158dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/round_button"
+        android:clickable="true"
+        android:fontFamily="sans-serif-medium"
+        android:foregroundTint="#FFFFFF"
+        android:text="SOY CHEF"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chefOrClientTxt" />
+
+    <Button
+        android:id="@+id/clientBtn"
+        android:layout_width="158dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_button"
+        android:text="QUIERO SER CLIENTE"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chefBtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>
