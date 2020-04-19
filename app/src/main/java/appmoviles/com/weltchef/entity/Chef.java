@@ -24,13 +24,17 @@ public class Chef extends User {
 
   private ArrayList<Menu> menus;
 
-  public Chef(String name, String email, String phone, String password,
-              boolean chefHome, boolean chefKitchen,String description) {
-    super(name, email, phone, password);
+  public Chef() {
+  }
+
+  public Chef(String name, String email, String phone, String password, String id,
+              boolean chefHome, boolean chefKitchen, String description) {
+    super(name, email, phone, password, id);
     this.chefHome = chefHome;
     this.chefKitchen = chefKitchen;
     this.description = description;
     this.menus = new ArrayList<>();
+
   }
 
   /**

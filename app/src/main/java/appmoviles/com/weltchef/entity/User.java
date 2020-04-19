@@ -37,21 +37,24 @@ public class User {
   /**
    * Array of the califications that the user has been received 
    * */
-  private ArrayList<Integer> califications;
+  private ArrayList<Integer> ratings;
+
+  private ArrayList<Message> messages;
 
   private String id;
 
   public User() {
   }
 
-  public User(String name, String email, String phone, String password) {
+  public User(String name, String email, String phone, String password, String id) {
     this.name = name;
     this.email = email;
     this.phone = phone;
     this.ranking = 0.0;
     this.password = password;
-    this.id = "";
-    califications = new ArrayList<>();
+    this.id = id;
+    ratings = new ArrayList<>();
+    messages  = new ArrayList<>();
   }
 
 
@@ -158,8 +161,8 @@ public class User {
    * 
    * @param newVar the new value of califications
    */
-  public void setCalifications (ArrayList newVar) {
-    califications = newVar;
+  public void setCalifications(ArrayList newVar) {
+    ratings = newVar;
   }
 
   /**
@@ -168,8 +171,8 @@ public class User {
    * 
    * @return the value of califications
    */
-  public ArrayList<Integer> getCalifications () {
-    return califications;
+  public ArrayList<Integer> getCalifications() {
+    return ratings;
   }
 
   //
@@ -184,10 +187,10 @@ public class User {
   public void updateRanking(int calification)
   {
     int count = 0; 
-    for(int i = 0; i < califications.size(); i++){
-      count += califications.get(i).intValue();
+    for(int i = 0; i < ratings.size(); i++){
+      count += ratings.get(i).intValue();
     }
-    this.ranking = count/califications.size();
+    this.ranking = count/ ratings.size();
   }
 
 

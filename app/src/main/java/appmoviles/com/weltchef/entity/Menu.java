@@ -27,11 +27,14 @@ public class Menu {
    */
   private String description;
 
+  private String chefId;
+
 
   public Menu(int tipe, int price, String description) {
     this.tipe = tipe;
     this.price = price;
     this.description = description;
+    this.chefId = "";
   }
 
   /**
