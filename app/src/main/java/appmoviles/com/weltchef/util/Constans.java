@@ -8,6 +8,10 @@ public class Constans {
 
     public final static String FIREBASE_CHEF_BRANCH = "chefs";
     public final static String FIREBASE_CLIENT_BRANCH = "chefs";
+    public final static String FIREBASE_MENU_BRANCH = "menus";
+    public final static String FIREBASE_ORDER_BRANCH = "menus";
+
+
 
 
 

@@ -7,6 +7,7 @@ import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.db.FirebaseDB;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.entity.UsersManager;
+import appmoviles.com.weltchef.util.Constans;
 import appmoviles.com.weltchef.view.LogingActivity;
 import appmoviles.com.weltchef.view.ProfileChefActivity;
 import appmoviles.com.weltchef.view.RegisterActivity;
@@ -35,7 +36,7 @@ public class LoginController implements View.OnClickListener {
             case R.id.loginBtn:
                 User user = this.manager.getUserByEmail(activity.getUserNameEditText().getText().toString());
                 if(manager.identifyUser(user)){
-                    //firebaseDB.readInfo(Constans.FIREBASE_CHEF_BRANCH, );
+                    firebaseDB.readInfo(Constans.FIREBASE_CHEF_BRANCH, "");
 
                     Intent i = new Intent(activity, ProfileChefActivity.class);
                     activity.startActivity(i);

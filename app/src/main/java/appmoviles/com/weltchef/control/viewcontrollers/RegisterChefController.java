@@ -2,8 +2,6 @@ package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.view.View;
 
-import com.google.firebase.database.FirebaseDatabase;
-
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.db.FirebaseDB;
 import appmoviles.com.weltchef.entity.Chef;
@@ -36,17 +34,11 @@ public class RegisterChefController implements View.OnClickListener {
                 String phone = chefActivity.getPhoneET().getText().toString();
                 String password = chefActivity.getPasswordET().getText().toString();
                 String description = chefActivity.getDescriptionET().getText().toString();
-                String id = FirebaseDatabase.getInstance().getReference().child(Constans.FIREBASE_CHEF_BRANCH).push().getKey();
+                String id = firebaseDB.createId(Constans.FIREBASE_CHEF_BRANCH);
                 Chef chef = new Chef(name,email,phone,password,id,false,true,description);
 
-                FirebaseDatabase.getInstance().getReference()
-                        .child(Constans.FIREBASE_CHEF_BRANCH)
-                        .child(id)
-                        .setValue(chef);
-
-                //firebaseDB.sendUser(chef, Constans.FIREBASE_CHEF_BRANCH);
+                firebaseDB.sendInfo(chef, id ,Constans.FIREBASE_CHEF_BRANCH);
                 break;
-
         }
 
 

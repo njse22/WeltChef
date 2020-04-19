@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:450441517404:android:eb5df9c7290ea369390999",
+        "mobilesdk_app_id": "1:450441517404:android:89cb3d79444ed5ea390999",
         "android_client_info": {
           "package_name": "appmoviles.com.weltchef"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "450441517404-o6jqth9k274oej88hijua90d0nrtk22a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "appmoviles.com.weltchef",
+            "certificate_hash": "137f1e92cfc98050c3a0eeffa4a0dbbb7e337973"
+          }
+        },
         {
           "client_id": "450441517404-6tghkn3uoh316rkva5a62n2g92929dqv.apps.googleusercontent.com",
           "client_type": 3

@@ -25,9 +25,12 @@ public class Order {
   private int totalPrice;
   private int status;
 
+  private String clientId;
+
   public Order( int totalPrice, int status) {
     this.totalPrice = totalPrice;
     this.status = status;
+    this.clientId = "";
     plates = new ArrayList<Menu>();
 
   }

@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import appmoviles.com.weltchef.entity.Menu;
 import appmoviles.com.weltchef.entity.User;
 
 public class FirebaseDB  {
@@ -17,9 +18,8 @@ public class FirebaseDB  {
     private DatabaseReference databaseReference;
 
     public FirebaseDB() {
-        this.query = FirebaseDatabase.getInstance().getReference();
         this.databaseReference = FirebaseDatabase.getInstance().getReference();
-
+        this.query = this.databaseReference;
     }
 
     public Query getQuery() {
@@ -30,16 +30,19 @@ public class FirebaseDB  {
         return databaseReference;
     }
 
-    public void searchInfo(){
+    public void searchInfo(String id, String branch){
 
     }
 
     public String createId(String branch){
-        return databaseReference.child(branch).getKey();
+        return databaseReference.child(branch).push().getKey();
     }
 
-    public void sendUser(User user, String branch){
-        databaseReference.child(branch).child(createId(branch)).setValue(user);
+    public void sendInfo(Object object, String id, String branch){
+        databaseReference
+                .child(branch)
+                .child(id)
+                .setValue(object);
     }
 
     public void readInfo(String branch, String id){
