@@ -33,6 +33,7 @@ public class ClientProfileActivity extends AppCompatActivity{
     }
 
     public TextView getClientName() {
+
         return clientName;
     }
 

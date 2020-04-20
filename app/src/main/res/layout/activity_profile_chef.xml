@@ -8,54 +8,59 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="174dp"
-        android:layout_height="158dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="45dp"
+        android:layout_width="107dp"
+        android:layout_height="114dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:adjustViewBounds="false"
+        android:background="@drawable/ic_launcher_background"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+
+        tools:srcCompat="@drawable/profile_image" />
 
     <ImageView
         android:id="@+id/tituloTxt"
-        android:layout_width="97dp"
-        android:layout_height="18dp"
+        android:layout_width="163dp"
+        android:layout_height="34dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="60dp"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/welt_chef_name" />
 
-    <EditText
+    <TextView
         android:id="@+id/nomUsuarioTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
         android:text="Nombre"
         android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/tituloTxt" />
 
-    <EditText
+    <TextView
         android:id="@+id/correoTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="16dp"
         android:text="Correo"
         android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/nomUsuarioTxt" />
 
-    <EditText
+    <TextView
         android:id="@+id/telefonoTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="96dp"
         android:layout_marginTop="20dp"
         android:text="Teléfono"
         android:textAlignment="center"
@@ -64,57 +69,48 @@
 
     <TextView
         android:id="@+id/infochefTxt"
-        android:layout_width="140dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="52dp"
-        android:text="Información sobre el Chef"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="152dp"
+        android:text="Información del Chef"
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/recetasTxt"
-        android:layout_width="140dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
         android:text="Recetas"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriciónTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTxt" />
 
     <TextView
-        android:id="@+id/descriciónTxt"
+        android:id="@+id/descriptionTxt"
         android:layout_width="294dp"
         android:layout_height="68dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="44dp"
         android:text="Descripción"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.273"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infochefTxt" />
 
-    <Button
-        android:id="@+id/receta1Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="64dp"
-        android:background="#2D47CC"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recetasTxt" />
-
     <ImageView
         android:id="@+id/showrecipView"
-        android:layout_width="102dp"
-        android:layout_height="97dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="112dp"
-        app:layout_constraintEnd_toStartOf="@+id/receta1Btn"
+        android:layout_width="104dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recetasTxt"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
@@ -129,6 +125,42 @@
         app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958" />
+        app:layout_constraintVertical_bias="0.936" />
+
+    <Button
+        android:id="@+id/whatsappBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/instagramBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whatsappBtn" />
+
+    <Button
+        android:id="@+id/twitterBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/instagramBtn"
+        app:layout_constraintTop_toBottomOf="@+id/facebookBtn" />
+
+    <Button
+        android:id="@+id/facebookBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/whatsappBtn"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
