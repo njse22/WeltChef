@@ -1,5 +1,7 @@
 package appmoviles.com.weltchef.db;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -11,27 +13,46 @@ import com.google.firebase.database.ValueEventListener;
 
 import appmoviles.com.weltchef.entity.Menu;
 import appmoviles.com.weltchef.entity.User;
+import appmoviles.com.weltchef.entity.UsersManager;
+import appmoviles.com.weltchef.util.Constans;
 
 public class FirebaseDB  {
 
-    private Query query;
     private DatabaseReference databaseReference;
+    private Query querySearch;
+    private UsersManager usersManager;
 
     public FirebaseDB() {
         this.databaseReference = FirebaseDatabase.getInstance().getReference();
-        this.query = this.databaseReference;
+        this.querySearch = null;
+        this.usersManager = new UsersManager();
     }
 
-    public Query getQuery() {
-        return query;
+    public Query getQuerySearch() {
+        return querySearch;
     }
 
     public DatabaseReference getDatabaseReference() {
         return databaseReference;
     }
 
-    public void searchInfo(String id, String branch){
+    public UsersManager getUsersManager() {
+        return usersManager;
+    }
 
+    public void searchUserByEmail(String email, String branchChef, String branchClient){
+        querySearch = databaseReference.child(branchChef).orderByChild("email").equalTo(email);
+        Log.e(">>>", "query: " + querySearch);
+
+        if (querySearch != null) {
+            usersManager.setCunrrently(Constans.CHEF_INSTANCE);
+            Log.e(">>>", "CHEF");
+        }
+        else {
+            Log.e(">>>", "PAILA");
+            querySearch = databaseReference.child(branchClient).orderByChild("email").equalTo(email);
+            usersManager.setCunrrently(Constans.CLIENT_INSTANCE);
+        }
     }
 
     public String createId(String branch){
@@ -46,9 +67,9 @@ public class FirebaseDB  {
     }
 
     public void readInfo(String branch, String id){
-        query = databaseReference.child(branch).child(id);
-
+        databaseReference.child(branch).child(id);
     }
+
 
 
 }

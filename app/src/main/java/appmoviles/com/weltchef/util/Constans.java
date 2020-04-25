@@ -11,9 +11,7 @@ public class Constans {
     public final static String FIREBASE_MENU_BRANCH = "menus";
     public final static String FIREBASE_ORDER_BRANCH = "menus";
 
-
-
-
-
+    public static final int CHEF_INSTANCE = 1;
+    public static final int CLIENT_INSTANCE = 2;
 
 }

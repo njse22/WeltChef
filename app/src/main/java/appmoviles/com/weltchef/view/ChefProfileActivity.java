@@ -39,6 +39,7 @@ public class ChefProfileActivity extends AppCompatActivity{
         this.showrecipe = findViewById(R.id.showrecipView);
         this.photochef = findViewById(R.id.imageView);
         this.titleapp = findViewById(R.id.tituloTxt);
+        this.description = findViewById(R.id.descriptionTxt);
 
         whatsapp = findViewById(R.id.whatsappBtn);
         facebook = findViewById(R.id.facebookBtn);
