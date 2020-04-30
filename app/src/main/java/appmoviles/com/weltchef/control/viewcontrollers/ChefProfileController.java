@@ -21,7 +21,7 @@ public class ChefProfileController implements View.OnClickListener {
         view.getInstagram().setOnClickListener(this);
         view.getTwitter().setOnClickListener(this);
 
-        FirebaseDatabase.getInstance().getApp().getOptions().getDatabaseUrl(); // ??
+     //   FirebaseDatabase.getInstance().getApp().getOptions().getDatabaseUrl(); // ??
         init();
     }
 
@@ -34,7 +34,7 @@ public class ChefProfileController implements View.OnClickListener {
         view.getPhotochef().setOnClickListener(this);
 
     }
-    
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -48,8 +48,8 @@ public class ChefProfileController implements View.OnClickListener {
                 break;
 
             case R.id.imageView:
-                Intent intent = new Intent(this.view, ChefProfileActivity.class);
-                this.view.startActivity(intent);
+               // Intent intent = new Intent(this.view, ChefProfileActivity.class);
+               // this.view.startActivity(intent);
                 break;
 
 

@@ -43,16 +43,19 @@ public class User {
 
   private String id;
 
+  private boolean chef;
+
   public User() {
   }
 
-  public User(String name, String email, String phone, String password, String id) {
+  public User(String name, String email, String phone, String password, String id, boolean isChef) {
     this.name = name;
     this.email = email;
     this.phone = phone;
     this.ranking = 0.0;
     this.password = password;
     this.id = id;
+    this.chef = isChef;
     ratings = new ArrayList<>();
     messages  = new ArrayList<>();
   }
@@ -173,6 +176,10 @@ public class User {
    */
   public ArrayList<Integer> getCalifications() {
     return ratings;
+  }
+
+  public boolean isChef() {
+    return chef;
   }
 
   //

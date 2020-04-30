@@ -3,16 +3,18 @@ package appmoviles.com.weltchef.entity;
 public class Message {
 
     private String id;
-    private String userId;
+    private String userIDChef;
+    private String userIDClient;
     private String body;
     private long timestamp;
 
     public Message() {
     }
 
-    public Message(String id, String userId, String body, long timestamp) {
+    public Message(String id, String userIDChef, String userIDClient,String body, long timestamp) {
         this.id = id;
-        this.userId = userId;
+        this.userIDChef = userIDChef;
+        this.userIDClient = userIDClient;
         this.body = body;
         this.timestamp = timestamp;
     }
@@ -26,11 +28,11 @@ public class Message {
     }
 
     public String getUserId() {
-        return userId;
+        return userIDChef;
     }
 
     public void setUserId(String userId) {
-        this.userId = userId;
+        this.userIDChef = userId;
     }
 
     public String getBody() {

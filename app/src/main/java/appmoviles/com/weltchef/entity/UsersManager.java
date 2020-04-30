@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class UsersManager {
 
   private ArrayList<User> users;
-  private int cunrrently;
+  private static int cunrrently;
 
   public UsersManager() {
     users = new ArrayList<>();

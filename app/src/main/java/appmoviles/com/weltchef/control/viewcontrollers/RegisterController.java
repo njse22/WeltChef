@@ -11,8 +11,8 @@ public class RegisterController implements View.OnClickListener {
 
     private RegisterActivity activity;
 
-    public RegisterController(RegisterActivity register) {
-        this.activity = register;
+    public RegisterController(RegisterActivity activity) {
+        this.activity = activity;
         init();
     }
 

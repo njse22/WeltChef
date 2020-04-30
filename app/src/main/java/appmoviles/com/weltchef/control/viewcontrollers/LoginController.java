@@ -10,13 +10,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.acl.LastOwnerException;
+
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.db.FirebaseDB;
 import appmoviles.com.weltchef.entity.Chef;
 import appmoviles.com.weltchef.entity.Client;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.entity.UsersManager;
-import appmoviles.com.weltchef.exceptions.UserNotRegisterException;
 import appmoviles.com.weltchef.util.Constans;
 import appmoviles.com.weltchef.view.ClientProfileActivity;
 import appmoviles.com.weltchef.view.LogingActivity;
@@ -49,50 +50,49 @@ public class LoginController implements View.OnClickListener, ValueEventListener
             case R.id.loginBtn:
                 firebaseDB.searchUserByEmail(
                         activity.getUserNameEditText().getText().toString(),
-                        Constans.FIREBASE_CHEF_BRANCH,
-                        Constans.FIREBASE_CLIENT_BRANCH);
-
+                        Constans.FIREBASE_USER_BRANCH);
                 firebaseDB.getQuerySearch().addListenerForSingleValueEvent(this);
-
-                Log.e(">>>", "tag: " + (user instanceof Chef) );
-
-                if(user instanceof Chef){
-                    Intent i = new Intent(activity, ChefProfileActivity.class);
-                    activity.startActivity(i);
-                }
-                else if (user instanceof Client) {
-                    Intent i = new Intent(activity, ClientProfileActivity.class);
-                    activity.startActivity(i);
-                }
                 break;
+
             case R.id.registerTextButton:
+
                 Intent intent = new Intent(activity, RegisterActivity.class);
                 activity.startActivity(intent);
                 break;
         }
-
     }
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        Log.e(">>>>", "data: "+ dataSnapshot.getValue().toString());
 
         if(dataSnapshot.getChildrenCount() == 0){
 
         } else {
             for (DataSnapshot coincidencia : dataSnapshot.getChildren()) {
-                if (firebaseDB.getUsersManager().getCunrrently() == Constans.CHEF_INSTANCE)
-                    user = coincidencia.getValue(Chef.class);
-                else
-                    user = coincidencia.getValue(Client.class);
-
+                user = coincidencia.getValue(User.class);
                 break;
             }
         }
-    }
 
+        if (user.isChef()){
+            Intent i = new Intent(activity, ChefProfileActivity.class);
+            i.putExtra("name", user.getName());
+            i.putExtra("phone", user.getPhone());
+            i.putExtra("email", user.getEmail());
+            i.putExtra("description", " ");
+
+            activity.startActivity(i);
+        }else {
+            Intent i = new Intent(activity, ClientProfileActivity.class);
+            i.putExtra("name", user.getName());
+            i.putExtra("phone", user.getPhone());
+            i.putExtra("email", user.getEmail());
+            activity.startActivity(i);
+        }
+
+    }
     @Override
-    public void onCancelled(@NonNull DatabaseError databaseError) {
+    public void onCancelled(@NonNull DatabaseError databaseError) {  }
 
-    }
+
 }

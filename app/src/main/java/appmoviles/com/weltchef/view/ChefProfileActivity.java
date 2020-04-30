@@ -20,7 +20,7 @@ import appmoviles.com.weltchef.control.viewcontrollers.ChefProfileController;
 
 public class ChefProfileActivity extends AppCompatActivity{
 
-    private TextView infochef, recipes, nameChef, email, description, telephone;
+    private TextView recipes, nameChef, email, description, telephone;
     private ImageView photochef, titleapp, showrecipe;
     private ChefProfileController controller;
     private Button whatsapp,facebook,instagram,twitter;
@@ -34,7 +34,6 @@ public class ChefProfileActivity extends AppCompatActivity{
         this.nameChef = findViewById(R.id.nomUsuarioTxt);
         this.email = findViewById(R.id.correoTxt);
         this.telephone = findViewById(R.id.telefonoTxt);
-        this.infochef = findViewById(R.id.infochefTxt);
         this.recipes = findViewById(R.id.recetasTxt);
         this.showrecipe = findViewById(R.id.showrecipView);
         this.photochef = findViewById(R.id.imageView);
@@ -49,9 +48,6 @@ public class ChefProfileActivity extends AppCompatActivity{
         controller = new ChefProfileController(this);
     }
 
-    public TextView getInfochef() {
-        return infochef;
-    }
 
     public TextView getRecipes() {
         return recipes;

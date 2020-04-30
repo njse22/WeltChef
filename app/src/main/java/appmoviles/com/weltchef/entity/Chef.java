@@ -28,18 +28,8 @@ public class Chef extends User {
   }
 
   public Chef(boolean chefHome, boolean chefKitchen, String description, String email
-          , String name, String password, String phone){
-    super(name, email, phone, password, "");
-    this.chefHome = chefHome;
-    this.chefKitchen = chefKitchen;
-    this.description = description;
-    this.menus = new ArrayList<>();
-
-  }
-
-  public Chef(String name, String email, String phone, String password, String id,
-              boolean chefHome, boolean chefKitchen, String description) {
-    super(name, email, phone, password, id);
+          , String name, String password, String phone, String id){
+    super(name, email, phone, password, id, true);
     this.chefHome = chefHome;
     this.chefKitchen = chefKitchen;
     this.description = description;

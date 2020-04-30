@@ -40,19 +40,11 @@ public class FirebaseDB  {
         return usersManager;
     }
 
-    public void searchUserByEmail(String email, String branchChef, String branchClient){
-        querySearch = databaseReference.child(branchChef).orderByChild("email").equalTo(email);
-        Log.e(">>>", "query: " + querySearch);
-
-        if (querySearch != null) {
-            usersManager.setCunrrently(Constans.CHEF_INSTANCE);
-            Log.e(">>>", "CHEF");
-        }
-        else {
-            Log.e(">>>", "PAILA");
-            querySearch = databaseReference.child(branchClient).orderByChild("email").equalTo(email);
-            usersManager.setCunrrently(Constans.CLIENT_INSTANCE);
-        }
+    public void searchUserByEmail(String email, String branch){
+         querySearch = databaseReference
+                .child(branch)
+                .orderByChild("email")
+                .equalTo(email);
     }
 
     public String createId(String branch){

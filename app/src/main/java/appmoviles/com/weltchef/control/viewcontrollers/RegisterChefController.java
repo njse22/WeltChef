@@ -35,10 +35,10 @@ public class RegisterChefController implements View.OnClickListener {
                 String phone = activity.getPhoneET().getText().toString();
                 String password = activity.getPasswordET().getText().toString();
                 String description = activity.getDescriptionET().getText().toString();
-                String id = firebaseDB.createId(Constans.FIREBASE_CHEF_BRANCH);
-                Chef chef = new Chef(name,email,phone,password,id,false,true,description);
+                String id = firebaseDB.createId(Constans.FIREBASE_USER_BRANCH);
+                Chef chef = new Chef(true, false, description, email, name, password, phone, id);
 
-                firebaseDB.sendInfo(chef, id ,Constans.FIREBASE_CHEF_BRANCH);
+                firebaseDB.sendInfo(chef, id ,Constans.FIREBASE_USER_BRANCH);
 
                 Intent intent = new Intent(activity, ChefProfileActivity.class);
                 intent.putExtra("name", activity.getNameET().getText().toString());
