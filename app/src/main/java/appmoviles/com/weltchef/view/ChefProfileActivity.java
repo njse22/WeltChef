@@ -13,13 +13,9 @@ import appmoviles.com.weltchef.control.viewcontrollers.ChefProfileController;
 
 public class ChefProfileActivity extends AppCompatActivity{
 
-<<<<<<< HEAD
+
     private TextView recipes, nameChef, email, description, telephone;
     private ImageView photochef, titleapp, showrecipe;
-=======
-    private TextView infochef, recipes, nameChef, email, description, telephone;
-    private ImageView titleapp, showrecipe;
->>>>>>> 128d17ae2a7bcdfd86ade50e17e236d8c58c6211
     private ChefProfileController controller;
     private Button whatsapp,facebook,instagram,twitter;
     private ImageButton chefPicture;

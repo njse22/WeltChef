@@ -31,19 +31,6 @@ public class ChefProfileController implements View.OnClickListener {
 
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
-
-        user = (User) view.getIntent().getExtras().get("user");
-
-        view.getNameChef().setText(user.getName());
-        view.getEmail().setText(user.getEmail());
-        view.getTelephone().setText(user.getPhone());
-        view.getWhatsapp().setOnClickListener(this);
-        view.getFacebook().setOnClickListener(this);
-        view.getInstagram().setOnClickListener(this);
-        view.getTwitter().setOnClickListener(this);
-
-<<<<<<< HEAD
-     //   FirebaseDatabase.getInstance().getApp().getOptions().getDatabaseUrl(); // ??
         init();
     }
 
@@ -57,12 +44,6 @@ public class ChefProfileController implements View.OnClickListener {
 
     }
 
-=======
-        FirebaseDatabase.getInstance().getApp().getOptions().getDatabaseUrl(); // ??
-    }
-
-    
->>>>>>> 128d17ae2a7bcdfd86ade50e17e236d8c58c6211
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -93,14 +74,6 @@ public class ChefProfileController implements View.OnClickListener {
         }
     }
 
-<<<<<<< HEAD
-            case R.id.imageView:
-               // Intent intent = new Intent(this.view, ChefProfileActivity.class);
-               // this.view.startActivity(intent);
-                break;
-
-
-=======
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == ImageryUtl.CAMERA_CALLBACK && resultCode == RESULT_OK){
             Bitmap image = BitmapFactory.decodeFile(photo.getPath());
@@ -111,7 +84,7 @@ public class ChefProfileController implements View.OnClickListener {
             photo = new File(ImageryUtl.getPath(this.view, uri));
             Bitmap image = BitmapFactory.decodeFile(photo.getPath());
             view.getPhotochef().setImageBitmap(image);
->>>>>>> 128d17ae2a7bcdfd86ade50e17e236d8c58c6211
+
         }
     }
 }
