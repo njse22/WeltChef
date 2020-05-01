@@ -178,6 +178,10 @@ public class User {
     return ratings;
   }
 
+  public String getId() {
+    return id;
+  }
+
   public boolean isChef() {
     return chef;
   }

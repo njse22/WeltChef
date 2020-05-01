@@ -104,9 +104,6 @@ public class Chef extends User {
     if(description != null && description != " ")
       descriptrionB = true;
 
-    Menu menu = new Menu(type, price, description);
-    menus.add(menu);
-
     return (typeB & priceB) & descriptrionB;
   }
 

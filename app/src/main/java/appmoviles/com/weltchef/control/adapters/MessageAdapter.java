@@ -41,7 +41,7 @@ public class MessageAdapter extends BaseAdapter {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View root ;
 
-        if (userID.equals(messages.get(position).getUserId())){
+        if (userID.equals(messages.get(position).getUserIDChef()) || userID.equals(messages.get(position).getUserIDClient())){
             root = inflater.inflate(R.layout.messages_row_mine, null);
         }else {
             root = inflater.inflate(R.layout.messages_row_others, null);

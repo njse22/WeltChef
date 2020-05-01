@@ -44,9 +44,7 @@ public class ClientProfileController implements View.OnClickListener {
                 Manifest.permission.READ_EXTERNAL_STORAGE
         }, 0);
     }
-
-
-
+    
     @Override
     public void onClick(View v) {
         switch (v.getId()){

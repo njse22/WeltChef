@@ -10,7 +10,7 @@ public class Order {
   public final static  int NONE = 0;
   public final static int WAITING = 1;
   public final static int ACCEPTED = 2;
-  private final static int COMPLETED = 3;
+  public final static int COMPLETED = 3;
   public final static int CANCELED = 4;
   /**
    * HashMap de los platos que se han pedido 
@@ -27,10 +27,13 @@ public class Order {
 
   private String clientId;
 
-  public Order( int totalPrice, int status) {
+  private String id;
+
+  public Order( int totalPrice, int status, String id) {
     this.totalPrice = totalPrice;
     this.status = status;
     this.clientId = "";
+    this.id = id;
     plates = new ArrayList<Menu>();
 
   }
@@ -91,6 +94,11 @@ public class Order {
     return status;
   }
 
+  public void setClientId(String clientId) {
+    this.clientId = clientId;
+  }
 
-
+  public String getId() {
+    return id;
+  }
 }

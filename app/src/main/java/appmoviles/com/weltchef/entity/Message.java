@@ -23,12 +23,20 @@ public class Message {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getUserIDChef() {
+        return userIDChef;
     }
 
-    public String getUserId() {
-        return userIDChef;
+    public void setUserIDChef(String userIDChef) {
+        this.userIDChef = userIDChef;
+    }
+
+    public String getUserIDClient() {
+        return userIDClient;
+    }
+
+    public void setUserIDClient(String userIDClient) {
+        this.userIDClient = userIDClient;
     }
 
     public void setUserId(String userId) {
