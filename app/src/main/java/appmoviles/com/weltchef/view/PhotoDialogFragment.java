@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import appmoviles.com.weltchef.R;
@@ -20,13 +21,8 @@ public class PhotoDialogFragment extends DialogFragment {
 
     private View.OnClickListener listener;
 
-    public PhotoDialogFragment(ClientProfileController context){
-        try{
-            listener = (View.OnClickListener) context;
-        }catch(ClassCastException e){
-            throw new ClassCastException(getActivity().toString()
-                    + " must implement OnClickListener");
-        }
+    public PhotoDialogFragment(View.OnClickListener listener){
+        this.listener = listener;
     }
 
     @NonNull

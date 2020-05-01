@@ -1,12 +1,13 @@
 package appmoviles.com.weltchef.entity;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Class User
  */
-public class User {
+public class User implements Serializable {
 
 
   /**
