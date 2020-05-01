@@ -2,6 +2,7 @@ package appmoviles.com.weltchef.view;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private TextView usernameTV;
     private ListView messagesList;
+    private EditText messageET;
     private Button galBtn, sendBtn;
     private ImageView messageIV;
     private ConstraintLayout controlsContainer;
@@ -29,6 +31,7 @@ public class ChatActivity extends AppCompatActivity {
 
         usernameTV = findViewById(R.id.usernameTV);
         messagesList = findViewById(R.id.messagesList);
+        messageET = findViewById(R.id.messageET);
         galBtn = findViewById(R.id.galBtn);
         sendBtn = findViewById(R.id.sendBtn);
         messageIV = findViewById(R.id.messageIV);
@@ -52,6 +55,14 @@ public class ChatActivity extends AppCompatActivity {
 
     public void setMessagesList(ListView messagesList) {
         this.messagesList = messagesList;
+    }
+
+    public EditText getMessageET() {
+        return messageET;
+    }
+
+    public void setMessageET(EditText messageET) {
+        this.messageET = messageET;
     }
 
     public Button getGalBtn() {

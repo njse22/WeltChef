@@ -9,11 +9,19 @@ import java.util.ArrayList;
 public class UsersManager {
 
   private ArrayList<User> users;
-  private static User cunrrently;
+  private static int cunrrently;
 
   public UsersManager() {
     users = new ArrayList<>();
-    cunrrently = new User();
+    cunrrently = 0;
+  }
+
+  public int getCunrrently() {
+    return cunrrently;
+  }
+
+  public void setCunrrently(int cunrrently) {
+    this.cunrrently = cunrrently;
   }
 
   /**
@@ -61,17 +69,11 @@ public class UsersManager {
   public User getUserByEmail(String email){
     for (int i= 0; i < users.size(); i++){
       if(users.get(i).getEmail().equals(email)){
-        initCurrentlyUser(email);
         return users.get(i);
       }
     }
     return null;
   }
-
-  public void initCurrentlyUser(String email){
-    cunrrently = getUserByEmail(email);
-  }
-
 
 
   /**
@@ -83,6 +85,9 @@ public class UsersManager {
   public double updateRanking(int ranking) {
     return 0.0;
   }
+
+
+
 
 
 }

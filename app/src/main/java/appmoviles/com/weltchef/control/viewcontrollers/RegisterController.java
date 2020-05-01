@@ -11,8 +11,8 @@ public class RegisterController implements View.OnClickListener {
 
     private RegisterActivity activity;
 
-    public RegisterController(RegisterActivity register) {
-        this.activity = register;
+    public RegisterController(RegisterActivity activity) {
+        this.activity = activity;
         init();
     }
 
@@ -30,7 +30,11 @@ public class RegisterController implements View.OnClickListener {
                 activity.startActivity(intent);
                 break;
 
-            // regitro de cliente
+            case R.id.clientBtn:
+                //Intent i = new Intent(activity, )
+                break;
+
+
 
         }
 
