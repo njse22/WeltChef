@@ -52,6 +52,23 @@ public class LoginController implements View.OnClickListener, ValueEventListener
                         activity.getUserNameEditText().getText().toString(),
                         Constans.FIREBASE_USER_BRANCH);
                 firebaseDB.getQuerySearch().addListenerForSingleValueEvent(this);
+<<<<<<< HEAD
+=======
+
+                Log.e(">>>", "tag: " + (user instanceof Chef) );
+
+                if(user instanceof Chef){
+                    Intent i = new Intent(activity, ChefProfileActivity.class);
+                    i.putExtra("user", user);
+                    activity.startActivity(i);
+                }
+                else if (user instanceof Client) {
+                    Intent i = new Intent(activity, ClientProfileActivity.class);
+                    i.putExtra("user", user);
+                    activity.startActivity(i);
+                    activity.startActivity(i);
+                }
+>>>>>>> 128d17ae2a7bcdfd86ade50e17e236d8c58c6211
                 break;
 
             case R.id.registerTextButton:

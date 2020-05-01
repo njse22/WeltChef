@@ -12,7 +12,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.DialogFragment;
 
-import com.google.android.gms.common.api.internal.GoogleApiManager;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
@@ -27,7 +26,7 @@ import static android.app.Activity.RESULT_OK;
 public class ClientProfileController implements View.OnClickListener {
 
     private ClientProfileActivity view;
-    private File photoFile;
+    private File photo;
 
     public ClientProfileController(ClientProfileActivity view) {
         this.view = view;
@@ -43,8 +42,14 @@ public class ClientProfileController implements View.OnClickListener {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE
         }, 0);
+<<<<<<< HEAD
     }
     
+=======
+
+    }
+
+>>>>>>> 128d17ae2a7bcdfd86ade50e17e236d8c58c6211
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -54,8 +59,8 @@ public class ClientProfileController implements View.OnClickListener {
                 break;
             case R.id.takePhoto:
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                photoFile = new File(view.getExternalFilesDir(null)+"/photo.png");
-                Uri photoUri = FileProvider.getUriForFile(view, view.getPackageName(), photoFile);
+                photo = new File(view.getExternalFilesDir(null)+"/photo.png");
+                Uri photoUri = FileProvider.getUriForFile(view, view.getPackageName(), photo);
                 i.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 view.startActivityForResult(i, ImageryUtl.CAMERA_CALLBACK);
                 break;
@@ -73,13 +78,13 @@ public class ClientProfileController implements View.OnClickListener {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == ImageryUtl.CAMERA_CALLBACK && resultCode == RESULT_OK){
-            Bitmap image = BitmapFactory.decodeFile(photoFile.getPath());
+            Bitmap image = BitmapFactory.decodeFile(photo.getPath());
             Bitmap thumbnail = Bitmap.createScaledBitmap(image, image.getWidth()/4, image.getHeight()/4, false);
             view.getClientPicture().setImageBitmap(thumbnail);
         }else if(requestCode == ImageryUtl.GALLERY_CALLBACK && resultCode == RESULT_OK){
             Uri uri = data.getData();
-            photoFile = new File(ImageryUtl.getPath(this.view, uri));
-            Bitmap image = BitmapFactory.decodeFile(photoFile.getPath());
+            photo = new File(ImageryUtl.getPath(this.view, uri));
+            Bitmap image = BitmapFactory.decodeFile(photo.getPath());
             view.getClientPicture().setImageBitmap(image);
         }
     }
