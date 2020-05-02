@@ -1,4 +1,4 @@
-package appmoviles.com.weltchef.view;
+package appmoviles.com.weltchef.control.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.view.DishViewActivity;
 
 public class DishViewAdapter extends RecyclerView.Adapter<DishViewHolder> {
 

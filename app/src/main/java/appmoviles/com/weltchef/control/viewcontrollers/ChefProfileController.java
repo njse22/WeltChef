@@ -15,9 +15,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.File;
 
 import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.entity.Chef;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.CameraActivity;
+import appmoviles.com.weltchef.view.ChatActivity;
 import appmoviles.com.weltchef.view.ChefProfileActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
 
@@ -26,21 +28,12 @@ import static android.app.Activity.RESULT_OK;
 public class ChefProfileController implements View.OnClickListener {
 
     private ChefProfileActivity view;
-    private User user;
+    private Chef chef;
     private File photo;
 
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
-        init();
-    }
-
-    public void init(){
-        view.getNameChef().setText((String)view.getIntent().getExtras().get("name"));
-        view.getTelephone().setText((String)view.getIntent().getExtras().get("phone"));
-        view.getEmail().setText((String)view.getIntent().getExtras().get("email"));
-        view.getDescription().setText((String)view.getIntent().getExtras().get("description"));
-
-        view.getPhotochef().setOnClickListener(this);
+        this.chef = (Chef)view.getIntent().getExtras().get("user");
 
     }
 
@@ -64,6 +57,8 @@ public class ChefProfileController implements View.OnClickListener {
                 this.view.startActivityForResult(gallery, ImageryUtl.GALLERY_CALLBACK);
                 break;
             case R.id.whatsappBtn:
+                Intent intentChat = new Intent(view, ChatActivity.class);
+
                 break;
             case R.id.facebookBtn:
                 break;

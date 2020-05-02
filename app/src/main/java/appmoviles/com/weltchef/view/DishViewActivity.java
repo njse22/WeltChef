@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.control.adapters.DishViewAdapter;
 import appmoviles.com.weltchef.control.viewcontrollers.DishViewController;
 
 public class DishViewActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package appmoviles.com.weltchef.view;
+package appmoviles.com.weltchef.control.adapters;
 
 import android.view.View;
 

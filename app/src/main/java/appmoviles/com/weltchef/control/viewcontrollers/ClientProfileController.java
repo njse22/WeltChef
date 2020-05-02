@@ -17,8 +17,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.File;
 
 import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.entity.Client;
 import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.ClientProfileActivity;
+import appmoviles.com.weltchef.view.FoodOrderActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
 
 import static android.app.Activity.RESULT_OK;
@@ -27,9 +29,11 @@ public class ClientProfileController implements View.OnClickListener {
 
     private ClientProfileActivity view;
     private File photo;
+    private Client client;
 
     public ClientProfileController(ClientProfileActivity view) {
         this.view = view;
+        this.client =  (Client) view.getIntent().getExtras().get("user");
 
         view.getAskService().setOnClickListener(this);
         view.getSearchChef().setOnClickListener(this);
@@ -44,7 +48,7 @@ public class ClientProfileController implements View.OnClickListener {
         }, 0);
 
     }
-    
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -64,7 +68,10 @@ public class ClientProfileController implements View.OnClickListener {
                 gallery.setType("image/*");
                 this.view.startActivityForResult(gallery, ImageryUtl.GALLERY_CALLBACK);
                 break;
+
             case R.id.askService:
+                Intent intentFoodActivity = new Intent(view, FoodOrderActivity.class);
+                view.startActivity(intentFoodActivity);
                 break;
             case R.id.searchChef:
                 break;
