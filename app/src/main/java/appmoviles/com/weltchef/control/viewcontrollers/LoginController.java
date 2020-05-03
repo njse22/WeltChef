@@ -76,11 +76,11 @@ public class LoginController implements View.OnClickListener, ValueEventListener
 
         if (user.isChef()){
             Intent i = new Intent(activity, ChefProfileActivity.class);
-            i.putExtra("user", (Chef)user);
+            i.putExtra("user",user);
             activity.startActivity(i);
         }else {
             Intent i = new Intent(activity, ClientProfileActivity.class);
-            i.putExtra("user", (Client)user);
+            i.putExtra("user",user);
             activity.startActivity(i);
         }
 

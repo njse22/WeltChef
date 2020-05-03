@@ -19,7 +19,6 @@ public class MakeOrderActivity extends AppCompatActivity {
     private EditText numPeopleET;
     private Button searchService;
     private Spinner spinnerTypes;
-
     private MakeOrderController controller;
 
     @Override
@@ -64,4 +63,5 @@ public class MakeOrderActivity extends AppCompatActivity {
     public void setSpinnerTypes(Spinner spinnerTypes) {
         this.spinnerTypes = spinnerTypes;
     }
+
 }

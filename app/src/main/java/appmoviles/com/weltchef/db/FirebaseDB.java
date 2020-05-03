@@ -47,6 +47,20 @@ public class FirebaseDB  {
         return usersManager;
     }
 
+
+    public void getMenus(int type){
+        querySearch = databaseReference
+                .child(Constans.FIREBASE_MENU_BRANCH)
+                .orderByChild("type")
+                .equalTo(type);
+    }
+
+    public void searchUserByid(String id){
+        querySearch = databaseReference
+                .child(Constans.FIREBASE_USER_BRANCH)
+                .equalTo(id);
+    }
+
     public void searchUserByEmail(String email, String branch){
          querySearch = databaseReference
                 .child(branch)

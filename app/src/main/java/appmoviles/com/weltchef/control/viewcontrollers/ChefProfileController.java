@@ -28,12 +28,12 @@ import static android.app.Activity.RESULT_OK;
 public class ChefProfileController implements View.OnClickListener {
 
     private ChefProfileActivity view;
-    private Chef chef;
+    private User chef;
     private File photo;
 
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
-        this.chef = (Chef)view.getIntent().getExtras().get("user");
+        this.chef = (User) view.getIntent().getExtras().get("user");
 
     }
 

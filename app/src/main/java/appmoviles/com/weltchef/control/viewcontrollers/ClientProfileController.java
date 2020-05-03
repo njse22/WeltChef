@@ -18,9 +18,11 @@ import java.io.File;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.entity.Client;
+import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.ClientProfileActivity;
 import appmoviles.com.weltchef.view.FoodOrderActivity;
+import appmoviles.com.weltchef.view.MakeOrderActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
 
 import static android.app.Activity.RESULT_OK;
@@ -29,11 +31,11 @@ public class ClientProfileController implements View.OnClickListener {
 
     private ClientProfileActivity view;
     private File photo;
-    private Client client;
+    private User client;
 
     public ClientProfileController(ClientProfileActivity view) {
         this.view = view;
-        this.client =  (Client) view.getIntent().getExtras().get("user");
+        this.client =  (User) view.getIntent().getExtras().get("user");
 
         view.getAskService().setOnClickListener(this);
         view.getSearchChef().setOnClickListener(this);
@@ -70,8 +72,9 @@ public class ClientProfileController implements View.OnClickListener {
                 break;
 
             case R.id.askService:
-                Intent intentFoodActivity = new Intent(view, FoodOrderActivity.class);
-                view.startActivity(intentFoodActivity);
+                Intent intentMakeOrder = new Intent(view, MakeOrderActivity.class);
+                intentMakeOrder.putExtra("user", client);
+                view.startActivity(intentMakeOrder);
                 break;
             case R.id.searchChef:
                 break;

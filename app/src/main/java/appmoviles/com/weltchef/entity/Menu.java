@@ -1,10 +1,12 @@
 package appmoviles.com.weltchef.entity;
 
 
+import java.io.Serializable;
+
 /**
  * Class Menu
  */
-public class Menu {
+public class Menu implements Serializable {
 
   public final static int COLOMBIANA = 1;
   public final static int MEXICANA = 2;
@@ -32,6 +34,9 @@ public class Menu {
   private String name;
 
   private String id;
+
+  public Menu(){
+  }
 
   public Menu(int type, int price, String description, String name, String id) {
     this.type = type;
