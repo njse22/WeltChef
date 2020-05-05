@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,7 +24,7 @@ public class ChefProfileActivity extends AppCompatActivity{
     private TextView infochef, recipes, nameChef, email, description, telephone;
     private ImageView photochef, titleapp, showrecipe;
     private ChefProfileController controller;
-    private Button whatsapp,facebook,instagram,twitter;
+    private ImageButton weltChef,facebook,instagram,twitter;
 
 
     @Override
@@ -40,7 +41,7 @@ public class ChefProfileActivity extends AppCompatActivity{
         this.photochef = findViewById(R.id.imageView);
         this.titleapp = findViewById(R.id.tituloTxt);
 
-        whatsapp = findViewById(R.id.whatsappBtn);
+        weltChef = findViewById(R.id.weltChefBtn);
         facebook = findViewById(R.id.facebookBtn);
         instagram = findViewById(R.id.instagramBtn);
         twitter = findViewById(R.id.twitterBtn);
@@ -88,19 +89,19 @@ public class ChefProfileActivity extends AppCompatActivity{
         return controller;
     }
 
-    public Button getWhatsapp() {
-        return whatsapp;
+    public ImageButton getWeltChef() {
+        return weltChef;
     }
 
-    public Button getFacebook() {
+    public ImageButton getFacebook() {
         return facebook;
     }
 
-    public Button getInstagram() {
+    public ImageButton getInstagram() {
         return instagram;
     }
 
-    public Button getTwitter() {
+    public ImageButton getTwitter() {
         return twitter;
     }
 }

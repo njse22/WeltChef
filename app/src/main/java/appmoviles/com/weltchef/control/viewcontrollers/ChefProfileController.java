@@ -14,7 +14,7 @@ public class ChefProfileController implements View.OnClickListener {
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
 
-        view.getWhatsapp().setOnClickListener(this);
+        view.getWeltChef().setOnClickListener(this);
         view.getFacebook().setOnClickListener(this);
         view.getInstagram().setOnClickListener(this);
         view.getTwitter().setOnClickListener(this);
@@ -27,7 +27,8 @@ public class ChefProfileController implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.whatsappBtn:
+
+            case R.id.weltChefBtn:
                 break;
             case R.id.facebookBtn:
                 break;

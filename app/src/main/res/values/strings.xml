@@ -15,6 +15,7 @@
     <string name="password">Contraseña</string>
     <!-- String Array of Menu Types -->
     <string-array name="types_array">
+        <item>Seleccione un tipo de comida</item>
         <item>Colombiana</item>
         <item>Mexicana</item>
         <item>Mediterranea</item>
@@ -23,4 +24,6 @@
         <item>Francesa</item>
         <item>Italiana</item>
     </string-array>
+
+
 </resources>
