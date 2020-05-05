@@ -56,7 +56,7 @@ public class ChefProfileController implements View.OnClickListener {
                 gallery.setType("image/*");
                 this.view.startActivityForResult(gallery, ImageryUtl.GALLERY_CALLBACK);
                 break;
-            case R.id.whatsappBtn:
+            case R.id.weltChefBtn:
                 Intent intentChat = new Intent(view, ChatActivity.class);
 
                 break;

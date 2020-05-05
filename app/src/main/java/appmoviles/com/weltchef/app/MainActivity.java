@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import appmoviles.com.weltchef.view.ChefProfileActivity;
 import appmoviles.com.weltchef.view.LogingActivity;
 import appmoviles.com.weltchef.R;
 
