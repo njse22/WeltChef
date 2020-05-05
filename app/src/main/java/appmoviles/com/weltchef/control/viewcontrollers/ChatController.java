@@ -1,5 +1,6 @@
 package appmoviles.com.weltchef.control.viewcontrollers;
 
+import android.net.Uri;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ public class ChatController implements View.OnClickListener, ValueEventListener,
     private User user;
     private Chef chef;
     private Client client;
+    private Uri uri;
     private MessageContainer messageContainer;
     private MessageAdapter adapter;
     private String clientEmail;

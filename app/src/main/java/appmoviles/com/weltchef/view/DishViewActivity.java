@@ -14,7 +14,6 @@ import appmoviles.com.weltchef.control.viewcontrollers.DishViewController;
 
 public class DishViewActivity extends AppCompatActivity {
 
-
     private Button askDish;
     private RecyclerView recyclerView;
     private DishViewAdapter adapter;

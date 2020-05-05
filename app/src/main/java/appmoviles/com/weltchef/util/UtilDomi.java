@@ -1,5 +1,4 @@
 package appmoviles.com.weltchef.util;
-
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
