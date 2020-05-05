@@ -1,10 +1,12 @@
 package appmoviles.com.weltchef.entity;
 
 
+import java.io.Serializable;
+
 /**
  * Class Menu
  */
-public class Menu {
+public class Menu implements Serializable {
 
   public final static int COLOMBIANA = 1;
   public final static int MEXICANA = 2;
@@ -17,7 +19,7 @@ public class Menu {
   /**
    * tipe of the plate or menu 
    *    */
-  private int tipe;
+  private int type;
   /**
    * price if the plate or menu 
    */
@@ -29,11 +31,19 @@ public class Menu {
 
   private String chefId;
 
+  private String name;
 
-  public Menu(int tipe, int price, String description) {
-    this.tipe = tipe;
+  private String id;
+
+  public Menu(){
+  }
+
+  public Menu(int type, int price, String description, String name, String id) {
+    this.type = type;
     this.price = price;
     this.description = description;
+    this.name = name;
+    this.id = id;
     this.chefId = "";
   }
 
@@ -43,8 +53,8 @@ public class Menu {
    * 
    * @param newVar the new value of tipe
    */
-  public void setTipe (int newVar) {
-    tipe = newVar;
+  public void setType(int newVar) {
+    type = newVar;
   }
 
   /**
@@ -53,8 +63,8 @@ public class Menu {
    * 
    * @return the value of tipe
    */
-  public int getTipe () {
-    return tipe;
+  public int getType() {
+    return type;
   }
 
   /**
@@ -93,7 +103,23 @@ public class Menu {
     return description;
   }
 
+  public void setChefId(String chefId) {
+    this.chefId = chefId;
+  }
 
+  public String getName() {
+    return name;
+  }
 
+  public void setName(String name) {
+    this.name = name;
+  }
 
+  public String getChefId() {
+    return chefId;
+  }
+
+  public String getId() {
+    return id;
+  }
 }

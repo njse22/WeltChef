@@ -27,9 +27,9 @@ public class Chef extends User {
   public Chef() {
   }
 
-  public Chef(String name, String email, String phone, String password, String id,
-              boolean chefHome, boolean chefKitchen, String description) {
-    super(name, email, phone, password, id);
+  public Chef(boolean chefHome, boolean chefKitchen, String description, String email
+          , String name, String password, String phone, String id){
+    super(name, email, phone, password, id, true);
     this.chefHome = chefHome;
     this.chefKitchen = chefKitchen;
     this.description = description;
@@ -103,9 +103,6 @@ public class Chef extends User {
       priceB = true;
     if(description != null && description != " ")
       descriptrionB = true;
-
-    Menu menu = new Menu(type, price, description);
-    menus.add(menu);
 
     return (typeB & priceB) & descriptrionB;
   }

@@ -68,12 +68,12 @@
 
     <TextView
         android:id="@+id/chef"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="137dp"
+        android:layout_height="19dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="350dp"
-        android:hint="Chef"
         android:background="@drawable/text_round"
+        android:hint="Chef"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,12 +81,12 @@
 
     <TextView
         android:id="@+id/cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="137dp"
+        android:layout_height="19dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="300dp"
-        android:hint="Precio"
         android:background="@drawable/text_round"
+        android:hint="Precio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,12 +94,12 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="137dp"
+        android:layout_height="19dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="400dp"
-        android:hint="Nombre"
         android:background="@drawable/text_round"
+        android:hint="Nombre"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

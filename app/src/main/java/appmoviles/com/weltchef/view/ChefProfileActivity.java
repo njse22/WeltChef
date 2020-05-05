@@ -1,45 +1,38 @@
 package appmoviles.com.weltchef.view;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import appmoviles.com.weltchef.R;
-import appmoviles.com.weltchef.app.MainActivity;
 import appmoviles.com.weltchef.control.viewcontrollers.ChefProfileController;
 
 public class ChefProfileActivity extends AppCompatActivity{
 
-    private TextView infochef, recipes, nameChef, email, description, telephone;
+
+    private TextView recipes, nameChef, email, description, telephone;
     private ImageView photochef, titleapp, showrecipe;
     private ChefProfileController controller;
     private ImageButton weltChef,facebook,instagram,twitter;
-
+    private ImageButton chefPicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_chef);
+        setContentView(R.layout.activity_chef_profile);
 
         this.nameChef = findViewById(R.id.nomUsuarioTxt);
         this.email = findViewById(R.id.correoTxt);
         this.telephone = findViewById(R.id.telefonoTxt);
-        this.infochef = findViewById(R.id.infochefTxt);
         this.recipes = findViewById(R.id.recetasTxt);
         this.showrecipe = findViewById(R.id.showrecipView);
-        this.photochef = findViewById(R.id.imageView);
+        this.chefPicture = findViewById(R.id.chefPicture);
         this.titleapp = findViewById(R.id.tituloTxt);
+        this.description = findViewById(R.id.descriptionTxt);
 
         weltChef = findViewById(R.id.weltChefBtn);
         facebook = findViewById(R.id.facebookBtn);
@@ -49,9 +42,6 @@ public class ChefProfileActivity extends AppCompatActivity{
         controller = new ChefProfileController(this);
     }
 
-    public TextView getInfochef() {
-        return infochef;
-    }
 
     public TextView getRecipes() {
         return recipes;
@@ -73,8 +63,8 @@ public class ChefProfileActivity extends AppCompatActivity{
         return telephone;
     }
 
-    public ImageView getPhotochef() {
-        return photochef;
+    public ImageButton getPhotochef() {
+        return chefPicture;
     }
 
     public ImageView getTitleapp() {
@@ -103,5 +93,9 @@ public class ChefProfileActivity extends AppCompatActivity{
 
     public ImageButton getTwitter() {
         return twitter;
+    }
+
+    public ImageButton getChefPicture() {
+        return chefPicture;
     }
 }

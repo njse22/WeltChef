@@ -14,7 +14,6 @@ import appmoviles.com.weltchef.control.viewcontrollers.FoodOrderController;
 public class FoodOrderActivity extends AppCompatActivity {
 
     private FoodOrderController controller;
-
     private ImageView foodImage;
     private TextView chef;
     private TextView cost;
