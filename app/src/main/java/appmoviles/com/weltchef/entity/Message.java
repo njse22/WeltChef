@@ -4,45 +4,28 @@ import java.io.Serializable;
 
 public class Message implements Serializable {
 
+    public final static int TYPE_TEXT = 0;
+    public final static int TYPE_IMAGE = 1;
+
+    private int type;
     private String id;
-    private String userIDChef;
-    private String userIDClient;
     private String body;
     private long timestamp;
+    private String userId;
 
     public Message() {
     }
 
-    public Message(String id, String userIDChef, String userIDClient,String body, long timestamp) {
+    public Message(int type,String id,String body ,long timestamp, String userId) {
+        this.type = type;
         this.id = id;
-        this.userIDChef = userIDChef;
-        this.userIDClient = userIDClient;
         this.body = body;
         this.timestamp = timestamp;
+        this.userId = userId;
     }
 
     public String getId() {
         return id;
-    }
-
-    public String getUserIDChef() {
-        return userIDChef;
-    }
-
-    public void setUserIDChef(String userIDChef) {
-        this.userIDChef = userIDChef;
-    }
-
-    public String getUserIDClient() {
-        return userIDClient;
-    }
-
-    public void setUserIDClient(String userIDClient) {
-        this.userIDClient = userIDClient;
-    }
-
-    public void setUserId(String userId) {
-        this.userIDChef = userId;
     }
 
     public String getBody() {
@@ -59,5 +42,25 @@ public class Message implements Serializable {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

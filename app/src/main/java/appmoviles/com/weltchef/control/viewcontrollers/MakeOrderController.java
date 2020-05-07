@@ -55,8 +55,8 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getSelectedItemPosition()){
             case Menu.COLOMBIANA:
-                    firebaseDB.getMenus(Menu.COLOMBIANA);
-                    firebaseDB.getQuerySearch().addChildEventListener(this);
+                firebaseDB.getMenus(Menu.COLOMBIANA);
+                firebaseDB.getQuerySearch().addChildEventListener(this);
                 break;
             case Menu.MEXICANA:
                 firebaseDB.getMenus(Menu.MEXICANA);
@@ -82,7 +82,6 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
                 firebaseDB.getMenus(Menu.ITALIANA);
                 firebaseDB.getQuerySearch().addChildEventListener(this);
                 break;
-
         }
     }
 

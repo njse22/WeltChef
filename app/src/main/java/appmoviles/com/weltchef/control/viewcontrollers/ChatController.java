@@ -1,46 +1,43 @@
 package appmoviles.com.weltchef.control.viewcontrollers;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.util.Calendar;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.adapters.MessageAdapter;
 import appmoviles.com.weltchef.db.FCMService;
 import appmoviles.com.weltchef.db.FirebaseDB;
-import appmoviles.com.weltchef.entity.Chef;
-import appmoviles.com.weltchef.entity.Client;
 import appmoviles.com.weltchef.entity.FCMMessage;
 import appmoviles.com.weltchef.entity.Message;
 import appmoviles.com.weltchef.entity.MessageContainer;
 import appmoviles.com.weltchef.entity.User;
-import appmoviles.com.weltchef.util.Constans;
+import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.util.HTTPSWebUtilDomi;
+import appmoviles.com.weltchef.util.UtilDomi;
+import appmoviles.com.weltchef.view.CameraActivity;
 import appmoviles.com.weltchef.view.ChatActivity;
 
-public class ChatController implements View.OnClickListener, ValueEventListener, ChildEventListener {
+import static android.app.Activity.RESULT_OK;
+
+public class ChatController implements View.OnClickListener {
 
     private ChatActivity activity;
     private User user;
-    private Chef chef;
-    private Client client;
     private Uri uri;
     private MessageContainer messageContainer;
     private MessageAdapter adapter;
-    private String clientEmail;
-    private String chefEmail;
     private FirebaseDB firebaseDB;
     private Gson gson;
 
@@ -54,75 +51,10 @@ public class ChatController implements View.OnClickListener, ValueEventListener,
 
     public void init(){
         activity.getMessagesList().setAdapter(adapter);
-        clientEmail = activity.getIntent().getExtras().getString("clientEmail");
-        chefEmail = activity.getIntent().getExtras().getString("chefEmail");
+        user = (User) activity.getIntent().getExtras().get("user");
+        messageContainer = (MessageContainer) activity.getIntent().getExtras().get("messageContainer");
         activity.getSendBtn().setOnClickListener(this);
         activity.getGalBtn().setOnClickListener(this);
-
-        // get chef
-        firebaseDB.searchUserByEmail(chefEmail,Constans.FIREBASE_USER_BRANCH);
-        // get client
-        firebaseDB.searchUserByEmail(clientEmail,Constans.FIREBASE_USER_BRANCH);
-        firebaseDB.getQuerySearch().addListenerForSingleValueEvent(this);
-
-        String idChat = firebaseDB.createId(Constans.FIREBASE_CHATS_BRANCH);
-
-        messageContainer = new MessageContainer(idChat);
-
-        firebaseDB.sendInfo(messageContainer, messageContainer.getId(), Constans.FIREBASE_CHATS_BRANCH);
-
-        Query query = FirebaseDatabase.getInstance().getReference()
-                .child(Constans.FIREBASE_CHATS_BRANCH)
-                .child(messageContainer.getId())
-                .limitToLast(10);
-        query.addChildEventListener(this);
-    }
-
-    @Override
-    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        if(dataSnapshot.getChildrenCount() == 0){
-
-        } else {
-            for (DataSnapshot coincidencia : dataSnapshot.getChildren()) {
-                user = coincidencia.getValue(User.class);
-                break;
-            }
-        }
-        if(user.isChef()){
-            chef = (Chef)user;
-        }
-        else {
-            client = (Client)user;
-        }
-
-        adapter.setUserId(user.getName());
-        activity.getUsernameTV().setText(user.getName());
-
-    }
-
-    @Override
-    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-        Message message = dataSnapshot.getValue(Message.class);
-        adapter.addMessage(message);
-    }
-
-    @Override
-    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-    }
-
-    @Override
-    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-    }
-
-    @Override
-    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-    }
-
-    @Override
-    public void onCancelled(@NonNull DatabaseError databaseError) {
 
     }
 
@@ -133,15 +65,21 @@ public class ChatController implements View.OnClickListener, ValueEventListener,
                 String body = activity.getMessageET().getText().toString();
 
                 String pushId = FirebaseDatabase.getInstance().getReference()
-                        .child(Constans.FIREBASE_CHATS_BRANCH)
+                        .child(Constants.FIREBASE_CHATS_BRANCH)
                         .child(messageContainer.getId()).push().getKey();
 
+                boolean flatChef;
+                if(user.isChef())
+                    flatChef = true;
+                else
+                    flatChef = false;
+
                 Message message = new Message(
+                        uri == null ? Message.TYPE_TEXT : Message.TYPE_IMAGE,
                         pushId,
-                        client.getId(),
-                        chef.getId(),
                         body,
-                        Calendar.getInstance().getTime().getTime()
+                        Calendar.getInstance().getTime().getTime(),
+                        flatChef
                 );
 
                 FCMMessage fcm = new FCMMessage();
@@ -155,11 +93,54 @@ public class ChatController implements View.OnClickListener, ValueEventListener,
                             utilDomi.POSTtoFCM(FCMService.API_KEY, json);
                         }
                 ).start();
+
+                if(uri != null){
+                    FirebaseStorage storage = FirebaseStorage.getInstance();
+                    storage.getReference().child("chats").child(message.getId())
+                            .putFile(uri).addOnCompleteListener(
+                            task -> {
+                                if(task.isSuccessful()){
+                                    Log.e(">>","Foto subida con éxito");
+                                    FirebaseDatabase.getInstance().getReference()
+                                            .child("chats").child(messageContainer.getId()).child(pushId).setValue(message);
+                                }
+                            }
+                    );
+                }
+                activity.hideImage();
+                uri = null;
                 break;
 
             case R.id.galBtn:
-
+                Intent gal = new Intent(Intent.ACTION_GET_CONTENT);
+                gal.setType("image/*");
+                activity.startActivityForResult(gal, CameraController.GALLERY_CALLBACK);
                 break;
+        }
+    }
+
+    public void beforePause() {
+        //Suscribirme a un topic
+        FirebaseMessaging.getInstance().subscribeToTopic(messageContainer.getId()).addOnCompleteListener(
+                task->{
+                    if(task.isSuccessful()){
+                        Log.e(">>>","Suscrito!");
+                    }
+                }
+        );
+    }
+
+    public void beforeResume() {
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(messageContainer.getId());
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == CameraController.GALLERY_CALLBACK && resultCode == RESULT_OK){
+            uri = data.getData();
+            File file = new File(UtilDomi.getPath(activity, uri));
+            Bitmap image = BitmapFactory.decodeFile(file.toString());
+            activity.getMessageIV().setImageBitmap(image);
+            activity.showImage();
         }
     }
 

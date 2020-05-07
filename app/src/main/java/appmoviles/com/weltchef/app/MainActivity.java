@@ -1,53 +1,49 @@
 package appmoviles.com.weltchef.app;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import appmoviles.com.weltchef.view.ChefProfileActivity;
+import appmoviles.com.weltchef.db.FirebaseDB;
 import appmoviles.com.weltchef.view.LogingActivity;
 import appmoviles.com.weltchef.R;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseDB firebaseDB = new FirebaseDB();
 
-        ActivityCompat.requestPermissions(this, new String[]{
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-        }, 11);
+        /**Chef chef3 = new Chef(
+                true,
+                false,
+                "Chef con 5 años de experiencia en comida gourmet",
+                "pedro33@gmail.com",
+                "pedro guzman",
+                "Juan1234",
+                "3165437798",
+                firebaseDB.createId(Constans.FIREBASE_USER_BRANCH));
 
-        if(ContextCompat.checkSelfPermission(
-                this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(
-                this,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+        Menu menu5 = new Menu(Menu.ITALIANA, 25000, "un plato italiano", "risoto", firebaseDB.createId(Constans.FIREBASE_MENU_BRANCH));
+        menu5.setChefId(chef3.getId());
 
-        }
-        Intent i = new Intent(this, LogingActivity.class);
-        startActivity(i);
+        FirebaseDatabase.getInstance().getReference()
+                .child(Constans.FIREBASE_MENU_BRANCH)
+                .child(menu5.getId())
+                .setValue(menu5); **/
+
+        Intent intent = new Intent(this, LogingActivity.class);
+        this.startActivity(intent);
+
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == 11){
-            if(ContextCompat.checkSelfPermission(
-                    this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(
-                    this,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
 
-            }
-        }
-    }
 
 
 }
