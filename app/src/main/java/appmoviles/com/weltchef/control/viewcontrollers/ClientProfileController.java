@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.fragment.app.DialogFragment;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
+import java.io.Serializable;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.interfaces.OnProfileRequest;
@@ -34,26 +36,21 @@ import appmoviles.com.weltchef.view.PhotoDialogFragment;
 
 import static android.app.Activity.RESULT_OK;
 
-public class ClientProfileController implements View.OnClickListener, OnProfileRequest {
+public class ClientProfileController implements View.OnClickListener{
 
     private ClientProfileActivity view;
     private File photo;
     private User client;
     private Order order;
-    private FoodOrderController subject;
-
-    public ClientProfileController() {
-    }
 
     public ClientProfileController(ClientProfileActivity view) {
-        Log.e(">>>>", "call back -> client Controller" );
+        Log.e(">>>>", "call back -> client Controller --> activity => " + view);
         this.view = view;
         this.client =  (User) view.getIntent().getExtras().get("user");
-        this.subject = new FoodOrderController();
-        subject.setListener(this);
-        Log.e(">>>>", "call back -> listener == "+ subject );
-
         this.view.getClientName().setText(client.getName());
+        this.order = (Order) view.getIntent().getExtras().get("order");
+
+        Log.e(">>>", "order -> "+ order);
 
         view.getAskService().setOnClickListener(this);
         view.getSearchChef().setOnClickListener(this);
@@ -66,6 +63,25 @@ public class ClientProfileController implements View.OnClickListener, OnProfileR
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE
         }, 0);
+
+        if (order != null){
+            Log.e(">>", "call back -> " + order);
+           // view.runOnUiThread(
+             //       () -> {
+                        for (Menu menu : order.getPlates())
+                            view.getOrderAdapter().addMenu(menu);
+              //      }
+            //);
+        }
+
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override
@@ -126,20 +142,5 @@ public class ClientProfileController implements View.OnClickListener, OnProfileR
         }
     }
 
-    @Override
-    public void onProfileResponse(int callBack, Object response) {
-        Log.e(">>", "call back -> "+ callBack );
-        switch (callBack){
-            case Constants.UPDATE_ORDER:
-                view.runOnUiThread(
-                        () ->  {
-                            order = (Order) response;
-                            for (Menu menu : order.getPlates())
-                                view.getOrderAdapter().addMenu(menu);
-                        }
-                );
-                break;
-        }
-    }
 
 }

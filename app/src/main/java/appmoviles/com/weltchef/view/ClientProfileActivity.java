@@ -1,38 +1,34 @@
 package appmoviles.com.weltchef.view;
 
 import android.Manifest;
-import android.content.Intent;
+
 import android.content.pm.PackageManager;
-import android.net.Uri;
+
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.text.Layout;
+
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
+
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 import androidx.core.widget.NestedScrollView;
-import androidx.fragment.app.DialogFragment;
-
-import java.io.File;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.adapters.ClientOrderAdapter;
-import appmoviles.com.weltchef.control.interfaces.OnDialogListener;
+import appmoviles.com.weltchef.control.interfaces.OnProfileRequest;
 import appmoviles.com.weltchef.control.viewcontrollers.ClientProfileController;
+import appmoviles.com.weltchef.entity.Menu;
+import appmoviles.com.weltchef.entity.Order;
+import appmoviles.com.weltchef.util.Constants;
 
-public class ClientProfileActivity extends AppCompatActivity{
+public class ClientProfileActivity extends AppCompatActivity  {
 
     private View dishLayau;
     private TextView clientName;
@@ -45,7 +41,6 @@ public class ClientProfileActivity extends AppCompatActivity{
     private ClientOrderAdapter orderAdapter;
 
     private ListView listOrders;
-
 
     private ClientProfileController controller;
 
@@ -62,6 +57,7 @@ public class ClientProfileActivity extends AppCompatActivity{
         lastServices = findViewById(R.id.lastServices);
         likedChefs = findViewById(R.id.likedChefs);
         listOrders = findViewById(R.id.listOrders);
+        orderAdapter = new ClientOrderAdapter();
         listOrders.setAdapter(orderAdapter);
 
         Log.e(">>>>", "call back -> client Activity" );
@@ -83,10 +79,6 @@ public class ClientProfileActivity extends AppCompatActivity{
 
     public ImageButton getClientPicture() {
         return clientPicture;
-    }
-
-    public void setBackgroundLayau(){
-        dishLayau.setBackgroundColor(234567);
     }
 
     public NestedScrollView getLastServices() {
@@ -119,5 +111,8 @@ public class ClientProfileActivity extends AppCompatActivity{
             }
         }
     }
+
+
+
 
 }

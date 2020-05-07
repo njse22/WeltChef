@@ -46,6 +46,7 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
                 Intent i = new Intent(activity, DishViewActivity.class);
                 i.putExtra("menus", menus);
                 i.putExtra("user", (User)activity.getIntent().getExtras().get("user"));
+
                 activity.startActivity(i);
                 break;
         }

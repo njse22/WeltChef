@@ -21,6 +21,7 @@ public class FoodOrderActivity extends AppCompatActivity {
     private TextView cost;
     private Button cancel;
     private Button confirm;
+    private OnProfileRequest listener;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,4 +62,9 @@ public class FoodOrderActivity extends AppCompatActivity {
         return nameDish;
     }
 
+    public void setListener(OnProfileRequest listener) {
+        this.listener = listener;
+    }
+
+    public OnProfileRequest getListener() { return listener; }
 }

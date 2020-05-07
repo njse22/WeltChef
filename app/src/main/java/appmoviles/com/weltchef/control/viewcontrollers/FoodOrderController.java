@@ -28,17 +28,10 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
     private User chef;
     private OnProfileRequest listener;
 
-    public FoodOrderController() {
-    }
-
     public FoodOrderController(FoodOrderActivity view) {
         this.view = view;
         this.firebaseDB = new FirebaseDB();
         init();
-    }
-
-    public void setListener(OnProfileRequest listener) {
-        this.listener = listener;
     }
 
     public void init(){
@@ -54,7 +47,6 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
         firebaseDB.searchUserByid(order.getPlates().get(index).getChefId());
         firebaseDB.getQuerySearch().addListenerForSingleValueEvent(this);
 
-        listener = new ClientProfileController();
     }
 
     @Override
@@ -66,15 +58,12 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
             case R.id.confirm:
                 Intent confirm = new Intent(view, ClientProfileActivity.class);
                 confirm.putExtra("user", user);
-                Log.e(">>", "call back -> listener --> "+ listener );
-
-                 if (listener != null) listener.onProfileResponse(Constants.UPDATE_ORDER, order);
-
+                confirm.putExtra("order", order);
+                Log.e(">>", "call back -> listener --> "+ view.getListener() );
                 view.startActivity(confirm);
                 break;
         }
     }
-
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -93,4 +82,6 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
     public void onCancelled(@NonNull DatabaseError databaseError) {
 
     }
+
+
 }
