@@ -98,7 +98,7 @@ public class FirebaseDB  {
         databaseReference.child(branch).child(id);
     }
 
-    public void initDatabase(){
+    /**public void initDatabase(){
 
         Chef chef1 = new Chef(
                 true,
@@ -272,7 +272,7 @@ public class FirebaseDB  {
                 .setValue(messageContainer2);
 
 
-    }
+    }**/
 
 
 

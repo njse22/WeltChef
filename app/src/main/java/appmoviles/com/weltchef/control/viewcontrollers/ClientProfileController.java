@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.app.ActivityCompat;
@@ -20,11 +21,13 @@ import java.io.File;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.interfaces.OnProfileRequest;
+import appmoviles.com.weltchef.entity.Menu;
 import appmoviles.com.weltchef.entity.Order;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.ClientProfileActivity;
+import appmoviles.com.weltchef.view.FoodOrderActivity;
 import appmoviles.com.weltchef.view.MakeOrderActivity;
 import appmoviles.com.weltchef.view.MapsActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
@@ -39,11 +42,16 @@ public class ClientProfileController implements View.OnClickListener, OnProfileR
     private Order order;
     private FoodOrderController subject;
 
+    public ClientProfileController() {
+    }
+
     public ClientProfileController(ClientProfileActivity view) {
+        Log.e(">>>>", "call back -> client Controller" );
         this.view = view;
         this.client =  (User) view.getIntent().getExtras().get("user");
         this.subject = new FoodOrderController();
         subject.setListener(this);
+        Log.e(">>>>", "call back -> listener == "+ subject );
 
         view.getAskService().setOnClickListener(this);
         view.getSearchChef().setOnClickListener(this);
@@ -65,6 +73,7 @@ public class ClientProfileController implements View.OnClickListener, OnProfileR
                 DialogFragment dialog = new PhotoDialogFragment(this);
                 dialog.show(view.getSupportFragmentManager(), "photo_dialog");
                 break;
+
             case R.id.takePhoto:
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 photo = new File(view.getExternalFilesDir(null)+"/photo.png");
@@ -72,6 +81,7 @@ public class ClientProfileController implements View.OnClickListener, OnProfileR
                 i.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 view.startActivityForResult(i, ImageryUtl.CAMERA_CALLBACK);
                 break;
+
             case R.id.openGallery:
                 Intent gallery = new Intent(Intent.ACTION_GET_CONTENT);
                 gallery.setType("image/*");
@@ -83,6 +93,7 @@ public class ClientProfileController implements View.OnClickListener, OnProfileR
                 intentMakeOrder.putExtra("user", client);
                 view.startActivity(intentMakeOrder);
                 break;
+
             case R.id.searchChef:
                 Intent mapIntent = new Intent(view, MapsActivity.class);
                 ActivityCompat.requestPermissions(view, new String[]{
@@ -96,7 +107,6 @@ public class ClientProfileController implements View.OnClickListener, OnProfileR
                         this.view,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     view.startActivity(mapIntent);
                 }
-
                 break;
         }
     }
@@ -116,13 +126,17 @@ public class ClientProfileController implements View.OnClickListener, OnProfileR
 
     @Override
     public void onProfileResponse(int callBack, Object response) {
+        Log.e(">>", "call back -> "+ callBack );
         switch (callBack){
             case Constants.UPDATE_ORDER:
-                order = (Order) response;
-
+                view.runOnUiThread(
+                        () ->  {
+                            order = (Order) response;
+                            for (Menu menu : order.getPlates())
+                                view.getOrderAdapter().addMenu(menu);
+                        }
+                );
                 break;
-
-
         }
     }
 

@@ -1,6 +1,7 @@
 package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -52,6 +53,8 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
 
         firebaseDB.searchUserByid(order.getPlates().get(index).getChefId());
         firebaseDB.getQuerySearch().addListenerForSingleValueEvent(this);
+
+        listener = new ClientProfileController();
     }
 
     @Override
@@ -62,7 +65,11 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
                 break;
             case R.id.confirm:
                 Intent confirm = new Intent(view, ClientProfileActivity.class);
-                listener.onProfileResponse(Constants.UPDATE_ORDER, order);
+                confirm.putExtra("user", user);
+                Log.e(">>", "call back -> listener --> "+ listener );
+
+                 if (listener != null) listener.onProfileResponse(Constants.UPDATE_ORDER, order);
+
                 view.startActivity(confirm);
                 break;
         }

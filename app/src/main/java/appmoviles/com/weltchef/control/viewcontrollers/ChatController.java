@@ -68,18 +68,13 @@ public class ChatController implements View.OnClickListener {
                         .child(Constants.FIREBASE_CHATS_BRANCH)
                         .child(messageContainer.getId()).push().getKey();
 
-                boolean flatChef;
-                if(user.isChef())
-                    flatChef = true;
-                else
-                    flatChef = false;
 
                 Message message = new Message(
                         uri == null ? Message.TYPE_TEXT : Message.TYPE_IMAGE,
                         pushId,
                         body,
                         Calendar.getInstance().getTime().getTime(),
-                        flatChef
+                        user.getId()
                 );
 
                 FCMMessage fcm = new FCMMessage();

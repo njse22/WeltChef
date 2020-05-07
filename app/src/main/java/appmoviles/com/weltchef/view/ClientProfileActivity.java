@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Layout;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,10 +28,9 @@ import androidx.fragment.app.DialogFragment;
 import java.io.File;
 
 import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.control.adapters.ClientOrderAdapter;
 import appmoviles.com.weltchef.control.interfaces.OnDialogListener;
 import appmoviles.com.weltchef.control.viewcontrollers.ClientProfileController;
-import appmoviles.com.weltchef.entity.Menu;
-
 
 public class ClientProfileActivity extends AppCompatActivity{
 
@@ -41,6 +41,9 @@ public class ClientProfileActivity extends AppCompatActivity{
     private Button askService;
     private NestedScrollView lastServices;
     private NestedScrollView likedChefs;
+
+    private ClientOrderAdapter orderAdapter;
+
     private ListView listOrders;
 
 
@@ -59,6 +62,10 @@ public class ClientProfileActivity extends AppCompatActivity{
         lastServices = findViewById(R.id.lastServices);
         likedChefs = findViewById(R.id.likedChefs);
         listOrders = findViewById(R.id.listOrders);
+        listOrders.setAdapter(orderAdapter);
+
+        Log.e(">>>>", "call back -> client Activity" );
+
         controller = new ClientProfileController(this);
 
     }
@@ -93,6 +100,14 @@ public class ClientProfileActivity extends AppCompatActivity{
 
     public ListView getListOrders() {
         return listOrders;
+    }
+
+    public ClientOrderAdapter getOrderAdapter() {
+        return orderAdapter;
+    }
+
+    public void setOrderAdapter(ClientOrderAdapter orderAdapter) {
+        this.orderAdapter = orderAdapter;
     }
 
     @Override
