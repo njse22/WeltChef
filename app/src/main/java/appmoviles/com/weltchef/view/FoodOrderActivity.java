@@ -15,6 +15,7 @@ public class FoodOrderActivity extends AppCompatActivity {
 
     private FoodOrderController controller;
     private ImageView foodImage;
+    private TextView nameDish;
     private TextView chef;
     private TextView cost;
     private Button cancel;
@@ -26,6 +27,7 @@ public class FoodOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food_order);
 
         foodImage = findViewById(R.id.foodImage);
+        nameDish = findViewById(R.id.nameDish);
         chef = findViewById(R.id.chef);
         cost = findViewById(R.id.cost);
         cancel = findViewById(R.id.cancel);
@@ -52,5 +54,9 @@ public class FoodOrderActivity extends AppCompatActivity {
 
     public Button getConfirm() {
         return confirm;
+    }
+
+    public TextView getNameDish() {
+        return nameDish;
     }
 }

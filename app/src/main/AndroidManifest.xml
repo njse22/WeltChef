@@ -6,6 +6,7 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -19,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".view.MakeOrderActivity"></activity>
+        <activity android:name=".view.ChatRoomActivity"></activity>
+        <activity android:name=".view.MakeOrderActivity" />
         <activity android:name=".view.ChatActivity" />
         <activity android:name=".view.RegisterChefActivity" />
         <activity android:name=".view.CreatePlateActivity" />
@@ -28,7 +30,7 @@
         <activity android:name=".view.LogingActivity" />
         <activity android:name=".view.RegisterActivity" />
         <activity android:name=".view.FoodOrderActivity" />
-        <activity android:name=".view.DishViewActivity"/>
+        <activity android:name=".view.DishViewActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -62,7 +64,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/paths"></meta-data>
+                android:resource="@xml/paths" />
         </provider>
     </application>
 

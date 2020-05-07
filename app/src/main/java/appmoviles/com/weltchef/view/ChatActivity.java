@@ -1,12 +1,15 @@
 package appmoviles.com.weltchef.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -96,5 +99,34 @@ public class ChatActivity extends AppCompatActivity {
     public void setControlsContainer(ConstraintLayout controlsContainer) {
         this.controlsContainer = controlsContainer;
     }
+
+    //Mi actividad pierde el primer plano
+    @Override
+    protected void onPause() {
+        controller.beforePause();
+        super.onPause();
+    }
+
+    //Mi actividad recupera el primer plano
+    @Override
+    protected void onResume() {
+        controller.beforeResume();
+        super.onResume();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        controller.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void hideImage() {
+        messageIV.setVisibility(View.GONE);
+    }
+
+    public void showImage(){
+        messageIV.setVisibility(View.VISIBLE);
+    }
+
 }
 

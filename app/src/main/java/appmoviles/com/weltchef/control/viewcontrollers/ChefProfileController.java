@@ -34,8 +34,18 @@ public class ChefProfileController implements View.OnClickListener {
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
         this.chef = (User) view.getIntent().getExtras().get("user");
-
+        init();
     }
+
+    public void init(){
+        view.getNameChef().setText((String)view.getIntent().getExtras().get("name"));
+        view.getTelephone().setText((String)view.getIntent().getExtras().get("phone"));
+        view.getEmail().setText((String)view.getIntent().getExtras().get("email"));
+        view.getDescription().setText((String)view.getIntent().getExtras().get("description"));
+        view.getPhotochef().setOnClickListener(this);
+    }
+
+
 
     @Override
     public void onClick(View v) {
@@ -55,6 +65,12 @@ public class ChefProfileController implements View.OnClickListener {
                 Intent gallery = new Intent(Intent.ACTION_GET_CONTENT);
                 gallery.setType("image/*");
                 this.view.startActivityForResult(gallery, ImageryUtl.GALLERY_CALLBACK);
+                break;
+            case R.id.weltChefBtn:
+                Intent intentChat = new Intent(view, ChatActivity.class);
+                intentChat.putExtra("clientEmail", chef.getEmail());
+                view.startActivity(intentChat);
+
                 break;
             case R.id.facebookBtn:
                 break;

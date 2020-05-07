@@ -79,7 +79,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+        android:id="@+id/lastServices"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -92,12 +92,20 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <LinearLayout
+            android:id="@+id/layoutOders"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/listOrders"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/likedChefs"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
