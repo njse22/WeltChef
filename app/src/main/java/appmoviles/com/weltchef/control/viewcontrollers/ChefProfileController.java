@@ -69,7 +69,6 @@ public class ChefProfileController implements View.OnClickListener {
             case R.id.weltChefBtn:
                 Intent intentChat = new Intent(view, ChatActivity.class);
                 intentChat.putExtra("clientEmail", chef.getEmail());
-                intentChat.putExtra("clientEmail", chef.getEmail());
                 view.startActivity(intentChat);
 
                 break;

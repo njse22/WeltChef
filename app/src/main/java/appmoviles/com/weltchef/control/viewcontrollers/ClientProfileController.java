@@ -53,6 +53,8 @@ public class ClientProfileController implements View.OnClickListener, OnProfileR
         subject.setListener(this);
         Log.e(">>>>", "call back -> listener == "+ subject );
 
+        this.view.getClientName().setText(client.getName());
+
         view.getAskService().setOnClickListener(this);
         view.getSearchChef().setOnClickListener(this);
         view.getClientPicture().setOnClickListener(this);

@@ -67,7 +67,6 @@ public class ClientProfileActivity extends AppCompatActivity{
         Log.e(">>>>", "call back -> client Activity" );
 
         controller = new ClientProfileController(this);
-
     }
 
     public TextView getClientName() {
