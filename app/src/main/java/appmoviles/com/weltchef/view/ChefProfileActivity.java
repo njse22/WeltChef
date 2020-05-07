@@ -34,7 +34,6 @@ public class ChefProfileActivity extends AppCompatActivity{
         this.titleapp = findViewById(R.id.tituloTxt);
         this.description = findViewById(R.id.descriptionTxt);
 
-        whatsapp = findViewById(R.id.whatsappBtn);
         facebook = findViewById(R.id.facebookBtn);
         instagram = findViewById(R.id.instagramBtn);
         twitter = findViewById(R.id.twitterBtn);

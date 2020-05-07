@@ -37,6 +37,8 @@ public class ClientProfileController implements View.OnClickListener {
         this.view = view;
         this.client =  (User) view.getIntent().getExtras().get("user");
 
+        this.view.getClientName().setText(client.getName());
+
         view.getAskService().setOnClickListener(this);
         view.getSearchChef().setOnClickListener(this);
         view.getClientPicture().setOnClickListener(this);

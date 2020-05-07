@@ -22,6 +22,7 @@ import java.io.File;
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.interfaces.OnDialogListener;
 import appmoviles.com.weltchef.control.viewcontrollers.ClientProfileController;
+import appmoviles.com.weltchef.entity.User;
 
 public class ClientProfileActivity extends AppCompatActivity{
 
@@ -44,8 +45,6 @@ public class ClientProfileActivity extends AppCompatActivity{
         clientPicture = findViewById(R.id.clientPicture);
 
         controller = new ClientProfileController(this);
-
-
     }
 
     public TextView getClientName() {
