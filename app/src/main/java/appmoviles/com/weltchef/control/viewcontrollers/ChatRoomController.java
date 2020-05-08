@@ -1,27 +1,25 @@
 package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.content.Intent;
-import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
-
 import appmoviles.com.weltchef.db.FirebaseDB;
-import appmoviles.com.weltchef.entity.Message;
 import appmoviles.com.weltchef.entity.MessageContainer;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.view.ChatActivity;
 import appmoviles.com.weltchef.view.ChatRoomActivity;
 
-public class ChatRoomController implements ValueEventListener, AdapterView.OnItemClickListener {
+public class ChatRoomController implements ValueEventListener, AdapterView.OnItemClickListener, ChildEventListener {
 
     private ChatRoomActivity activity;
     private User user;
@@ -32,6 +30,7 @@ public class ChatRoomController implements ValueEventListener, AdapterView.OnIte
         this.activity = activity;
         this.user = (User)activity.getIntent().getExtras().get("user");
         this.firebaseDB = new FirebaseDB();
+        this.activity.getListViewChats().setOnItemClickListener(this);
         init();
     }
 
@@ -42,7 +41,7 @@ public class ChatRoomController implements ValueEventListener, AdapterView.OnIte
         else {
             firebaseDB.searchChatByClient(user.getId());
         }
-        firebaseDB.getQuerySearch().addListenerForSingleValueEvent(this);
+        firebaseDB.getQuerySearch().addChildEventListener(this);
     }
 
 
@@ -53,11 +52,36 @@ public class ChatRoomController implements ValueEventListener, AdapterView.OnIte
         }
         else {
             for (DataSnapshot data : dataSnapshot.getChildren()) {
-                messageContainer = dataSnapshot.getValue(MessageContainer.class);
-                activity.getAdapter().addChat(messageContainer);
+                activity.runOnUiThread(
+                        () -> {
+                            messageContainer = dataSnapshot.getValue(MessageContainer.class);
+                            activity.getAdapter().addChat(messageContainer);
+                        }
+                );
                 break;
             }
         }
+    }
+
+    @Override
+    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+        messageContainer = dataSnapshot.getValue(MessageContainer.class);
+        activity.getAdapter().addChat(messageContainer);
+    }
+
+    @Override
+    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+    }
+
+    @Override
+    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+    }
+
+    @Override
+    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
     }
 
     @Override
@@ -67,10 +91,15 @@ public class ChatRoomController implements ValueEventListener, AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(activity, ChatActivity.class);
-        intent.putExtra("messageContainer", messageContainer);
-        intent.putExtra("user", user);
-        activity.startActivity(intent);
+        new Thread(
+                () ->{
+                    Intent intent = new Intent(activity, ChatActivity.class);
+                    intent.putExtra("messageContainer", messageContainer);
+                    intent.putExtra("user", user);
+                    activity.startActivity(intent);
+                }
+        ).start();
 
+        Log.e(">>>", "Message Container");
     }
 }

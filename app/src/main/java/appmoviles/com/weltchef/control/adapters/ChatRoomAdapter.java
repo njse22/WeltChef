@@ -54,12 +54,9 @@ public class ChatRoomAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View chatList = inflater.inflate(R.layout.chats_adapter, null);
-
         ImageView userImage = chatList.findViewById(R.id.userImage);
         TextView userName = chatList.findViewById(R.id.userName);
-
         userName.setText("name: "+ messageContainers.get(position).getId());
-
 
         return chatList;
     }

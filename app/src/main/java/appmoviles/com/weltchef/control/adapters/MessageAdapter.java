@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.entity.Message;
+import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.util.HTTPSWebUtilDomi;
 
 public class MessageAdapter extends BaseAdapter {
@@ -67,14 +68,14 @@ public class MessageAdapter extends BaseAdapter {
             imageRow.setVisibility(View.VISIBLE);
             String nameImage = messages.get(position).getId();
             File imageFile = new File(parent.getContext().getExternalFilesDir(null) + "/"+ nameImage);
-            // 1. preguntar si nameImage esta descargado
 
+            // 1. preguntar si nameImage esta descargado
             if(imageFile.exists()){
                 loadImage(imageRow, imageFile);
             }
             else {
                 FirebaseStorage storage = FirebaseStorage.getInstance();
-                storage.getReference().child("chats").child(nameImage)
+                storage.getReference().child(Constants.FIREBASE_CHATS_BRANCH).child(nameImage)
                         .getDownloadUrl().addOnSuccessListener(
                         uri -> {
                             //Almecenar en archivo

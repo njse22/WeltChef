@@ -8,8 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="406dp"
-        android:layout_height="641dp"
+        android:layout_width="395dp"
+        android:layout_height="551dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,10 +17,12 @@
 
         <ListView
             android:id="@+id/listViewChats"
-            android:layout_width="404dp"
-            android:layout_height="639dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="1dp" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView

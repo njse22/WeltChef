@@ -1,7 +1,6 @@
 package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -11,11 +10,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import appmoviles.com.weltchef.R;
-import appmoviles.com.weltchef.control.interfaces.OnProfileRequest;
 import appmoviles.com.weltchef.db.FirebaseDB;
 import appmoviles.com.weltchef.entity.Order;
 import appmoviles.com.weltchef.entity.User;
-import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.view.ClientProfileActivity;
 import appmoviles.com.weltchef.view.FoodOrderActivity;
 
@@ -26,7 +23,6 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
     private Order order;
     private User user;
     private User chef;
-    private OnProfileRequest listener;
 
     public FoodOrderController(FoodOrderActivity view) {
         this.view = view;
@@ -59,7 +55,6 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
                 Intent confirm = new Intent(view, ClientProfileActivity.class);
                 confirm.putExtra("user", user);
                 confirm.putExtra("order", order);
-                Log.e(">>", "call back -> listener --> "+ view.getListener() );
                 view.startActivity(confirm);
                 break;
         }
@@ -82,6 +77,5 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
     public void onCancelled(@NonNull DatabaseError databaseError) {
 
     }
-
 
 }

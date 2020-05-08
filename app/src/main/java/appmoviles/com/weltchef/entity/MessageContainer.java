@@ -18,7 +18,13 @@ public class MessageContainer implements Serializable {
         this.userIDChef = userIDChef;
         this.userIDClient = userIDClient;
         this.messages = new ArrayList<>();
+    }
 
+    public MessageContainer(String id, ArrayList<Message> messages, String userIDChef, String userIDClient) {
+        this.id = id;
+        this.messages = messages;
+        this.userIDChef = userIDChef;
+        this.userIDClient = userIDClient;
     }
 
     public String getId() {
@@ -43,6 +49,14 @@ public class MessageContainer implements Serializable {
 
     public void setMessages(ArrayList<Message> messages) {
         this.messages = messages;
+    }
+
+    public void setUserIDChef(String userIDChef) {
+        this.userIDChef = userIDChef;
+    }
+
+    public void setUserIDClient(String userIDClient) {
+        this.userIDClient = userIDClient;
     }
 
 

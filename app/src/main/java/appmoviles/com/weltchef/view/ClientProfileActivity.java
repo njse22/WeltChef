@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.View;
 
 import android.widget.Button;
@@ -22,11 +21,7 @@ import androidx.core.widget.NestedScrollView;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.adapters.ClientOrderAdapter;
-import appmoviles.com.weltchef.control.interfaces.OnProfileRequest;
 import appmoviles.com.weltchef.control.viewcontrollers.ClientProfileController;
-import appmoviles.com.weltchef.entity.Menu;
-import appmoviles.com.weltchef.entity.Order;
-import appmoviles.com.weltchef.util.Constants;
 
 public class ClientProfileActivity extends AppCompatActivity  {
 
@@ -35,6 +30,7 @@ public class ClientProfileActivity extends AppCompatActivity  {
     private ImageButton clientPicture;
     private Button searchChef;
     private Button askService;
+    private Button chatBtn;
     private NestedScrollView lastServices;
     private NestedScrollView likedChefs;
 
@@ -53,14 +49,13 @@ public class ClientProfileActivity extends AppCompatActivity  {
         this.clientName = findViewById(R.id.clientName);
         searchChef = findViewById(R.id.searchChef);
         askService = findViewById(R.id.askService);
+        chatBtn = findViewById(R.id.chatBtn);
         clientPicture = findViewById(R.id.clientPicture);
         lastServices = findViewById(R.id.lastServices);
         likedChefs = findViewById(R.id.likedChefs);
         listOrders = findViewById(R.id.listOrders);
         orderAdapter = new ClientOrderAdapter();
         listOrders.setAdapter(orderAdapter);
-
-        Log.e(">>>>", "call back -> client Activity" );
 
         controller = new ClientProfileController(this);
     }
@@ -75,6 +70,10 @@ public class ClientProfileActivity extends AppCompatActivity  {
 
     public Button getAskService() {
         return askService;
+    }
+
+    public Button getChatBtn() {
+        return chatBtn;
     }
 
     public ImageButton getClientPicture() {

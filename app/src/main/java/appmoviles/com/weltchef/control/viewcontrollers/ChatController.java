@@ -7,13 +7,25 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.adapters.MessageAdapter;
@@ -26,12 +38,11 @@ import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.util.HTTPSWebUtilDomi;
 import appmoviles.com.weltchef.util.UtilDomi;
-import appmoviles.com.weltchef.view.CameraActivity;
 import appmoviles.com.weltchef.view.ChatActivity;
 
 import static android.app.Activity.RESULT_OK;
 
-public class ChatController implements View.OnClickListener {
+public class ChatController implements View.OnClickListener, ChildEventListener {
 
     private ChatActivity activity;
     private User user;
@@ -55,8 +66,33 @@ public class ChatController implements View.OnClickListener {
         messageContainer = (MessageContainer) activity.getIntent().getExtras().get("messageContainer");
         activity.getSendBtn().setOnClickListener(this);
         activity.getGalBtn().setOnClickListener(this);
+        adapter.setUserId(user.getId());
 
+        Query query = FirebaseDatabase.getInstance().getReference()
+                .child(Constants.FIREBASE_CHATS_BRANCH)
+                .child(messageContainer.getId())
+                .child("messages");
+
+        query.addChildEventListener(this);
     }
+
+    @Override
+    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+        Message message = dataSnapshot.getValue(Message.class);
+        adapter.addMessage(message);
+    }
+
+    @Override
+    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { }
+
+    @Override
+    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) { }
+
+    @Override
+    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) { }
 
     @Override
     public void onClick(View v) {
@@ -101,6 +137,16 @@ public class ChatController implements View.OnClickListener {
                                 }
                             }
                     );
+                }
+                else {
+                    String pushIdMessage = FirebaseDatabase.getInstance().getReference()
+                            .child(Constants.FIREBASE_CHATS_BRANCH)
+                            .child(messageContainer.getId()).push().getKey();
+                    FirebaseDatabase.getInstance().getReference()
+                            .child(Constants.FIREBASE_CHATS_BRANCH)
+                            .child(messageContainer.getId())
+                            .child("messages").child(pushIdMessage)
+                            .setValue(message);
                 }
                 activity.hideImage();
                 uri = null;

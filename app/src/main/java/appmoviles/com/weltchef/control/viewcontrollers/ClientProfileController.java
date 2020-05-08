@@ -6,9 +6,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Parcelable;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 
 import androidx.core.app.ActivityCompat;
@@ -19,17 +17,14 @@ import androidx.fragment.app.DialogFragment;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
-import java.io.Serializable;
 
 import appmoviles.com.weltchef.R;
-import appmoviles.com.weltchef.control.interfaces.OnProfileRequest;
 import appmoviles.com.weltchef.entity.Menu;
 import appmoviles.com.weltchef.entity.Order;
 import appmoviles.com.weltchef.entity.User;
-import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.util.ImageryUtl;
+import appmoviles.com.weltchef.view.ChatRoomActivity;
 import appmoviles.com.weltchef.view.ClientProfileActivity;
-import appmoviles.com.weltchef.view.FoodOrderActivity;
 import appmoviles.com.weltchef.view.MakeOrderActivity;
 import appmoviles.com.weltchef.view.MapsActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
@@ -44,16 +39,14 @@ public class ClientProfileController implements View.OnClickListener{
     private Order order;
 
     public ClientProfileController(ClientProfileActivity view) {
-        Log.e(">>>>", "call back -> client Controller --> activity => " + view);
         this.view = view;
         this.client =  (User) view.getIntent().getExtras().get("user");
         this.view.getClientName().setText(client.getName());
         this.order = (Order) view.getIntent().getExtras().get("order");
 
-        Log.e(">>>", "order -> "+ order);
-
         view.getAskService().setOnClickListener(this);
         view.getSearchChef().setOnClickListener(this);
+        view.getChatBtn().setOnClickListener(this);
         view.getClientPicture().setOnClickListener(this);
 
         FirebaseDatabase.getInstance().getApp().getOptions().getDatabaseUrl();
@@ -65,23 +58,9 @@ public class ClientProfileController implements View.OnClickListener{
         }, 0);
 
         if (order != null){
-            Log.e(">>", "call back -> " + order);
-           // view.runOnUiThread(
-             //       () -> {
-                        for (Menu menu : order.getPlates())
-                            view.getOrderAdapter().addMenu(menu);
-              //      }
-            //);
+            for (Menu menu : order.getPlates())
+                view.getOrderAdapter().addMenu(menu);
         }
-
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
     }
 
     @Override
@@ -125,6 +104,12 @@ public class ClientProfileController implements View.OnClickListener{
                         this.view,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     view.startActivity(mapIntent);
                 }
+                break;
+
+            case R.id.chatBtn:
+                Intent intentChat = new Intent(view, ChatRoomActivity.class);
+                intentChat.putExtra("user", client);
+                view.startActivity(intentChat);
                 break;
         }
     }

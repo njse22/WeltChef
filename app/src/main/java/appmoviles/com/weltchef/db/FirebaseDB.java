@@ -98,7 +98,7 @@ public class FirebaseDB  {
         databaseReference.child(branch).child(id);
     }
 
-    /**public void initDatabase(){
+    public void initDatabase(){
 
         Chef chef1 = new Chef(
                 true,
@@ -160,48 +160,56 @@ public class FirebaseDB  {
         order2.setClientId(client2.getId());
         order2.setPlates(menus2);
 
-        boolean chef = true;
-        boolean client = false;
+
 
         Message message1 = new Message(
+                0,
                 UUID.randomUUID().toString(),
                 "Hola tienes disponibilidad para cuando termine la cuarentena?",
                 Calendar.getInstance().getTime().getTime(),
-                chef);
+                chef1.getId());
 
         Message message2 = new Message(
+                0,
                 UUID.randomUUID().toString(),
                 "Claro agenda tu pedido",
                 Calendar.getInstance().getTime().getTime(),
-                client);
+                client1.getId());
 
         Message message3 = new Message(
+                0,
                 UUID.randomUUID().toString(),
                 "Oye pues esto no mejora yo creo que no se va a poder hacer el pedido",
                 Calendar.getInstance().getTime().getTime(),
-                chef);
+                chef2.getId());
 
         Message message4 = new Message(
+                0,
                 UUID.randomUUID().toString(),
                 "pues si loco ni modo para cuando mejore todo me escribes",
                 Calendar.getInstance().getTime().getTime(),
-                client);
+                client2.getId());
+
+
+        ArrayList<Message> m1 = new ArrayList<>();
+        m1.add(message1);
+        m1.add(message2);
+
+        ArrayList<Message> m2 = new ArrayList<>();
+        m2.add(message3);
+        m2.add(message4);
 
         MessageContainer messageContainer1 = new MessageContainer(
                 createId(Constants.FIREBASE_CHATS_BRANCH),
+                m1,
                 chef1.getId(),
                 client1.getId());
 
-        messageContainer1.getMessages().add(message1);
-        messageContainer1.getMessages().add(message2);
-
         MessageContainer messageContainer2 = new MessageContainer(
                 createId(Constants.FIREBASE_CHATS_BRANCH),
+                m2,
                 chef2.getId(),
                 client2.getId());
-
-        messageContainer2.getMessages().add(message3);
-        messageContainer2.getMessages().add(message4);
 
         FirebaseDatabase.getInstance().getReference()
                 .child(Constants.FIREBASE_USER_BRANCH)
@@ -271,8 +279,7 @@ public class FirebaseDB  {
                 .child(messageContainer2.getId())
                 .setValue(messageContainer2);
 
-
-    }**/
+    }
 
 
 

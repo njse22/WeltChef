@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import appmoviles.com.weltchef.R;
@@ -15,6 +16,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
     private ImageView userImage;
     private TextView userName;
+    private ListView listViewChats;
     private ChatRoomAdapter adapter;
     private ChatRoomController controller;
 
@@ -25,8 +27,9 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         userImage = findViewById(R.id.userImage);
         userName = findViewById(R.id.userName);
-
         adapter = new ChatRoomAdapter();
+        listViewChats = findViewById(R.id.listViewChats);
+        listViewChats.setAdapter(adapter);
         controller = new ChatRoomController(this);
 
     }
@@ -37,6 +40,10 @@ public class ChatRoomActivity extends AppCompatActivity {
 
     public TextView getUserName() {
         return userName;
+    }
+
+    public ListView getListViewChats() {
+        return listViewChats;
     }
 
     public ChatRoomAdapter getAdapter() {

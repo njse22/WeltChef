@@ -52,6 +52,25 @@
         app:layout_constraintStart_toEndOf="@+id/clientPicture"
         app:layout_constraintTop_toBottomOf="@+id/searchChef" />
 
+    <Button
+        android:id="@+id/chatBtn"
+        android:layout_width="187dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/round_button"
+        android:text="Chat"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintBottom_toTopOf="@+id/lastServices"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/clientPicture"
+        app:layout_constraintTop_toBottomOf="@+id/askService" />
+
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -132,4 +151,6 @@
         android:background="@drawable/profile_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

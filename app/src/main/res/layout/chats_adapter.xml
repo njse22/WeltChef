@@ -7,15 +7,18 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="442dp"
-        android:layout_height="82dp"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/userImage"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="58dp"
+            android:layout_height="59dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -28,8 +31,8 @@
 
         <TextView
             android:id="@+id/userName"
-            android:layout_width="349dp"
-            android:layout_height="0dp"
+            android:layout_width="224dp"
+            android:layout_height="35dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -38,6 +41,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/userImage"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
