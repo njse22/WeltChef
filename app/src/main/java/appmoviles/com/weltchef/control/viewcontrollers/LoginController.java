@@ -1,7 +1,6 @@
 package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -10,15 +9,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import java.security.acl.LastOwnerException;
-
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.db.FirebaseDB;
-import appmoviles.com.weltchef.entity.Chef;
-import appmoviles.com.weltchef.entity.Client;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.entity.UsersManager;
-import appmoviles.com.weltchef.util.Constans;
+import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.view.ClientProfileActivity;
 import appmoviles.com.weltchef.view.LogingActivity;
 import appmoviles.com.weltchef.view.ChefProfileActivity;
@@ -50,7 +45,7 @@ public class LoginController implements View.OnClickListener, ValueEventListener
             case R.id.loginBtn:
                 firebaseDB.searchUserByEmail(
                         activity.getUserNameEditText().getText().toString(),
-                        Constans.FIREBASE_USER_BRANCH);
+                        Constants.FIREBASE_USER_BRANCH);
                 firebaseDB.getQuerySearch().addListenerForSingleValueEvent(this);
                 break;
 
@@ -76,17 +71,11 @@ public class LoginController implements View.OnClickListener, ValueEventListener
 
         if (user.isChef()){
             Intent i = new Intent(activity, ChefProfileActivity.class);
-            i.putExtra("name", user.getName());
-            i.putExtra("phone", user.getPhone());
-            i.putExtra("email", user.getEmail());
-            i.putExtra("description", " ");
-
+            i.putExtra("user",user);
             activity.startActivity(i);
         }else {
             Intent i = new Intent(activity, ClientProfileActivity.class);
-            i.putExtra("name", user.getName());
-            i.putExtra("phone", user.getPhone());
-            i.putExtra("email", user.getEmail());
+            i.putExtra("user",user);
             activity.startActivity(i);
         }
 

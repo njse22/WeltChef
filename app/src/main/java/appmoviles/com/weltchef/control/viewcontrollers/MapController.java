@@ -61,7 +61,7 @@ public class MapController implements LocationProvider.OnLocationReceivedListene
         //UBICAR MARCADOR EN POSICION INCIAL
         if(manager.getLastKnownLocation(LocationManager.GPS_PROVIDER) != null)
             setInitialPos( manager.getLastKnownLocation(LocationManager.GPS_PROVIDER) );
-        else
+        else if(manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER) != null)
             setInitialPos( manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER) );
 
         //PROVIDER DE NETWORK
@@ -95,6 +95,9 @@ public class MapController implements LocationProvider.OnLocationReceivedListene
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos,DEFAULT_ZOOM));
 
         }
+
+        initMarkers(location);
+
     }
 
     public void setActivity(MapsActivity activity) {
@@ -123,13 +126,22 @@ public class MapController implements LocationProvider.OnLocationReceivedListene
         return markers.get(minDis);
     }
 
+    public void initMarkers(Location location){
+        LatLng latLng1 = new LatLng(location.getLatitude()*2, location.getLongitude()*2);
+        LatLng latLng2 = new LatLng(location.getLatitude()*2, location.getLongitude()*-2);
+        LatLng latLng3 = new LatLng(location.getLatitude()*-2, location.getLongitude()*2);
+        LatLng latLng4 = new LatLng(location.getLatitude()*-2, location.getLongitude()*-2);
+
+        MarkerOptions markerOptions1 = new MarkerOptions().position(latLng1).title("juan garcia");
+        MarkerOptions markerOptions2 = new MarkerOptions().position(latLng1).title("juan garcia");
+        Marker marker = mMap.addMarker(markerOptions1);
+
+        markers.put(calculateDistance(marker.getPosition().latitude,
+                getMyLocation().getPosition().latitude,
+                marker.getPosition().longitude,
+                myLocation.getPosition().longitude),marker);
 
 
-
-
-
-
-
-
+    }
 
 }

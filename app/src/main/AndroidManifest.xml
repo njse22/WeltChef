@@ -6,25 +6,31 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".view.ChatActivity"></activity>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".view.ChatRoomActivity"></activity>
+        <activity android:name=".view.MakeOrderActivity" />
+        <activity android:name=".view.ChatActivity" />
         <activity android:name=".view.RegisterChefActivity" />
         <activity android:name=".view.CreatePlateActivity" />
         <activity android:name=".view.ChefProfileActivity" />
-        <activity android:name=".view.ClientProfileActivity"/>
+        <activity android:name=".view.ClientProfileActivity" />
         <activity android:name=".view.LogingActivity" />
-        <activity android:name=".view.RegisterActivity"/>
+        <activity android:name=".view.RegisterActivity" />
+        <activity android:name=".view.FoodOrderActivity" />
+        <activity android:name=".view.DishViewActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -52,14 +58,13 @@
         </activity>
 
         <provider
-            android:authorities="appmoviles.com.weltchef"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="appmoviles.com.weltchef"
             android:exported="false"
             android:grantUriPermissions="true">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/paths">
-
-            </meta-data>
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths" />
         </provider>
     </application>
 

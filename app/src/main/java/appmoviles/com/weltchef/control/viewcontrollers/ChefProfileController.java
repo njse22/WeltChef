@@ -15,9 +15,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.File;
 
 import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.entity.Chef;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.CameraActivity;
+import appmoviles.com.weltchef.view.ChatActivity;
 import appmoviles.com.weltchef.view.ChefProfileActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
 
@@ -26,11 +28,12 @@ import static android.app.Activity.RESULT_OK;
 public class ChefProfileController implements View.OnClickListener {
 
     private ChefProfileActivity view;
-    private User user;
+    private User chef;
     private File photo;
 
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
+        this.chef = (User) view.getIntent().getExtras().get("user");
         init();
     }
 
@@ -39,10 +42,10 @@ public class ChefProfileController implements View.OnClickListener {
         view.getTelephone().setText((String)view.getIntent().getExtras().get("phone"));
         view.getEmail().setText((String)view.getIntent().getExtras().get("email"));
         view.getDescription().setText((String)view.getIntent().getExtras().get("description"));
-
         view.getPhotochef().setOnClickListener(this);
-
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -63,8 +66,13 @@ public class ChefProfileController implements View.OnClickListener {
                 gallery.setType("image/*");
                 this.view.startActivityForResult(gallery, ImageryUtl.GALLERY_CALLBACK);
                 break;
-            case R.id.whatsappBtn:
-                break;
+
+           /** case R.id.weltChefBtn:
+                Intent intentChat = new Intent(view, ChatActivity.class);
+                intentChat.putExtra("user", chef);
+                view.startActivity(intentChat);
+                break;**/
+
             case R.id.facebookBtn:
                 break;
             case R.id.instagramBtn:

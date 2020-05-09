@@ -1,12 +1,13 @@
 package appmoviles.com.weltchef.entity;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Class Order
  */
-public class Order {
+public class Order implements Serializable {
   public final static  int NONE = 0;
   public final static int WAITING = 1;
   public final static int ACCEPTED = 2;
@@ -29,7 +30,24 @@ public class Order {
 
   private String id;
 
-  public Order( int totalPrice, int status, String id) {
+  public Order() {
+  }
+
+  public Order(ArrayList<Menu> plates, String id, String clientId) {
+    this.plates = plates;
+    this.id = id;
+    this.clientId = clientId;
+    this.totalPrice = calculatePrice();
+
+  }
+
+  public Order(int totalPrice, String clientId, String id) {
+    this.totalPrice = totalPrice;
+    this.clientId = clientId;
+    this.id = id;
+  }
+
+  public Order(int totalPrice, int status, String id) {
     this.totalPrice = totalPrice;
     this.status = status;
     this.clientId = "";
@@ -94,6 +112,10 @@ public class Order {
     return status;
   }
 
+  public String getClientId() {
+    return clientId;
+  }
+
   public void setClientId(String clientId) {
     this.clientId = clientId;
   }
@@ -101,4 +123,15 @@ public class Order {
   public String getId() {
     return id;
   }
+
+  public int calculatePrice(){
+    int price = 0;
+    for (int i =0; i < plates.size(); i++) {
+      price += plates.get(i).getPrice();
+    }
+    return price;
+  }
+
+
+
 }

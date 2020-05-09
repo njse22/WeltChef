@@ -1,6 +1,6 @@
 package appmoviles.com.weltchef.util;
 
-public class Constans {
+public class Constants {
 
     public final static String FIREBASE_URL = "https://weltchef-912c4.firebaseio.com/";
     public final static String FIREBASE_CHEF_URL = "https://weltchef-912c4.firebaseio.com/chefs.json";
@@ -12,6 +12,8 @@ public class Constans {
     public final static String FIREBASE_MENU_BRANCH = "menus";
     public final static String FIREBASE_ORDER_BRANCH = "orders";
     public final static String FIREBASE_CHATS_BRANCH = "chats";
+
+    public static final int UPDATE_ORDER = 1;
 
 
 
