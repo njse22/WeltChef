@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="310dp"
         android:backgroundTint="#000000"
@@ -38,7 +38,7 @@
         android:layout_width="146dp"
         android:layout_height="37dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="180dp"
         android:background="@drawable/round_button"
@@ -57,7 +57,7 @@
         android:id="@+id/imageView5"
         android:layout_width="123dp"
         android:layout_height="118dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="500dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,8 +68,8 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="287dp"
-        android:layout_height="43dp"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -148,58 +148,56 @@
         tools:ignore="MissingConstraints" />
 
 
-    <TextView
-        android:id="@+id/witchAccountTxt"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="80dp"
-        android:fontFamily="sans-serif-black"
-        android:text="¿No tienes cuenta?"
-        android:textColor="#050505"
-        android:textColorHighlight="#FB0000"
-        android:textColorHint="#000000"
-        android:textColorLink="#FF0000"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="155dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextButton"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintTop_toBottomOf="@+id/loginFacebookBtn"
+        tools:ignore="MissingConstraints">
 
-    <Button
-        android:id="@+id/registerTextButton"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="52dp"
-        android:clickable="true"
-        android:fontFamily="sans-serif-black"
-        android:linksClickable="true"
-        android:text="Regístrate"
-        android:textColor="#FF0101"
-        android:textColorHighlight="#000000"
-        android:textColorHint="#000000"
-        android:textColorLink="#FF0000"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.31"
-        app:layout_constraintStart_toEndOf="@+id/witchAccountTxt"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextButton"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/witchAccountTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:fontFamily="sans-serif-black"
+            android:text="¿No tienes cuenta?"
+            android:textColor="#050505"
+            android:textColorHighlight="#FB0000"
+            android:textColorHint="#000000"
+            android:textColorLink="#FF0000" />
+
+        <Button
+            android:id="@+id/registerTextButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:clickable="true"
+            android:fontFamily="sans-serif-black"
+            android:linksClickable="true"
+            android:text="REGÍSTRATE"
+            android:textColor="#FF0101"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#000000"
+            android:textColorLink="#FF0000"
+            android:textSize="14sp"
+            tools:ignore="MissingConstraints" />
+
+
+    </LinearLayout>
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/loginFacebookBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="200dp"
         android:text="@string/com_facebook_loginview_log_in_button_continue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
