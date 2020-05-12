@@ -59,7 +59,7 @@ public class FirebaseDB  {
     public void searchUserByid(String id){
         querySearch = databaseReference
                 .child(Constants.FIREBASE_USER_BRANCH)
-                .equalTo(id);
+                .child(id);
     }
 
     public void searchChatByChef(String idChef){

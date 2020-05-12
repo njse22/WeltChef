@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import appmoviles.com.weltchef.R;
@@ -64,21 +65,26 @@ public class LoginController implements View.OnClickListener, ValueEventListener
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.loginBtn:
+                Log.e(TAG, "onClick::loginBtn -> true");
                 String email = activity.getUserNameEditText().getText().toString();
                 String password = activity.getPasswordEditText().getText().toString();
 
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
                         .addOnSuccessListener(
                                 authResult -> {
+                                    Log.e(TAG, "onClick::addOnSuccessListener -> true");
                                     firebaseDB.searchUserByid(FirebaseAuth.getInstance().getUid());
+                                    Log.e(TAG, "onClick::uid -> "+ FirebaseAuth.getInstance().getUid() );
                                     firebaseDB.getQuerySearch().addListenerForSingleValueEvent(this);
                                 }
                         )
                         .addOnFailureListener(
                             e -> {
+                                Log.e(TAG, "onClick::addOnFailureListener -> true");
                                 Toast.makeText(activity,e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                             }
                 );
+                activity.finish();
                 break;
             case R.id.registerTextButton:
                 Intent intent = new Intent(activity, RegisterActivity.class);
@@ -99,7 +105,9 @@ public class LoginController implements View.OnClickListener, ValueEventListener
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        Log.e(TAG, "onDataChange::dataSnapshot -> "+ dataSnapshot );
         user = dataSnapshot.getValue(User.class);
+        Log.e(TAG, "onDataChange::user -> "+ user );
 
         if (user.isChef()){
             Intent i = new Intent(activity, ChefProfileActivity.class);
