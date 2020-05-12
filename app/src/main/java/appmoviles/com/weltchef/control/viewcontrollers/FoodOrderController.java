@@ -56,6 +56,7 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
                 confirm.putExtra("user", user);
                 confirm.putExtra("order", order);
                 view.startActivity(confirm);
+                view.finish();
                 break;
         }
     }
@@ -74,8 +75,6 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
     }
 
     @Override
-    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-    }
+    public void onCancelled(@NonNull DatabaseError databaseError) { }
 
 }

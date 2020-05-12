@@ -33,11 +33,8 @@ public class ClientProfileActivity extends AppCompatActivity  {
     private Button chatBtn;
     private NestedScrollView lastServices;
     private NestedScrollView likedChefs;
-
     private ClientOrderAdapter orderAdapter;
-
     private ListView listOrders;
-
     private ClientProfileController controller;
 
     @Override

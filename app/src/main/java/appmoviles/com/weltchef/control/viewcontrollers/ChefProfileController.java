@@ -1,10 +1,12 @@
 package appmoviles.com.weltchef.control.viewcontrollers;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.content.FileProvider;
@@ -27,6 +29,8 @@ import static android.app.Activity.RESULT_OK;
 
 public class ChefProfileController implements View.OnClickListener {
 
+    private final static String TAG = "ChefProfileController >>>";
+
     private ChefProfileActivity view;
     private User chef;
     private File photo;
@@ -34,18 +38,10 @@ public class ChefProfileController implements View.OnClickListener {
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
         this.chef = (User) view.getIntent().getExtras().get("user");
-        init();
-    }
-
-    public void init(){
-        view.getNameChef().setText((String)view.getIntent().getExtras().get("name"));
-        view.getTelephone().setText((String)view.getIntent().getExtras().get("phone"));
-        view.getEmail().setText((String)view.getIntent().getExtras().get("email"));
-        view.getDescription().setText((String)view.getIntent().getExtras().get("description"));
+        view.getWeltChef().setOnClickListener(this);
         view.getPhotochef().setOnClickListener(this);
+        view.getChefPicture().setOnClickListener(this);
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -67,11 +63,11 @@ public class ChefProfileController implements View.OnClickListener {
                 this.view.startActivityForResult(gallery, ImageryUtl.GALLERY_CALLBACK);
                 break;
 
-           /** case R.id.weltChefBtn:
+            case R.id.weltChefBtn:
                 Intent intentChat = new Intent(view, ChatActivity.class);
                 intentChat.putExtra("user", chef);
                 view.startActivity(intentChat);
-                break;**/
+                break;
 
             case R.id.facebookBtn:
                 break;
@@ -92,7 +88,7 @@ public class ChefProfileController implements View.OnClickListener {
             photo = new File(ImageryUtl.getPath(this.view, uri));
             Bitmap image = BitmapFactory.decodeFile(photo.getPath());
             view.getPhotochef().setImageBitmap(image);
-
         }
     }
+
 }

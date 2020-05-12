@@ -34,7 +34,7 @@ public class ChefProfileActivity extends AppCompatActivity{
         this.titleapp = findViewById(R.id.tituloTxt);
         this.description = findViewById(R.id.descriptionTxt);
 
-     //   weltChef = findViewById(R.id.weltChefBtn);
+        weltChef = findViewById(R.id.weltChefBtn);
         facebook = findViewById(R.id.facebookBtn);
         instagram = findViewById(R.id.instagramBtn);
         twitter = findViewById(R.id.twitterBtn);
@@ -77,6 +77,10 @@ public class ChefProfileActivity extends AppCompatActivity{
 
     public ChefProfileController getController() {
         return controller;
+    }
+
+    public Button getWeltChef() {
+        return weltChef;
     }
 
     public Button getFacebook() {

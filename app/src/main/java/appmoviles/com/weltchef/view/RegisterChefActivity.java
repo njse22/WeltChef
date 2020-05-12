@@ -2,6 +2,7 @@ package appmoviles.com.weltchef.view;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,8 @@ public class RegisterChefActivity extends AppCompatActivity {
     private EditText passwordET;
     private EditText descriptionET;
     private Button registerBtn;
-
+    private CheckBox chefAtHomeCheck;
+    private CheckBox chefKitchenCheck;
     private RegisterChefController controller;
 
     @Override
@@ -32,6 +34,8 @@ public class RegisterChefActivity extends AppCompatActivity {
         passwordET = findViewById(R.id.passwordET);
         registerBtn = findViewById(R.id.registerChefBtn);
         descriptionET = findViewById(R.id.descriptionET);
+        chefAtHomeCheck = findViewById(R.id.chefAtHomeCheck);
+        chefKitchenCheck = findViewById(R.id.chefKitchenCheck);
 
         controller = new RegisterChefController(this);
     }
@@ -82,5 +86,13 @@ public class RegisterChefActivity extends AppCompatActivity {
 
     public void setRegisterBtn(Button registerBtn) {
         this.registerBtn = registerBtn;
+    }
+
+    public CheckBox getChefAtHomeCheck() {
+        return chefAtHomeCheck;
+    }
+
+    public CheckBox getChefKitchenCheck() {
+        return chefKitchenCheck;
     }
 }

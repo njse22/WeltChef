@@ -145,6 +145,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chefPicture" />
 
+    <Button
+        android:id="@+id/weltChefBtn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:background="@mipmap/welt_chef_icon"
+        app:layout_constraintBottom_toTopOf="@+id/infochefTxt"
+        app:layout_constraintStart_toEndOf="@+id/twitterBtn"
+        app:layout_constraintTop_toBottomOf="@+id/chefPicture"
+        app:layout_constraintVertical_bias="0.333" />
+
     <ImageButton
         android:id="@+id/chefPicture"
         android:layout_width="152dp"
@@ -154,5 +165,7 @@
         android:background="@drawable/profile_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
