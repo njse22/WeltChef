@@ -3,10 +3,13 @@ package appmoviles.com.weltchef.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.viewcontrollers.ChefProfileController;
@@ -19,6 +22,9 @@ public class ChefProfileActivity extends AppCompatActivity{
     private ChefProfileController controller;
     private ImageButton weltChef,facebook,instagram,twitter;
     private ImageButton chefPicture;
+    private FloatingActionButton mainFab, fabEditProfile, fabAddDish, fabCheckSchedule;
+    private boolean isFabMainOpen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,22 @@ public class ChefProfileActivity extends AppCompatActivity{
         this.chefPicture = findViewById(R.id.chefPicture);
         this.titleapp = findViewById(R.id.tituloTxt);
         this.description = findViewById(R.id.descriptionTxt);
+
+
+        fabEditProfile = (FloatingActionButton) findViewById(R.id.fabEditProfile);
+        fabAddDish = (FloatingActionButton) findViewById(R.id.fabAddDish);
+        fabCheckSchedule = (FloatingActionButton) findViewById(R.id.fabCheckSchedule);
+        mainFab = (FloatingActionButton) findViewById(R.id.mainFab);
+        mainFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isFabMainOpen){
+                    showFabMenu();
+                }else{
+                    closeFabMenu();
+                }
+            }
+        });
 
         weltChef = findViewById(R.id.weltChefBtn);
         facebook = findViewById(R.id.facebookBtn);
@@ -97,5 +119,23 @@ public class ChefProfileActivity extends AppCompatActivity{
 
     public ImageButton getChefPicture() {
         return chefPicture;
+    }
+
+    private void showFabMenu(){
+
+        isFabMainOpen = true;
+        fabAddDish.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
+        fabCheckSchedule.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
+        fabEditProfile.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
+
+    }
+
+    private void closeFabMenu(){
+
+        isFabMainOpen = false;
+        fabAddDish.animate().translationY(0);
+        fabCheckSchedule.animate().translationY(0);
+        fabEditProfile.animate().translationY(0);
+
     }
 }
