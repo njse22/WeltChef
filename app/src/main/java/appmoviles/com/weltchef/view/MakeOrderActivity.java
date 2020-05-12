@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -13,9 +14,9 @@ import appmoviles.com.weltchef.control.viewcontrollers.MakeOrderController;
 
 public class MakeOrderActivity extends AppCompatActivity {
 
-    private CheckedTextView chefHomeCheck;
-    private CheckedTextView chefKitchenCheck;
-    private CheckedTextView ovenCheck;
+    private CheckBox chefHomeCheck;
+    private CheckBox chefKitchenCheck;
+    private CheckBox ovenCheck;
     private EditText numPeopleET;
     private Button searchService;
     private Spinner spinnerTypes;
@@ -29,6 +30,7 @@ public class MakeOrderActivity extends AppCompatActivity {
         chefHomeCheck = findViewById(R.id.chefHomeCheck);
         chefKitchenCheck = findViewById(R.id.chefKitchenCheck);
         ovenCheck = findViewById(R.id.ovenCheck);
+
         numPeopleET = findViewById(R.id.numPeopleET);
         searchService = findViewById(R.id.searchService);
         spinnerTypes = findViewById(R.id.spinnerTypes);
@@ -36,15 +38,16 @@ public class MakeOrderActivity extends AppCompatActivity {
         controller = new MakeOrderController(this);
     }
 
-    public CheckedTextView getChefHomeCheck() {
+
+    public CheckBox getChefHomeCheck() {
         return chefHomeCheck;
     }
 
-    public CheckedTextView getChefKitchenCheck() {
+    public CheckBox getChefKitchenCheck() {
         return chefKitchenCheck;
     }
 
-    public CheckedTextView getOvenCheck() {
+    public CheckBox getOvenCheck() {
         return ovenCheck;
     }
 

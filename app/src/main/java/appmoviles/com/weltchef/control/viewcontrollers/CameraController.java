@@ -23,7 +23,7 @@ import static android.app.Activity.RESULT_OK;
 public class CameraController implements View.OnClickListener {
 
     public final static int CAMERA_CALLBACK = 1;
-    private static final int GALLERY_CALLBACK = 2;
+    public static final int GALLERY_CALLBACK = 2;
     private CameraActivity view;
     private File file;
 

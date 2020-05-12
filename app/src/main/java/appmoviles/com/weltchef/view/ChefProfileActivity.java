@@ -20,7 +20,7 @@ public class ChefProfileActivity extends AppCompatActivity{
     private TextView recipes, nameChef, email, description, telephone;
     private ImageView photochef, titleapp, showrecipe;
     private ChefProfileController controller;
-    private ImageButton weltChef,facebook,instagram,twitter;
+    private Button weltChef,facebook,instagram,twitter;
     private ImageButton chefPicture;
     private FloatingActionButton mainFab, fabEditProfile, fabAddDish, fabCheckSchedule;
     private boolean isFabMainOpen;
@@ -101,19 +101,19 @@ public class ChefProfileActivity extends AppCompatActivity{
         return controller;
     }
 
-    public ImageButton getWeltChef() {
+    public Button getWeltChef() {
         return weltChef;
     }
 
-    public ImageButton getFacebook() {
+    public Button getFacebook() {
         return facebook;
     }
 
-    public ImageButton getInstagram() {
+    public Button getInstagram() {
         return instagram;
     }
 
-    public ImageButton getTwitter() {
+    public Button getTwitter() {
         return twitter;
     }
 

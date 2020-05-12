@@ -1,10 +1,12 @@
 package appmoviles.com.weltchef.control.viewcontrollers;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.content.FileProvider;
@@ -27,6 +29,8 @@ import static android.app.Activity.RESULT_OK;
 
 public class ChefProfileController implements View.OnClickListener {
 
+    private final static String TAG = "ChefProfileController >>>";
+
     private ChefProfileActivity view;
     private User chef;
     private File photo;
@@ -34,7 +38,9 @@ public class ChefProfileController implements View.OnClickListener {
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
         this.chef = (User) view.getIntent().getExtras().get("user");
-
+        view.getWeltChef().setOnClickListener(this);
+        view.getPhotochef().setOnClickListener(this);
+        view.getChefPicture().setOnClickListener(this);
     }
 
     @Override
@@ -56,10 +62,13 @@ public class ChefProfileController implements View.OnClickListener {
                 gallery.setType("image/*");
                 this.view.startActivityForResult(gallery, ImageryUtl.GALLERY_CALLBACK);
                 break;
+
             case R.id.weltChefBtn:
                 Intent intentChat = new Intent(view, ChatActivity.class);
-
+                intentChat.putExtra("user", chef);
+                view.startActivity(intentChat);
                 break;
+
             case R.id.facebookBtn:
                 break;
             case R.id.instagramBtn:
@@ -79,7 +88,7 @@ public class ChefProfileController implements View.OnClickListener {
             photo = new File(ImageryUtl.getPath(this.view, uri));
             Bitmap image = BitmapFactory.decodeFile(photo.getPath());
             view.getPhotochef().setImageBitmap(image);
-
         }
     }
+
 }

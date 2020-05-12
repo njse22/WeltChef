@@ -1,249 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/background_app">
 
-        <ImageView
-            android:id="@+id/tituloTxt"
-            android:layout_width="163dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginBottom="620dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/chefPicture"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/welt_chef_name" />
+    <ImageView
+        android:id="@+id/tituloTxt"
+        android:layout_width="163dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chefPicture"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/welt_chef_name" />
 
-        <TextView
-            android:id="@+id/nomUsuarioTxt"
-            android:layout_width="118dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="600dp"
-            android:background="@drawable/text_round"
-            android:text="Nombre"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/chefPicture"
-            app:layout_constraintTop_toBottomOf="@+id/tituloTxt"
-            app:layout_constraintVertical_bias="0.666"
-            tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/nomUsuarioTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:text="Nombre"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/chefPicture"
+        app:layout_constraintTop_toBottomOf="@+id/tituloTxt" />
 
-        <TextView
-            android:id="@+id/correoTxt"
-            android:layout_width="120dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="580dp"
-            android:background="@drawable/text_round"
-            android:text="Correo"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/chefPicture"
-            app:layout_constraintTop_toBottomOf="@+id/nomUsuarioTxt"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/correoTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Correo"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/chefPicture"
+        app:layout_constraintTop_toBottomOf="@+id/nomUsuarioTxt" />
 
-        <TextView
-            android:id="@+id/telefonoTxt"
-            android:layout_width="118dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="510dp"
-            android:background="@drawable/text_round"
-            android:text="Teléfono"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/chefPicture"
-            app:layout_constraintTop_toBottomOf="@+id/correoTxt"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/telefonoTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:text="Teléfono"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/chefPicture"
+        app:layout_constraintTop_toBottomOf="@+id/correoTxt" />
 
-        <TextView
-            android:id="@+id/infochefTxt"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="400dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Información del Chef"
-            android:textColor="#FF0000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instagramBtn" />
+    <TextView
+        android:id="@+id/infochefTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Información del Chef"
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facebookBtn" />
 
-        <TextView
-            android:id="@+id/recetasTxt"
-            android:layout_width="86dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="250dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Recetas"
-            android:textColor="#FF0000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionTxt" />
+    <TextView
+        android:id="@+id/recetasTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Recetas"
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTxt" />
 
-        <TextView
-            android:id="@+id/descriptionTxt"
-            android:layout_width="0dp"
-            android:layout_height="68dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="320dp"
-            android:text="Descripción"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.273"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infochefTxt" />
+    <TextView
+        android:id="@+id/descriptionTxt"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Descripción"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.273"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infochefTxt" />
 
-        <ImageView
-            android:id="@+id/showrecipView"
-            android:layout_width="104dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="150dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recetasTxt"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+    <ImageView
+        android:id="@+id/showrecipView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recetasTxt"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
 
-        <ImageButton
-            android:id="@+id/chefPicture"
-            android:layout_width="169dp"
-            android:layout_height="163dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="480dp"
-            android:background="@drawable/profile_image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/instagramBtn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@mipmap/instagram_icon"
+        app:layout_constraintStart_toEndOf="@+id/facebookBtn"
+        app:layout_constraintTop_toBottomOf="@+id/chefPicture" />
 
-        <ImageButton
-            android:id="@+id/facebookBtn"
-            android:layout_width="47dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="450dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chefPicture"
-            app:srcCompat="@mipmap/facebook" />
+    <Button
+        android:id="@+id/twitterBtn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@mipmap/twitter_icon"
+        app:layout_constraintStart_toEndOf="@+id/instagramBtn"
+        app:layout_constraintTop_toBottomOf="@+id/chefPicture" />
 
-        <ImageButton
-            android:id="@+id/instagramBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="450dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/facebookBtn"
-            app:layout_constraintTop_toBottomOf="@+id/chefPicture"
-            app:srcCompat="@mipmap/instagram" />
+    <Button
+        android:id="@+id/facebookBtn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@mipmap/facebook_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chefPicture" />
 
-        <ImageButton
-            android:id="@+id/twitterBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="450dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/instagramBtn"
-            app:layout_constraintTop_toBottomOf="@+id/chefPicture"
-            app:srcCompat="@mipmap/twitter" />
+    <Button
+        android:id="@+id/weltChefBtn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:background="@mipmap/welt_chef_icon"
+        app:layout_constraintBottom_toTopOf="@+id/infochefTxt"
+        app:layout_constraintStart_toEndOf="@+id/twitterBtn"
+        app:layout_constraintTop_toBottomOf="@+id/chefPicture"
+        app:layout_constraintVertical_bias="0.333" />
 
-        <ImageButton
-            android:id="@+id/weltChefBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="450dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/twitterBtn"
-            app:layout_constraintTop_toBottomOf="@+id/chefPicture"
-            app:srcCompat="@mipmap/welt_chef_icon" />
+    <ImageButton
+        android:id="@+id/chefPicture"
+        android:layout_width="152dp"
+        android:layout_height="152dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/profile_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabEditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@mipmap/editprofile"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddDish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@mipmap/adddish"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabEditProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:src="@mipmap/editprofile"
-            app:fabSize="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCheckSchedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@mipmap/checkschedule"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddDish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:src="@mipmap/adddish"
-            app:fabSize="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabCheckSchedule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:src="@mipmap/checkschedule"
-            app:fabSize="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/mainFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:src="@mipmap/cheffab"
-            app:fabSize="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-
-
-
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@mipmap/cheffab"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 
