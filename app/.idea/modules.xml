@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Git-WeltChef.iml" filepath="$PROJECT_DIR$/../Git-WeltChef.iml" group="WeltChef" />
       <module fileurl="file://$PROJECT_DIR$/../WeltChef.iml" filepath="$PROJECT_DIR$/../WeltChef.iml" group="WeltChef" />
+      <module fileurl="file://$PROJECT_DIR$/WeltChef-app.iml" filepath="$PROJECT_DIR$/WeltChef-app.iml" group="WeltChef/app" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" group="WeltChef/app" />
     </modules>
   </component>

@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="310dp"
         android:backgroundTint="#000000"
@@ -30,14 +30,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/loginTxt"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="146dp"
         android:layout_height="37dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="180dp"
         android:background="@drawable/round_button"
@@ -49,39 +50,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_width="123dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="500dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/welt_chef_logo" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/welt_chef_name" />
 
     <TextView
         android:id="@+id/loginTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="375dp"
         android:fontFamily="sans-serif-black"
         android:text="INICIAR SESIÓN"
@@ -92,14 +94,16 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="283dp"
         android:layout_height="47dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="260dp"
         android:backgroundTint="#000000"
         android:ems="10"
@@ -112,14 +116,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/userNameEditText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/forgotPasswordTextButton"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="232dp"
         android:layout_height="29dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="150dp"
         android:background="#000000"
         android:backgroundTint="#000000"
@@ -139,51 +144,65 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginBtn"
+        app:layout_constraintVertical_bias="0.07999998"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/witchAccountTxt"
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="80dp"
-        android:fontFamily="sans-serif-black"
-        android:text="¿No tienes cuenta?"
-        android:textColor="#050505"
-        android:textColorHighlight="#FB0000"
-        android:textColorHint="#000000"
-        android:textColorLink="#FF0000"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="155dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginFacebookBtn"
+        tools:ignore="MissingConstraints">
+
+
+        <TextView
+            android:id="@+id/witchAccountTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:fontFamily="sans-serif-black"
+            android:text="¿No tienes cuenta?"
+            android:textColor="#050505"
+            android:textColorHighlight="#FB0000"
+            android:textColorHint="#000000"
+            android:textColorLink="#FF0000" />
+
+        <Button
+            android:id="@+id/registerTextButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:clickable="true"
+            android:fontFamily="sans-serif-black"
+            android:linksClickable="true"
+            android:text="REGÍSTRATE"
+            android:textColor="#FF0101"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#000000"
+            android:textColorLink="#FF0000"
+            android:textSize="14sp"
+            tools:ignore="MissingConstraints" />
+
+
+    </LinearLayout>
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/loginFacebookBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="200dp"
+        android:text="@string/com_facebook_loginview_log_in_button_continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextButton" />
-
-    <Button
-        android:id="@+id/registerTextButton"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="52dp"
-        android:clickable="true"
-        android:fontFamily="sans-serif-black"
-        android:linksClickable="true"
-        android:text="Regístrate"
-        android:textColor="#FF0101"
-        android:textColorHighlight="#000000"
-        android:textColorHint="#000000"
-        android:textColorLink="#FF0000"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toEndOf="@+id/witchAccountTxt"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextButton"
-        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

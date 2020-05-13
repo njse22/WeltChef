@@ -11,15 +11,20 @@ import androidx.annotation.Nullable;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import appmoviles.com.weltchef.db.FirebaseDB;
 import appmoviles.com.weltchef.entity.MessageContainer;
 import appmoviles.com.weltchef.entity.User;
+import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.view.ChatActivity;
 import appmoviles.com.weltchef.view.ChatRoomActivity;
 
 public class ChatRoomController implements ValueEventListener, AdapterView.OnItemClickListener, ChildEventListener {
+
+    private final static String TAG = "ChatRoomController";
 
     private ChatRoomActivity activity;
     private User user;
@@ -31,33 +36,35 @@ public class ChatRoomController implements ValueEventListener, AdapterView.OnIte
         this.user = (User)activity.getIntent().getExtras().get("user");
         this.firebaseDB = new FirebaseDB();
         this.activity.getListViewChats().setOnItemClickListener(this);
+        this.messageContainer = new MessageContainer();
         init();
     }
 
     private void init(){
         if(user.isChef()){
-            firebaseDB.searchChatByChef(user.getId());
+            Query query = FirebaseDatabase.getInstance().getReference()
+                    .child(Constants.FIREBASE_CHATS_BRANCH)
+                    .orderByChild("userIDChef")
+                    .equalTo(user.getId());
+
+            query.addChildEventListener(this);
         }
         else {
             firebaseDB.searchChatByClient(user.getId());
         }
-        firebaseDB.getQuerySearch().addChildEventListener(this);
     }
-
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         if(dataSnapshot.getChildrenCount() == 0){
-
+            Log.e(TAG, "onDataChange::dataSnapshot --> " + dataSnapshot);
         }
         else {
+            Log.e(TAG, "onDataChange::dataSnapshot --> " + dataSnapshot);
             for (DataSnapshot data : dataSnapshot.getChildren()) {
-                activity.runOnUiThread(
-                        () -> {
-                            messageContainer = dataSnapshot.getValue(MessageContainer.class);
-                            activity.getAdapter().addChat(messageContainer);
-                        }
-                );
+                Log.e(TAG, "onDataChange::dataSnapshot::for --> " + dataSnapshot);
+                messageContainer = dataSnapshot.getValue(MessageContainer.class);
+                activity.getAdapter().addChat(messageContainer);
                 break;
             }
         }
@@ -65,7 +72,17 @@ public class ChatRoomController implements ValueEventListener, AdapterView.OnIte
 
     @Override
     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-        messageContainer = dataSnapshot.getValue(MessageContainer.class);
+        String id = dataSnapshot.child("id").getValue(String.class);
+        String idChef = dataSnapshot.child("userIDChef").getValue(String.class);
+        String idClient = dataSnapshot.child("userIDClient").getValue(String.class);
+
+        Log.e(TAG, "onChildAdded::id --> " + id);
+        Log.e(TAG, "onChildAdded::idChef --> " + idChef);
+        Log.e(TAG, "onChildAdded::idClient --> " + idClient);
+
+        messageContainer.setId(id);
+        messageContainer.setUserIDChef(idChef);
+        messageContainer.setUserIDClient(idClient);
         activity.getAdapter().addChat(messageContainer);
     }
 

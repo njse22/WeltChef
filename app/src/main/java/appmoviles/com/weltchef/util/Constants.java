@@ -15,6 +15,4 @@ public class Constants {
 
     public static final int UPDATE_ORDER = 1;
 
-
-
 }

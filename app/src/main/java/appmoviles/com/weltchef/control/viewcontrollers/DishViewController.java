@@ -63,6 +63,7 @@ public class DishViewController implements View.OnClickListener, RecyclerTouchLi
                 i.putExtra("order", order);
                 i.putExtra("user", user);
                 activity.startActivity(i);
+                activity.finish();
                 break;
         }
     }

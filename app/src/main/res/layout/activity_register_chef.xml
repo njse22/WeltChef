@@ -9,209 +9,190 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/nameET"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.48000002"
-            app:srcCompat="@mipmap/welt_chef_name" />
-
-        <EditText
-            android:id="@+id/nameET"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="@string/name"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/emailET"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-        <EditText
-            android:id="@+id/emailET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="@string/email"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/passwordET"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameET" />
-
-        <EditText
-            android:id="@+id/passwordET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="@string/password"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/conPasswordET"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailET" />
-
-        <EditText
-            android:id="@+id/conPasswordET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginEnd="100dp"
-            android:ems="10"
-            android:hint="Confirmar Contraseña"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/phoneET"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordET" />
-
-        <EditText
-            android:id="@+id/phoneET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Teléfono"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/checkedTextView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/conPasswordET" />
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
 
-            <CheckedTextView
-                android:id="@+id/checkedTextView"
-                android:layout_width="165dp"
-                android:layout_height="26dp"
-                android:layout_marginStart="25dp"
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/nameET"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.48000002"
+                app:srcCompat="@mipmap/welt_chef_name" />
+
+            <EditText
+                android:id="@+id/nameET"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="120dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="1dp"
-                android:checkMark="@android:drawable/checkbox_off_background"
-                android:checked="true"
-                android:clickable="true"
-                android:fontFamily="sans-serif-black"
-                android:text="Clases de cocina"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/checkedTextView2"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="@string/name"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/emailET"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+            <EditText
+                android:id="@+id/emailET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="@string/email"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/passwordET"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameET" />
+
+            <EditText
+                android:id="@+id/passwordET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/conPasswordET"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailET" />
+
+            <EditText
+                android:id="@+id/conPasswordET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Confirmar Contraseña"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/phoneET"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passwordET" />
+
+            <EditText
+                android:id="@+id/phoneET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Teléfono"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/checkedTextView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/conPasswordET" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/chefAtHomeCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Chef en Casa " />
+
+                <CheckBox
+                    android:id="@+id/chefKitchenCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Clases de Cosina " />
+
+
+            </LinearLayout>
+
+            <ListView
+                android:layout_width="192dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="10dp"
+                android:addStatesFromChildren="true"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/descriptionET"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneET"
+                tools:listfooter="Comida Italiana"
+                tools:listheader="Comida Francesa" />
+
+
+            <EditText
+                android:id="@+id/descriptionET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="28dp"
+                android:ems="10"
+                android:hint="Sobre tí..."
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/registerChefBtn"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phoneET" />
 
 
-            <CheckedTextView
-                android:id="@+id/checkedTextView2"
-                android:layout_width="155dp"
-                android:layout_height="27dp"
-                android:layout_marginStart="30dp"
+            <Button
+                android:id="@+id/registerChefBtn"
+                android:layout_width="156dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="125dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="50dp"
-                android:checkMark="@android:drawable/checkbox_off_background"
-                android:checked="true"
-                android:fontFamily="sans-serif-black"
-                android:text="Chef a domicilio"
-                android:textSize="18sp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_button"
+                android:clickable="true"
+                android:text="REGISTRARSE"
+                android:textColor="#FFFFFF"
+                android:textSize="23sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/checkedTextView"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phoneET" />
 
 
         </LinearLayout>
-
-        <ListView
-            android:layout_width="192dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="10dp"
-            android:addStatesFromChildren="true"
-            android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@+id/descriptionET"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneET"
-            tools:listfooter="Comida Italiana"
-            tools:listheader="Comida Francesa" />
-
-
-        <EditText
-            android:id="@+id/descriptionET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="28dp"
-            android:ems="10"
-            android:hint="Sobre tí..."
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/registerChefBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneET" />
-
-
-        <Button
-            android:id="@+id/registerChefBtn"
-            android:layout_width="156dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="125dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/round_button"
-            android:clickable="true"
-            android:text="REGISTRARSE"
-            android:textColor="#FFFFFF"
-            android:textSize="23sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneET" />
-
-
-
-
-
-    </LinearLayout>
 
     </ScrollView>
 
