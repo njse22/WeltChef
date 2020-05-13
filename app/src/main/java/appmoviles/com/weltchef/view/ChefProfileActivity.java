@@ -18,13 +18,13 @@ import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.adapters.PlateImageAdapter;
 import appmoviles.com.weltchef.control.viewcontrollers.ChefProfileController;
 
-public class ChefProfileActivity extends AppCompatActivity{
+public class ChefProfileActivity extends AppCompatActivity {
 
 
     private TextView recipes, nameChef, email, description, telephone;
     private ImageView titleapp;
     private ChefProfileController controller;
-    private Button weltChef,facebook,instagram,twitter;
+    private Button weltChef, facebook, instagram, twitter;
     private ImageButton chefPicture;
     private FloatingActionButton mainFab, fabEditProfile, fabAddDish, fabCheckSchedule;
     private boolean isFabMainOpen;
@@ -55,9 +55,9 @@ public class ChefProfileActivity extends AppCompatActivity{
         mainFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isFabMainOpen){
+                if (!isFabMainOpen) {
                     showFabMenu();
-                }else{
+                } else {
                     closeFabMenu();
                 }
             }
@@ -90,10 +90,6 @@ public class ChefProfileActivity extends AppCompatActivity{
 
     public TextView getTelephone() {
         return telephone;
-    }
-
-    public ImageButton getPhotochef() {
-        return chefPicture;
     }
 
     public ImageView getTitleapp() {
@@ -140,7 +136,7 @@ public class ChefProfileActivity extends AppCompatActivity{
         return fabCheckSchedule;
     }
 
-    private void showFabMenu(){
+    private void showFabMenu() {
 
         isFabMainOpen = true;
         fabAddDish.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
@@ -157,8 +153,7 @@ public class ChefProfileActivity extends AppCompatActivity{
         return listPlates;
     }
 
-    private void closeFabMenu(){
-
+    private void closeFabMenu() {
         isFabMainOpen = false;
         fabAddDish.animate().translationY(0);
         fabCheckSchedule.animate().translationY(0);
@@ -169,6 +164,6 @@ public class ChefProfileActivity extends AppCompatActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        controller.onActivityResult(requestCode,resultCode, data);
+        controller.onActivityResult(requestCode, resultCode, data);
     }
 }
