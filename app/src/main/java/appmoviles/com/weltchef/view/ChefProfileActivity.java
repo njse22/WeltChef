@@ -31,8 +31,6 @@ public class ChefProfileActivity extends AppCompatActivity{
     private RecyclerView listPlates;
     private PlateImageAdapter plateImageAdapter;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

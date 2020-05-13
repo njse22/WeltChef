@@ -11,6 +11,7 @@ public class PlateImageHolder extends RecyclerView.ViewHolder {
 
 
     private ImageView imageView;
+
     public PlateImageHolder(@NonNull View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.imagePlate);
