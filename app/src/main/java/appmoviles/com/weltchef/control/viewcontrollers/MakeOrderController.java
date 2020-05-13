@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +22,7 @@ import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.view.DishViewActivity;
 import appmoviles.com.weltchef.view.MakeOrderActivity;
 
-public class MakeOrderController implements View.OnClickListener, AdapterView.OnItemSelectedListener, ChildEventListener {
+public class MakeOrderController implements View.OnClickListener, AdapterView.OnItemSelectedListener, ChildEventListener, CompoundButton.OnCheckedChangeListener {
 
     private MakeOrderActivity activity;
     private FirebaseDB firebaseDB;
@@ -37,6 +38,7 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
     public void init(){
         activity.getSearchService().setOnClickListener(this);
         activity.getSpinnerTypes().setOnItemSelectedListener(this);
+        activity.getChefHomeCheck().setOnCheckedChangeListener(this);
     }
 
     @Override
@@ -46,8 +48,8 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
                 Intent i = new Intent(activity, DishViewActivity.class);
                 i.putExtra("menus", menus);
                 i.putExtra("user", (User)activity.getIntent().getExtras().get("user"));
-
                 activity.startActivity(i);
+                activity.finish();
                 break;
         }
     }
@@ -107,4 +109,9 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
 
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) { }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+    }
 }

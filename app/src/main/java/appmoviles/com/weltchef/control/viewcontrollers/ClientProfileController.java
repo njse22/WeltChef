@@ -89,6 +89,7 @@ public class ClientProfileController implements View.OnClickListener{
                 Intent intentMakeOrder = new Intent(view, MakeOrderActivity.class);
                 intentMakeOrder.putExtra("user", client);
                 view.startActivity(intentMakeOrder);
+                view.finish();
                 break;
 
             case R.id.searchChef:

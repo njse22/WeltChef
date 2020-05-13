@@ -25,5 +25,9 @@
         <item>Italiana</item>
     </string-array>
 
+    <!-- Login resources  -->
+    <string name="facebook_app_id">326462971678006</string>
+    <string name="fb_login_protocol_scheme">fb326462971678006</string>
+
 
 </resources>

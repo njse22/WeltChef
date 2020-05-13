@@ -2,6 +2,7 @@ package appmoviles.com.weltchef.view;
 
 import android.Manifest;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 
 import android.os.Bundle;
@@ -33,11 +34,8 @@ public class ClientProfileActivity extends AppCompatActivity  {
     private Button chatBtn;
     private NestedScrollView lastServices;
     private NestedScrollView likedChefs;
-
     private ClientOrderAdapter orderAdapter;
-
     private ListView listOrders;
-
     private ClientProfileController controller;
 
     @Override
@@ -111,7 +109,10 @@ public class ClientProfileActivity extends AppCompatActivity  {
         }
     }
 
-
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        controller.onActivityResult(requestCode,resultCode, data);
+    }
 
 }
