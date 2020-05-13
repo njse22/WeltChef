@@ -21,6 +21,8 @@ public class PhotoDialogFragment extends DialogFragment {
 
     private View.OnClickListener listener;
 
+    private Dialog dialog;
+
     public PhotoDialogFragment(View.OnClickListener listener){
         this.listener = listener;
     }
@@ -41,8 +43,14 @@ public class PhotoDialogFragment extends DialogFragment {
         openGallery.setOnClickListener(listener);
 
         builder.setView(v);
-        return builder.create();
+        this.dialog = builder.create();
+        return this.dialog;
 
     }
 
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        this.dialog.dismiss();
+    }
 }

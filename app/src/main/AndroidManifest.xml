@@ -25,7 +25,7 @@
         <activity android:name=".view.ChatActivity" />
         <activity android:name=".view.RegisterChefActivity" />
         <activity android:name=".view.CreatePlateActivity" />
-        <activity android:name=".view.ChefProfileActivity" />
+        <!--<activity android:name=".view.ChefProfileActivity" />-->
         <activity android:name=".view.ClientProfileActivity" />
         <activity android:name=".view.LogingActivity" />
         <activity android:name=".view.RegisterActivity" />
@@ -49,7 +49,7 @@
         <activity
             android:name=".view.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".app.MainActivity">
+        <activity android:name=".view.ChefProfileActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

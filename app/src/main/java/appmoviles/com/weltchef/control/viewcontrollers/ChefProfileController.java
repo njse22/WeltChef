@@ -3,14 +3,24 @@ package appmoviles.com.weltchef.control.viewcontrollers;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
+import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
+import android.service.carrier.CarrierMessagingService;
 import android.view.View;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 
@@ -25,7 +35,7 @@ import appmoviles.com.weltchef.view.PhotoDialogFragment;
 
 import static android.app.Activity.RESULT_OK;
 
-public class ChefProfileController implements View.OnClickListener {
+public class ChefProfileController implements View.OnClickListener{
 
     private ChefProfileActivity view;
     private User chef;
@@ -33,8 +43,9 @@ public class ChefProfileController implements View.OnClickListener {
 
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
-        this.chef = (User) view.getIntent().getExtras().get("user");
-        init();
+        //this.chef = (User) view.getIntent().getExtras().get("user");
+        view.getChefPicture().setOnClickListener(this);
+        //init();
     }
 
     public void init(){
@@ -42,16 +53,14 @@ public class ChefProfileController implements View.OnClickListener {
         view.getTelephone().setText((String)view.getIntent().getExtras().get("phone"));
         view.getEmail().setText((String)view.getIntent().getExtras().get("email"));
         view.getDescription().setText((String)view.getIntent().getExtras().get("description"));
-        view.getPhotochef().setOnClickListener(this);
+        view.getChefPicture().setOnClickListener(this);
     }
-
-
 
     @Override
     public void onClick(View v) {
+        PhotoDialogFragment dialog = new PhotoDialogFragment(this);
         switch (v.getId()){
             case R.id.chefPicture:
-                DialogFragment dialog = new PhotoDialogFragment(this);
                 dialog.show(view.getSupportFragmentManager(), "photo_dialog");
                 break;
             case R.id.takePhoto:
@@ -86,12 +95,13 @@ public class ChefProfileController implements View.OnClickListener {
         if(requestCode == ImageryUtl.CAMERA_CALLBACK && resultCode == RESULT_OK){
             Bitmap image = BitmapFactory.decodeFile(photo.getPath());
             Bitmap thumbnail = Bitmap.createScaledBitmap(image, image.getWidth()/4, image.getHeight()/4, false);
-            view.getPhotochef().setImageBitmap(thumbnail);
+            view.getChefPicture().setImageBitmap(thumbnail);
         }else if(requestCode == ImageryUtl.GALLERY_CALLBACK && resultCode == RESULT_OK){
             Uri uri = data.getData();
             photo = new File(ImageryUtl.getPath(this.view, uri));
             Bitmap image = BitmapFactory.decodeFile(photo.getPath());
-            view.getPhotochef().setImageBitmap(image);
+            Drawable d = Drawable.createFromPath(ImageryUtl.getPath(this.view, uri));
+            view.getChefPicture().setImageBitmap(image);
 
         }
     }

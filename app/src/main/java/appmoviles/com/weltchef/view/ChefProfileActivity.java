@@ -1,7 +1,9 @@
 package appmoviles.com.weltchef.view;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -63,10 +65,6 @@ public class ChefProfileActivity extends AppCompatActivity{
         return telephone;
     }
 
-    public ImageButton getPhotochef() {
-        return chefPicture;
-    }
-
     public ImageView getTitleapp() {
         return titleapp;
     }
@@ -93,5 +91,11 @@ public class ChefProfileActivity extends AppCompatActivity{
 
     public ImageButton getChefPicture() {
         return chefPicture;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        controller.onActivityResult(requestCode,resultCode,data);
     }
 }
