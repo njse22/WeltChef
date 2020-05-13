@@ -44,7 +44,8 @@ public class ChefProfileController implements View.OnClickListener {
     @SuppressLint("LongLogTag")
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
-        this.chef = (User) view.getIntent().getExtras().get("user");
+        Log.e(TAG, "ChefProfileController::view -> " + view);
+        chef = (User) view.getIntent().getExtras().get("user");
         Log.e(TAG, "ChefProfileController::user -> " + chef);
         init();
     }
