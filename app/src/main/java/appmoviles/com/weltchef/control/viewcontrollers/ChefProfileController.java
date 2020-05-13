@@ -88,6 +88,7 @@ public class ChefProfileController implements View.OnClickListener {
 
             case R.id.fabAddDish:
                 Intent intentAddDish = new Intent(view, CreatePlateActivity.class);
+                intentAddDish.putExtra("user", chef);
                 view.startActivity(intentAddDish);
                 view.finish();
                 break;

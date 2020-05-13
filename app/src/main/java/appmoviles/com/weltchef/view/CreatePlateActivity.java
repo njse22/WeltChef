@@ -10,36 +10,52 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.viewcontrollers.CreatePlateController;
+import appmoviles.com.weltchef.entity.Chef;
+import appmoviles.com.weltchef.entity.Menu;
+import appmoviles.com.weltchef.entity.User;
 
 public class CreatePlateActivity extends AppCompatActivity {
+
+    private final String[] menusTypes = {
+            "Colombiana",
+            "Mexicana",
+            "Mediterranea",
+            "China",
+            "Japonesa",
+            "Francesa",
+            "Italiana"};
 
     private EditText namePlateET;
     private TextView nameChefTV;
     private EditText priceET;
+    private ArrayAdapter<String> menusAdapter;
     private Spinner typeSpinner;
     private TextView infoPlateTV;
     private EditText descriptionET;
     private Button saveBtn;
     private Button cancelBtn;
     private ImageButton plateIB;
+
     private CreatePlateController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_create_plate);
         namePlateET = findViewById(R.id.namePlateET);
         nameChefTV = findViewById(R.id.nameChefET);
         priceET = findViewById(R.id.priceET);
+
         typeSpinner = findViewById(R.id.typeSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.types_array,
-                R.layout.activity_create_plate);
-        adapter.setDropDownViewResource(R.layout.activity_create_plate);
-        typeSpinner.setAdapter(adapter);
+        menusAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, menusTypes);
+        menusAdapter.notifyDataSetChanged();
+        typeSpinner.setAdapter(menusAdapter);
+
         infoPlateTV = findViewById(R.id.priceET);
         descriptionET = findViewById(R.id.descriptionET);
         saveBtn = findViewById(R.id.saveBtn);
@@ -119,5 +135,9 @@ public class CreatePlateActivity extends AppCompatActivity {
 
     public void setPlateIB(ImageButton plateIB) {
         this.plateIB = plateIB;
+    }
+
+    public Spinner getTypeSpinner() {
+        return typeSpinner;
     }
 }

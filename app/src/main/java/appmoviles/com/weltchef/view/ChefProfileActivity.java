@@ -1,8 +1,10 @@
 package appmoviles.com.weltchef.view;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -164,5 +166,11 @@ public class ChefProfileActivity extends AppCompatActivity{
         fabCheckSchedule.animate().translationY(0);
         fabEditProfile.animate().translationY(0);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        controller.onActivityResult(requestCode,resultCode, data);
     }
 }
