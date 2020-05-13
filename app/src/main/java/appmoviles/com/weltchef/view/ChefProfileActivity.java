@@ -1,6 +1,7 @@
 package appmoviles.com.weltchef.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,18 +13,22 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.control.adapters.PlateImageAdapter;
 import appmoviles.com.weltchef.control.viewcontrollers.ChefProfileController;
 
 public class ChefProfileActivity extends AppCompatActivity{
 
 
     private TextView recipes, nameChef, email, description, telephone;
-    private ImageView photochef, titleapp, showrecipe;
+    private ImageView titleapp;
     private ChefProfileController controller;
     private Button weltChef,facebook,instagram,twitter;
     private ImageButton chefPicture;
     private FloatingActionButton mainFab, fabEditProfile, fabAddDish, fabCheckSchedule;
     private boolean isFabMainOpen;
+    private RecyclerView listPlates;
+    private PlateImageAdapter plateImageAdapter;
+
 
 
     @Override
@@ -35,10 +40,12 @@ public class ChefProfileActivity extends AppCompatActivity{
         this.email = findViewById(R.id.correoTxt);
         this.telephone = findViewById(R.id.telefonoTxt);
         this.recipes = findViewById(R.id.recetasTxt);
-        this.showrecipe = findViewById(R.id.showrecipView);
         this.chefPicture = findViewById(R.id.chefPicture);
         this.titleapp = findViewById(R.id.tituloTxt);
         this.description = findViewById(R.id.descriptionTxt);
+        this.listPlates = findViewById(R.id.platesList);
+        plateImageAdapter = new PlateImageAdapter();
+        listPlates.setAdapter(plateImageAdapter);
 
 
         fabEditProfile = (FloatingActionButton) findViewById(R.id.fabEditProfile);
@@ -93,10 +100,6 @@ public class ChefProfileActivity extends AppCompatActivity{
         return titleapp;
     }
 
-    public ImageView getShowrecipe() {
-        return showrecipe;
-    }
-
     public ChefProfileController getController() {
         return controller;
     }
@@ -144,6 +147,14 @@ public class ChefProfileActivity extends AppCompatActivity{
         fabCheckSchedule.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
         fabEditProfile.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
 
+    }
+
+    public PlateImageAdapter getPlateImageAdapter() {
+        return plateImageAdapter;
+    }
+
+    public RecyclerView getListPlates() {
+        return listPlates;
     }
 
     private void closeFabMenu(){
