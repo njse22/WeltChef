@@ -9,8 +9,8 @@
 
     <EditText
         android:id="@+id/numPeopleET"
-        android:layout_width="335dp"
-        android:layout_height="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="¿Cuántas Personas?"
@@ -38,7 +38,7 @@
 
     <Spinner
         android:id="@+id/spinnerTypes"
-        android:layout_width="335dp"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginTop="30dp"
         android:entries="@array/types_array"
@@ -84,8 +84,8 @@
 
     <CheckBox
         android:id="@+id/ovenCheck"
-        android:layout_width="335dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-medium"
         android:text="¿Tienes Horno?"
