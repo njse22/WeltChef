@@ -23,6 +23,7 @@ import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.CameraActivity;
 import appmoviles.com.weltchef.view.ChatActivity;
 import appmoviles.com.weltchef.view.ChefProfileActivity;
+import appmoviles.com.weltchef.view.CreatePlateActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
 
 import static android.app.Activity.RESULT_OK;
@@ -41,6 +42,8 @@ public class ChefProfileController implements View.OnClickListener {
         view.getWeltChef().setOnClickListener(this);
         view.getPhotochef().setOnClickListener(this);
         view.getChefPicture().setOnClickListener(this);
+        view.getFabAddDish().setOnClickListener(this);
+
     }
 
     @Override
@@ -75,6 +78,13 @@ public class ChefProfileController implements View.OnClickListener {
                 break;
             case R.id.twitterBtn:
                 break;
+
+            case R.id.fabAddDish:
+                Intent intentAddDish = new Intent(view, CreatePlateActivity.class);
+                view.startActivity(intentAddDish);
+                view.finish();
+                break;
+
         }
     }
 

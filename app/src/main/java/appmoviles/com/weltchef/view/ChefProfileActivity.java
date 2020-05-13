@@ -121,6 +121,22 @@ public class ChefProfileActivity extends AppCompatActivity{
         return chefPicture;
     }
 
+    public FloatingActionButton getMainFab() {
+        return mainFab;
+    }
+
+    public FloatingActionButton getFabEditProfile() {
+        return fabEditProfile;
+    }
+
+    public FloatingActionButton getFabAddDish() {
+        return fabAddDish;
+    }
+
+    public FloatingActionButton getFabCheckSchedule() {
+        return fabCheckSchedule;
+    }
+
     private void showFabMenu(){
 
         isFabMainOpen = true;
