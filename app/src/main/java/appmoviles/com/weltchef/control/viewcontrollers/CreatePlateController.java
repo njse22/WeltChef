@@ -11,7 +11,6 @@ import appmoviles.com.weltchef.view.CreatePlateActivity;
 public class CreatePlateController implements View.OnClickListener {
 
     private CreatePlateActivity activity;
-    private UsersManager manager; // Temporal debe eliminarse y obtenerse con la interfaz OnProfilerequest
 
     public CreatePlateController(CreatePlateActivity activity) {
         this.activity = activity;
@@ -22,8 +21,6 @@ public class CreatePlateController implements View.OnClickListener {
         activity.getSaveBtn().setOnClickListener(this);
         activity.getCancelBtn().setOnClickListener(this);
 
-        // Temporal ..
-        manager = new UsersManager();
     }
 
     @Override
@@ -40,7 +37,6 @@ public class CreatePlateController implements View.OnClickListener {
                  String type = activity.getTypeET().getSelectedItem().toString();
                  String description =  activity.getDescriptionET().getText().toString();
                  activity.getPlateIB();
-
 
                 break;
 
