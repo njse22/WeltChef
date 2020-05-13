@@ -21,7 +21,9 @@ import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.CameraActivity;
 import appmoviles.com.weltchef.view.ChatActivity;
+import appmoviles.com.weltchef.view.ChatRoomActivity;
 import appmoviles.com.weltchef.view.ChefProfileActivity;
+import appmoviles.com.weltchef.view.CreatePlateActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
 
 import static android.app.Activity.RESULT_OK;
@@ -39,11 +41,10 @@ public class ChefProfileController implements View.OnClickListener {
     }
 
     public void init(){
-        view.getNameChef().setText((String)view.getIntent().getExtras().get("name"));
-        view.getTelephone().setText((String)view.getIntent().getExtras().get("phone"));
-        view.getEmail().setText((String)view.getIntent().getExtras().get("email"));
-        view.getDescription().setText((String)view.getIntent().getExtras().get("description"));
+        view.getWeltChef().setOnClickListener(this);
         view.getPhotochef().setOnClickListener(this);
+        view.getChefPicture().setOnClickListener(this);
+        view.getFabAddDish().setOnClickListener(this);
         //Pass data to Adapter
         ArrayList<String> newPlates = view.getPlateImageAdapter().getImagesUrls();
         newPlates.clear();
@@ -51,8 +52,6 @@ public class ChefProfileController implements View.OnClickListener {
         newPlates.addAll(new ArrayList<>());
         view.getPlateImageAdapter().notifyDataSetChanged();
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -74,17 +73,23 @@ public class ChefProfileController implements View.OnClickListener {
                 this.view.startActivityForResult(gallery, ImageryUtl.GALLERY_CALLBACK);
                 break;
 
-            /** case R.id.weltChefBtn:
-             Intent intentChat = new Intent(view, ChatActivity.class);
-             intentChat.putExtra("user", chef);
-             view.startActivity(intentChat);
-             break;**/
+            case R.id.weltChefBtn:
+                Intent intentChat = new Intent(view, ChatRoomActivity.class);
+                intentChat.putExtra("user", chef);
+                view.startActivity(intentChat);
+             break;
 
             case R.id.facebookBtn:
                 break;
             case R.id.instagramBtn:
                 break;
             case R.id.twitterBtn:
+                break;
+
+            case R.id.fabAddDish:
+                Intent intentAddDish = new Intent(view, CreatePlateActivity.class);
+                view.startActivity(intentAddDish);
+                view.finish();
                 break;
         }
     }

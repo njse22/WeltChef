@@ -62,6 +62,7 @@ public class ChatController implements View.OnClickListener, ChildEventListener 
 
     public void init(){
         activity.getMessagesList().setAdapter(adapter);
+
         user = (User) activity.getIntent().getExtras().get("user");
         messageContainer = (MessageContainer) activity.getIntent().getExtras().get("messageContainer");
         activity.getSendBtn().setOnClickListener(this);

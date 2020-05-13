@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.facebook.AccessToken;
 
 import appmoviles.com.weltchef.db.FirebaseDB;
+import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.view.LogingActivity;
 import appmoviles.com.weltchef.R;
 

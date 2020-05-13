@@ -21,12 +21,10 @@ public class FirebaseDB  {
 
     private DatabaseReference databaseReference;
     private Query querySearch;
-    private UsersManager usersManager;
 
     public FirebaseDB() {
         this.databaseReference = FirebaseDatabase.getInstance().getReference();
         this.querySearch = null;
-        this.usersManager = new UsersManager();
     }
 
     public Query getQuerySearch() {
@@ -36,11 +34,6 @@ public class FirebaseDB  {
     public DatabaseReference getDatabaseReference() {
         return databaseReference;
     }
-
-    public UsersManager getUsersManager() {
-        return usersManager;
-    }
-
 
     public void getMenus(int type){
         querySearch = databaseReference
@@ -65,15 +58,13 @@ public class FirebaseDB  {
     public void searchChatByChef(String idChef){
         querySearch = databaseReference
                 .child(Constants.FIREBASE_CHATS_BRANCH)
-                .orderByChild("userIDChef")
-                .equalTo(idChef);
+                .orderByChild(idChef);
     }
 
     public void searchChatByClient(String idClient){
         querySearch = databaseReference
                 .child(Constants.FIREBASE_CHATS_BRANCH)
-                .orderByChild("userIDClient")
-                .equalTo(idClient);
+                .child(idClient);
     }
 
     public void searchUserByEmail(String email, String branch){
