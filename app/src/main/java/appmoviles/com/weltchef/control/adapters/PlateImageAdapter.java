@@ -1,5 +1,6 @@
 package appmoviles.com.weltchef.control.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ public class PlateImageAdapter extends RecyclerView.Adapter<PlateImageHolder> {
 
     private ArrayList<String> imagesUrls;
     private PlateImageHolder holder;
+    private Context context;
 
     public PlateImageAdapter(){
         imagesUrls = new ArrayList<>();

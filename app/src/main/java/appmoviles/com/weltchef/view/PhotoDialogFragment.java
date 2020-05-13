@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,10 +17,12 @@ import androidx.fragment.app.DialogFragment;
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.interfaces.OnDialogListener;
 import appmoviles.com.weltchef.control.viewcontrollers.ClientProfileController;
+import appmoviles.com.weltchef.util.Constants;
 
 public class PhotoDialogFragment extends DialogFragment {
 
     private View.OnClickListener listener;
+    private TextView titleTV;
 
     private Dialog dialog;
 
@@ -38,6 +41,7 @@ public class PhotoDialogFragment extends DialogFragment {
 
         Button takePhoto = (Button) v.findViewById(R.id.takePhoto);
         Button openGallery = (Button) v.findViewById(R.id.openGallery);
+        titleTV = (TextView) v.findViewById(R.id.titleTV);
 
         takePhoto.setOnClickListener(listener);
         openGallery.setOnClickListener(listener);
@@ -48,9 +52,15 @@ public class PhotoDialogFragment extends DialogFragment {
 
     }
 
-    @Override
-    public void dismiss() {
-        super.dismiss();
-        this.dialog.dismiss();
+    public void changeTitle(String tag){
+        if(tag.equals(Constants.PHOTO_PROFILE_TAG)){
+            titleTV.setText("Cambiar foto de perfil");
+        }
+        else if(tag.equals(Constants.PHOTO_MENU_TAG)){
+            titleTV.setText("Agregar foto del plato");
+        }
+
     }
+
+
 }

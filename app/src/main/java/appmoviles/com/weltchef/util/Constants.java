@@ -15,4 +15,9 @@ public class Constants {
 
     public static final int UPDATE_ORDER = 1;
 
+    public final static String PHOTO_PROFILE_TAG = "photo_dialog";
+    public final static String PHOTO_MENU_TAG = "menu_dialog";
+
+
+
 }

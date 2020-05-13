@@ -1,5 +1,7 @@
 package appmoviles.com.weltchef.control.viewcontrollers;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
 import com.google.firebase.database.DataSnapshot;
@@ -37,14 +40,17 @@ import static android.app.Activity.RESULT_OK;
 
 public class ChefProfileController implements View.OnClickListener{
 
+    private final static String TAG = "ChefProfileController>>>";
+
     private ChefProfileActivity view;
     private User chef;
     private File photo;
 
+    @SuppressLint("LongLogTag")
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
         this.chef = (User) view.getIntent().getExtras().get("user");
-
+        Log.e(TAG, "ChefProfileController::user -> " + chef);
         init();
     }
 
@@ -60,6 +66,12 @@ public class ChefProfileController implements View.OnClickListener{
 
         newPlates.addAll(getChefDishesImages(chef.getId()));
         view.getPlateImageAdapter().notifyDataSetChanged();
+
+        ActivityCompat.requestPermissions(view, new String[]{
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+        }, 0);
     }
 
     @Override
@@ -67,7 +79,7 @@ public class ChefProfileController implements View.OnClickListener{
         PhotoDialogFragment dialog = new PhotoDialogFragment(this);
         switch (v.getId()){
             case R.id.chefPicture:
-                dialog.show(view.getSupportFragmentManager(), "photo_dialog");
+                dialog.show(view.getSupportFragmentManager(), Constants.PHOTO_PROFILE_TAG);
                 break;
             case R.id.takePhoto:
                 dialog.getDialog().cancel();
@@ -86,7 +98,7 @@ public class ChefProfileController implements View.OnClickListener{
 
             case R.id.weltChefBtn:
                 Intent intentChat = new Intent(view, ChatRoomActivity.class);
-                intentChat.putExtra("user", chef);
+                intentChat.putExtra("user", (User) view.getIntent().getExtras().get("user"));
                 view.startActivity(intentChat);
              break;
 
