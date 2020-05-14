@@ -2,6 +2,7 @@ package appmoviles.com.weltchef.view;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -45,6 +46,7 @@ public class ChefProfileActivity extends AppCompatActivity {
         this.description = findViewById(R.id.descriptionTxt);
         this.listPlates = findViewById(R.id.platesList);
         plateImageAdapter = new PlateImageAdapter();
+        listPlates.setLayoutManager(new GridLayoutManager(this,3));
         listPlates.setAdapter(plateImageAdapter);
 
 

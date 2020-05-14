@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import com.squareup.picasso.*;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import appmoviles.com.weltchef.R;
@@ -33,7 +34,7 @@ public class PlateImageAdapter extends RecyclerView.Adapter<PlateImageHolder> {
     @NonNull
     @Override
     public PlateImageHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.image_plate_holder, parent);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.image_plate_holder, parent, false);
         holder = new PlateImageHolder(view);
         return holder;
     }
