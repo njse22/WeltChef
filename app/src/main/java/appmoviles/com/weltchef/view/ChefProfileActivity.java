@@ -49,7 +49,6 @@ public class ChefProfileActivity extends AppCompatActivity {
         listPlates.setLayoutManager(new GridLayoutManager(this,3));
         listPlates.setAdapter(plateImageAdapter);
 
-
         fabEditProfile = (FloatingActionButton) findViewById(R.id.fabEditProfile);
         fabAddDish = (FloatingActionButton) findViewById(R.id.fabAddDish);
         fabCheckSchedule = (FloatingActionButton) findViewById(R.id.fabCheckSchedule);
