@@ -29,6 +29,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.control.adapters.PlateAdapter;
 import appmoviles.com.weltchef.entity.Menu;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.Constants;
@@ -45,12 +46,14 @@ public class ChefProfileController implements View.OnClickListener {
     private final static String TAG = "ChefProfileController>>>";
 
     private ChefProfileActivity view;
+    private PlateAdapter adapter;
     private User chef;
     private File photo;
 
     @SuppressLint("LongLogTag")
     public ChefProfileController(ChefProfileActivity view) {
         this.view = view;
+        this.adapter = new PlateAdapter();
         Log.e(TAG, "ChefProfileController::view -> " + view);
         chef = (User) view.getIntent().getExtras().get("user");
         Log.e(TAG, "ChefProfileController::user -> " + chef);
@@ -82,6 +85,8 @@ public class ChefProfileController implements View.OnClickListener {
         newPlates.add("https://www.pequerecetas.com/wp-content/uploads/2018/05/recetas-con-brocoli-1.jpg");
         newPlates.add("https://www.rebanando.com/cache/slideshow/arancini-jpg-jpg.jpeg/2cb6823c975ee09b0d93e071c71c86d5.jpg");
         newPlates.add("https://img.bekiacocina.com/cocina/0000/889-q2.jpg");
+
+        newPlates = getChefDishesImages(chef.getId());
 
         //newPlates.addAll(getChefDishesImages(chef.getId()));
         view.getPlateImageAdapter().notifyDataSetChanged();

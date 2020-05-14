@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import com.squareup.picasso.*;
@@ -17,10 +18,9 @@ public class PlateImageAdapter extends RecyclerView.Adapter<PlateImageHolder> {
 
     private ArrayList<String> imagesUrls;
     private PlateImageHolder holder;
-    private Context context;
 
     public PlateImageAdapter(){
-        imagesUrls = new ArrayList<>();
+        this.imagesUrls = new ArrayList<>(6);
     }
 
     public ArrayList<String> getImagesUrls() {
@@ -36,6 +36,9 @@ public class PlateImageAdapter extends RecyclerView.Adapter<PlateImageHolder> {
     public PlateImageHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.image_plate_holder, parent, false);
         holder = new PlateImageHolder(view);
+        File imagePlate = new File(parent.getContext().getExternalFilesDir(null)+ "/");
+
+
         return holder;
     }
 
