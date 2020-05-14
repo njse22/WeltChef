@@ -73,7 +73,6 @@ public class ChefProfileActivity extends AppCompatActivity {
         controller = new ChefProfileController(this);
     }
 
-
     public TextView getRecipes() {
         return recipes;
     }

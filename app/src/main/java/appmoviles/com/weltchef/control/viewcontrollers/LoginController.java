@@ -112,7 +112,7 @@ public class LoginController implements View.OnClickListener, ValueEventListener
             Intent i = new Intent(activity, ChefProfileActivity.class);
             i.putExtra("user",user);
             Log.e(TAG, "onDataChange::user -> "+ user.getName() );
-            activity.startActivity(i);
+
         }else {
             Intent i = new Intent(activity, ClientProfileActivity.class);
             i.putExtra("user",user);

@@ -40,7 +40,7 @@ public class LogingActivity extends AppCompatActivity {
         loginTxt = findViewById(R.id.loginTxt);
 
         controller = new LoginController(this);
-
+        
         /** Facebook login  **/
         isLoggedInFacebook = (Boolean) this.getIntent().getExtras().get("facebookLogin");
         callbackManager = CallbackManager.Factory.create();

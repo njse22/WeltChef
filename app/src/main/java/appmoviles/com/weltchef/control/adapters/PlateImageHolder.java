@@ -9,7 +9,6 @@ import appmoviles.com.weltchef.R;
 
 public class PlateImageHolder extends RecyclerView.ViewHolder {
 
-
     private ImageView imageView;
 
     public PlateImageHolder(@NonNull View itemView) {
