@@ -103,6 +103,7 @@ public class CreatePlateController implements View.OnClickListener {
 
                 Intent intentCreatePlate = new Intent(activity, ChefProfileActivity.class);
                 activity.startActivity(intentCreatePlate);
+                intentCreatePlate.putExtra("user", chef);
                 intentCreatePlate.putExtra("menu", menu);
                 activity.finish();
                 break;
