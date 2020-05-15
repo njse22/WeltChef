@@ -2,6 +2,7 @@ package appmoviles.com.weltchef.view;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -18,20 +19,18 @@ import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.adapters.PlateImageAdapter;
 import appmoviles.com.weltchef.control.viewcontrollers.ChefProfileController;
 
-public class ChefProfileActivity extends AppCompatActivity{
+public class ChefProfileActivity extends AppCompatActivity {
 
 
     private TextView recipes, nameChef, email, description, telephone;
     private ImageView titleapp;
     private ChefProfileController controller;
-    private Button weltChef,facebook,instagram,twitter;
+    private Button weltChef, facebook, instagram, twitter;
     private ImageButton chefPicture;
     private FloatingActionButton mainFab, fabEditProfile, fabAddDish, fabCheckSchedule;
     private boolean isFabMainOpen;
     private RecyclerView listPlates;
     private PlateImageAdapter plateImageAdapter;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +44,11 @@ public class ChefProfileActivity extends AppCompatActivity{
         this.chefPicture = findViewById(R.id.chefPicture);
         this.titleapp = findViewById(R.id.tituloTxt);
         this.description = findViewById(R.id.descriptionTxt);
-        this.listPlates = findViewById(R.id.platesList);
-        plateImageAdapter = new PlateImageAdapter();
-        listPlates.setAdapter(plateImageAdapter);
 
+        this.listPlates = findViewById(R.id.platesList);
+        this.plateImageAdapter = new PlateImageAdapter(this);
+        this.listPlates.setLayoutManager(new GridLayoutManager(this,3));
+        this.listPlates.setAdapter(plateImageAdapter);
 
         fabEditProfile = (FloatingActionButton) findViewById(R.id.fabEditProfile);
         fabAddDish = (FloatingActionButton) findViewById(R.id.fabAddDish);
@@ -57,9 +57,9 @@ public class ChefProfileActivity extends AppCompatActivity{
         mainFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isFabMainOpen){
+                if (!isFabMainOpen) {
                     showFabMenu();
-                }else{
+                } else {
                     closeFabMenu();
                 }
             }
@@ -72,7 +72,6 @@ public class ChefProfileActivity extends AppCompatActivity{
 
         controller = new ChefProfileController(this);
     }
-
 
     public TextView getRecipes() {
         return recipes;
@@ -92,10 +91,6 @@ public class ChefProfileActivity extends AppCompatActivity{
 
     public TextView getTelephone() {
         return telephone;
-    }
-
-    public ImageButton getPhotochef() {
-        return chefPicture;
     }
 
     public ImageView getTitleapp() {
@@ -142,7 +137,7 @@ public class ChefProfileActivity extends AppCompatActivity{
         return fabCheckSchedule;
     }
 
-    private void showFabMenu(){
+    private void showFabMenu() {
 
         isFabMainOpen = true;
         fabAddDish.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
@@ -159,8 +154,7 @@ public class ChefProfileActivity extends AppCompatActivity{
         return listPlates;
     }
 
-    private void closeFabMenu(){
-
+    private void closeFabMenu() {
         isFabMainOpen = false;
         fabAddDish.animate().translationY(0);
         fabCheckSchedule.animate().translationY(0);
@@ -171,6 +165,6 @@ public class ChefProfileActivity extends AppCompatActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        controller.onActivityResult(requestCode,resultCode, data);
+        controller.onActivityResult(requestCode, resultCode, data);
     }
 }

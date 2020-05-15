@@ -1,7 +1,9 @@
 package appmoviles.com.weltchef.view;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -139,5 +141,11 @@ public class CreatePlateActivity extends AppCompatActivity {
 
     public Spinner getTypeSpinner() {
         return typeSpinner;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        controller.onActivityResult(requestCode,resultCode,data);
     }
 }
