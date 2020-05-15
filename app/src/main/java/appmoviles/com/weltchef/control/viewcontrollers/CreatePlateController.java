@@ -102,9 +102,9 @@ public class CreatePlateController implements View.OnClickListener {
                 firebaseDB.sendInfo(menu,menu.getId(), Constants.FIREBASE_MENU_BRANCH);
 
                 Intent intentCreatePlate = new Intent(activity, ChefProfileActivity.class);
-                activity.startActivity(intentCreatePlate);
                 intentCreatePlate.putExtra("user", chef);
                 intentCreatePlate.putExtra("menu", menu);
+                activity.startActivity(intentCreatePlate);
                 activity.finish();
                 break;
 
