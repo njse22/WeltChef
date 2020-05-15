@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -29,7 +28,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 import appmoviles.com.weltchef.R;
-import appmoviles.com.weltchef.control.adapters.PlateAdapter;
 import appmoviles.com.weltchef.entity.Menu;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.Constants;
@@ -37,26 +35,24 @@ import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.ChatRoomActivity;
 import appmoviles.com.weltchef.view.ChefProfileActivity;
 import appmoviles.com.weltchef.view.CreatePlateActivity;
+import appmoviles.com.weltchef.view.DishViewActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
 
 import static android.app.Activity.RESULT_OK;
 
-public class ChefProfileController implements View.OnClickListener {
+public class ChefProfileController implements View.OnClickListener, ValueEventListener, RecyclerTouchListener.ClickListener {
 
     private final static String TAG = "ChefProfileController>>>";
 
     private ChefProfileActivity view;
-    private PlateAdapter adapter;
     private User chef;
     private File photo;
 
     @SuppressLint("LongLogTag")
     public ChefProfileController(ChefProfileActivity view) {
+        Log.e(TAG, "-> true");
         this.view = view;
-        this.adapter = new PlateAdapter();
-        Log.e(TAG, "ChefProfileController::view -> " + view);
-        chef = (User) view.getIntent().getExtras().get("user");
-        Log.e(TAG, "ChefProfileController::user -> " + chef);
+        this.chef = (User) view.getIntent().getExtras().get("user");
         init();
     }
 
@@ -71,34 +67,31 @@ public class ChefProfileController implements View.OnClickListener {
         view.getEmail().setText(chef.getEmail());
         view.getTelephone().setText(chef.getEmail());
         view.getDescription().setText("El chef tiene un ranking de " + chef.getRanking());
-
         //Add needed listeers to buttons
         view.getChefPicture().setOnClickListener(this);
         view.getWeltChef().setOnClickListener(this);
-        view.getChefPicture().setOnClickListener(this);
         view.getFabAddDish().setOnClickListener(this);
-        //Pass data to Adapter
-        ArrayList<String> newPlates = view.getPlateImageAdapter().getImagesUrls();
-        newPlates.clear();
 
-        //Replace with Data of FirebaseStorage
-        newPlates.add("https://www.pequerecetas.com/wp-content/uploads/2018/05/recetas-con-brocoli-1.jpg");
-        newPlates.add("https://www.rebanando.com/cache/slideshow/arancini-jpg-jpg.jpeg/2cb6823c975ee09b0d93e071c71c86d5.jpg");
-        newPlates.add("https://img.bekiacocina.com/cocina/0000/889-q2.jpg");
-
-        newPlates = getChefDishesImages(chef.getId());
-
-        //newPlates.addAll(getChefDishesImages(chef.getId()));
-        view.getPlateImageAdapter().notifyDataSetChanged();
-
-        //Request permissions
         ActivityCompat.requestPermissions(view, new String[]{
                 Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE
         }, 0);
 
-   }
+
+        Query listQuery = FirebaseDatabase.getInstance().getReference()
+                .child(Constants.FIREBASE_USER_BRANCH)
+                .child(chef.getId())
+                .child("menus")
+                .limitToLast(10);
+
+        listQuery.addListenerForSingleValueEvent(this);
+
+        view.getListPlates().addOnItemTouchListener(new RecyclerTouchListener(
+                view.getApplicationContext(), view.getListPlates(), this
+        ));
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -135,7 +128,7 @@ public class ChefProfileController implements View.OnClickListener {
 
             case R.id.fabAddDish:
                 Intent intentAddDish = new Intent(view, CreatePlateActivity.class);
-                intentAddDish.putExtra("user", chef);
+                intentAddDish.putExtra("user",  (User) view.getIntent().getExtras().get("user"));
                 view.startActivity(intentAddDish);
                 view.finish();
                 break;
@@ -156,7 +149,6 @@ public class ChefProfileController implements View.OnClickListener {
         }
     }
 
-
     /**
      * Este metodo obtiene las URLs de las imagenes asociaddas con los platos de un chef específico.
      * Primero, busca todos los platos de un chef en FirebaseDatabase y luego obtiene las direcciones de las
@@ -170,12 +162,15 @@ public class ChefProfileController implements View.OnClickListener {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
-        Query listQuery = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child(Constants.FIREBASE_MENU_BRANCH)
-                .equalTo(chefId);
+        Query listQuery = FirebaseDatabase.getInstance().getReference()
+                .child(Constants.FIREBASE_USER_BRANCH)
+                .child(chefId)
+                .child("menus")
+                .limitToLast(10);
+
         listQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @SuppressLint("LongLogTag")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -194,6 +189,7 @@ public class ChefProfileController implements View.OnClickListener {
                                 }
                             });
                 }
+
             }
 
             @Override
@@ -203,5 +199,27 @@ public class ChefProfileController implements View.OnClickListener {
         });
 
         return urls;
+    }
+
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        if (dataSnapshot.getChildrenCount() == 0){
+        }else {
+            Menu menu = dataSnapshot.getValue(Menu.class);
+            view.getPlateImageAdapter().addMenu(menu);
+        }
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) { }
+
+    @Override
+    public void onClick(View view, int position) {
+
+    }
+
+    @Override
+    public void onLongClick(View view, int position) {
+
     }
 }

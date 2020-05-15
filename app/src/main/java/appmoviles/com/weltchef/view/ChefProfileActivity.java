@@ -44,10 +44,11 @@ public class ChefProfileActivity extends AppCompatActivity {
         this.chefPicture = findViewById(R.id.chefPicture);
         this.titleapp = findViewById(R.id.tituloTxt);
         this.description = findViewById(R.id.descriptionTxt);
+
         this.listPlates = findViewById(R.id.platesList);
-        plateImageAdapter = new PlateImageAdapter();
-        listPlates.setLayoutManager(new GridLayoutManager(this,3));
-        listPlates.setAdapter(plateImageAdapter);
+        this.plateImageAdapter = new PlateImageAdapter(this);
+        this.listPlates.setLayoutManager(new GridLayoutManager(this,3));
+        this.listPlates.setAdapter(plateImageAdapter);
 
         fabEditProfile = (FloatingActionButton) findViewById(R.id.fabEditProfile);
         fabAddDish = (FloatingActionButton) findViewById(R.id.fabAddDish);
