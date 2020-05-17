@@ -85,6 +85,18 @@ public class FirebaseDB  {
                 .setValue(object);
     }
 
+    public void addMenu(Menu menu){
+        databaseReference
+                .child(Constants.FIREBASE_USER_BRANCH)
+                .child(Constants.FIREBASE_MENU_BRANCH)
+                .child(menu.getId())
+                .setValue(menu);
+        databaseReference
+                .child(Constants.FIREBASE_MENU_BRANCH)
+                .child(menu.getId())
+                .setValue(menu);
+    }
+
     public void readInfo(String branch, String id){
         databaseReference.child(branch).child(id);
     }

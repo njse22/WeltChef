@@ -50,7 +50,13 @@ public class ChatRoomController implements ValueEventListener, AdapterView.OnIte
             query.addChildEventListener(this);
         }
         else {
-            firebaseDB.searchChatByClient(user.getId());
+            Query query = FirebaseDatabase.getInstance().getReference()
+                    .child(Constants.FIREBASE_CHATS_BRANCH)
+                    .orderByChild("userIDClient")
+                    .equalTo(user.getId());
+
+            query.addChildEventListener(this);
+
         }
     }
 

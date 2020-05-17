@@ -15,7 +15,8 @@ public class NotificationUtils {
     public static final String CHANNEL_ORDERS = "Orders";
 
     public static final int CHANNEL_IMPORTANCE = NotificationManager.IMPORTANCE_HIGH;
-    public static int consecutive = 1;
+    public static int consecutiveMessage = 1;
+    public static int consecutiveOrder = 1;
 
     public static void createNotificationChat(Context context, String message){
         NotificationManager manager = (NotificationManager)
@@ -31,8 +32,8 @@ public class NotificationUtils {
                 .setContentText(message)
                 .setSmallIcon(R.mipmap.ic_launcher);
 
-        manager.notify(consecutive, builder.build());
-        consecutive++;
+        manager.notify(consecutiveMessage, builder.build());
+        consecutiveMessage++;
     }
 
     public static void createNotificationOrder(Context context, String message){
@@ -49,8 +50,8 @@ public class NotificationUtils {
                 .setContentText(message)
                 .setSmallIcon(R.mipmap.ic_launcher);
 
-        manager.notify(consecutive, builder.build());
-        consecutive++;
+        manager.notify(consecutiveOrder, builder.build());
+        consecutiveOrder++;
     }
 
 

@@ -105,10 +105,16 @@ public class ChatController implements View.OnClickListener, ChildEventListener 
                         .child(Constants.FIREBASE_CHATS_BRANCH)
                         .child(messageContainer.getId()).push().getKey();
 
+                String pushIdMessage = FirebaseDatabase.getInstance().getReference()
+                        .child(Constants.FIREBASE_CHATS_BRANCH)
+                        .child(messageContainer.getId())
+                        .child("messages")
+                        .push()
+                        .getKey();
 
                 Message message = new Message(
                         uri == null ? Message.TYPE_TEXT : Message.TYPE_IMAGE,
-                        pushId,
+                        pushIdMessage,
                         body,
                         Calendar.getInstance().getTime().getTime(),
                         user.getId()
@@ -128,21 +134,24 @@ public class ChatController implements View.OnClickListener, ChildEventListener 
 
                 if(uri != null){
                     FirebaseStorage storage = FirebaseStorage.getInstance();
-                    storage.getReference().child("chats").child(message.getId())
+                    storage.getReference()
+                            .child(Constants.FIREBASE_CHATS_BRANCH).child(message.getId())
                             .putFile(uri).addOnCompleteListener(
                             task -> {
                                 if(task.isSuccessful()){
                                     Log.e(">>","Foto subida con éxito");
                                     FirebaseDatabase.getInstance().getReference()
-                                            .child("chats").child(messageContainer.getId()).child(pushId).setValue(message);
+                                            .child("chats")
+                                            .child(messageContainer.getId())
+                                            .child("messages")
+                                            .child(pushId)
+                                            .setValue(message);
                                 }
                             }
                     );
                 }
                 else {
-                    String pushIdMessage = FirebaseDatabase.getInstance().getReference()
-                            .child(Constants.FIREBASE_CHATS_BRANCH)
-                            .child(messageContainer.getId()).push().getKey();
+
                     FirebaseDatabase.getInstance().getReference()
                             .child(Constants.FIREBASE_CHATS_BRANCH)
                             .child(messageContainer.getId())

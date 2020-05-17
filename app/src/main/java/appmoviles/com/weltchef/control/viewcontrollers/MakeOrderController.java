@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,13 @@ import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.view.DishViewActivity;
 import appmoviles.com.weltchef.view.MakeOrderActivity;
 
-public class MakeOrderController implements View.OnClickListener, AdapterView.OnItemSelectedListener, ChildEventListener, CompoundButton.OnCheckedChangeListener {
+public class MakeOrderController implements
+        View.OnClickListener,
+        AdapterView.OnItemSelectedListener,
+        ChildEventListener,
+        CompoundButton.OnCheckedChangeListener {
+
+    private final static String TAG = "MakeOrderController";
 
     private MakeOrderActivity activity;
     private FirebaseDB firebaseDB;
@@ -56,8 +63,10 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Log.e(TAG, "onItemSelected::parent.getSelectedItemPosition() -> " + (parent.getSelectedItemPosition()));
         switch (parent.getSelectedItemPosition()){
             case Menu.COLOMBIANA:
+                Log.e(TAG, "onItemSelected::Menu.COLOMBIANA -> true ");
                 firebaseDB.getMenus(Menu.COLOMBIANA);
                 firebaseDB.getQuerySearch().addChildEventListener(this);
                 break;
@@ -95,7 +104,6 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
         Menu menu = dataSnapshot.getValue(Menu.class);
         menus.add(menu);
-
     }
 
     @Override
@@ -114,4 +122,5 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
     }
+
 }

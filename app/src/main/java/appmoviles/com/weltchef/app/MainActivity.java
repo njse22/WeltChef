@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDB firebaseDB = new FirebaseDB();
 
-        Log.e("id : ",firebaseDB.createId(Constants.FIREBASE_MENU_BRANCH));
-
         Intent intent = new Intent(this, LogingActivity.class);
         intent.putExtra("facebookLogin", isLoggedIn);
         this.startActivity(intent);

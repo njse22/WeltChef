@@ -1,6 +1,7 @@
 package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,12 @@ import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.view.DishViewActivity;
 import appmoviles.com.weltchef.view.FoodOrderActivity;
 
-public class DishViewController implements View.OnClickListener, RecyclerTouchListener.ClickListener, ValueEventListener {
+public class DishViewController implements
+        View.OnClickListener,
+        RecyclerTouchListener.ClickListener,
+        ValueEventListener {
+
+    private final static String TAG = "DishViewController";
 
     private DishViewActivity activity;
     private ArrayList<Menu> menus;
@@ -39,7 +45,9 @@ public class DishViewController implements View.OnClickListener, RecyclerTouchLi
         activity.getRecyclerView().addOnItemTouchListener(new RecyclerTouchListener(
                 activity.getApplicationContext(), activity.getRecyclerView(), this
         ));
+        order = new Order();
         menus = (ArrayList<Menu>)activity.getIntent().getExtras().get("menus");
+        order.setPlates(menus);
         user = (User) activity.getIntent().getExtras().get("user");
 
         firebaseDB.searchOrder(user.getId());
@@ -48,6 +56,7 @@ public class DishViewController implements View.OnClickListener, RecyclerTouchLi
         activity.runOnUiThread(
                 () -> {
                     for (Menu item : menus) {
+                        Log.e(TAG, "init::item -> " + item);
                         activity.getAdapter().getDishes().add(item);
                         activity.getAdapter().notifyDataSetChanged();
                     }
@@ -93,7 +102,7 @@ public class DishViewController implements View.OnClickListener, RecyclerTouchLi
                 break;
             }
         }
-        order.setTotalPrice(order.calculatePrice());
+
     }
 
     @Override

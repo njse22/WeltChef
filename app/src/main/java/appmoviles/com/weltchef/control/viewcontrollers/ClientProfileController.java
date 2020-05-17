@@ -43,7 +43,6 @@ public class ClientProfileController implements View.OnClickListener{
         this.client =  (User) view.getIntent().getExtras().get("user");
         this.view.getClientName().setText(client.getName());
         this.order = (Order) view.getIntent().getExtras().get("order");
-
         view.getAskService().setOnClickListener(this);
         view.getSearchChef().setOnClickListener(this);
         view.getChatBtn().setOnClickListener(this);
@@ -109,7 +108,7 @@ public class ClientProfileController implements View.OnClickListener{
 
             case R.id.chatBtn:
                 Intent intentChat = new Intent(view, ChatRoomActivity.class);
-                intentChat.putExtra("user", client);
+                intentChat.putExtra("user", (User) view.getIntent().getExtras().get("user"));
                 view.startActivity(intentChat);
                 break;
         }

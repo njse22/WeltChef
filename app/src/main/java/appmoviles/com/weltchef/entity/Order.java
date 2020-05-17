@@ -31,6 +31,7 @@ public class Order implements Serializable {
   private String id;
 
   public Order() {
+    this.plates = new ArrayList<>();
   }
 
   public Order(ArrayList<Menu> plates, String id, String clientId) {
