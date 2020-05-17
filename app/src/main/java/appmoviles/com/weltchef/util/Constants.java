@@ -2,21 +2,21 @@ package appmoviles.com.weltchef.util;
 
 public class Constants {
 
-    public final static String FIREBASE_URL = "https://weltchef-912c4.firebaseio.com/";
-    public final static String FIREBASE_CHEF_URL = "https://weltchef-912c4.firebaseio.com/chefs.json";
-    public final static String FIREBASE_CLIENT_URL = "https://weltchef-912c4.firebaseio.com/clients.json";
-
+    /** Constants to consult and update the data base in firebase **/
     public final static String FIREBASE_USER_BRANCH = "users";
-    public final static String FIREBASE_CHEF_BRANCH = "chefs";
-    public final static String FIREBASE_CLIENT_BRANCH = "clients";
     public final static String FIREBASE_MENU_BRANCH = "menus";
     public final static String FIREBASE_ORDER_BRANCH = "orders";
     public final static String FIREBASE_CHATS_BRANCH = "chats";
 
-    public static final int UPDATE_ORDER = 1;
+    /**  **/
 
     public final static String PHOTO_PROFILE_TAG = "photo_dialog";
     public final static String PHOTO_MENU_TAG = "menu_dialog";
+
+    /** Constants to search in firebase data base **/
+    public  final static int SEARCH_USER_CALLBACK = 0;
+    public  final static int SEARCH_ORDER_CALLBACK = 1;
+    public  final static int SEARCH_MESSAGE_CONTAINER_CALLBACK = 2;
 
 
 

@@ -22,7 +22,7 @@ import appmoviles.com.weltchef.view.RegisterChefActivity;
 
 public class RegisterChefController implements View.OnClickListener {
 
-    private final static String TAG = "RegisterChefController >>>";
+    private final static String TAG = "RegisterChefController";
 
     private RegisterChefActivity activity;
     private boolean facebookCredential;
@@ -116,6 +116,7 @@ public class RegisterChefController implements View.OnClickListener {
                             intent.putExtra("phone", activity.getPhoneET().getText().toString());
                             intent.putExtra("email", activity.getEmailET().getText().toString());
                             intent.putExtra("description", activity.getDescriptionET().getText().toString());
+                            intent.putExtra("user", chef);
                             activity.startActivity(intent);
                             activity.finish();
                         }
