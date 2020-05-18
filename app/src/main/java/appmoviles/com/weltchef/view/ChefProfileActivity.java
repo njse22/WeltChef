@@ -160,10 +160,4 @@ public class ChefProfileActivity extends AppCompatActivity {
         fabEditProfile.animate().translationY(0);
 
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        controller.onActivityResult(requestCode, resultCode, data);
-    }
 }

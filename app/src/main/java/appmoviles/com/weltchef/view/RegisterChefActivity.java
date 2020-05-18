@@ -30,8 +30,8 @@ public class RegisterChefActivity extends AppCompatActivity {
 
         nameET = findViewById(R.id.nameET);
         emailET = findViewById(R.id.emailET);
-        phoneET = findViewById(R.id.phoneET);
-        passwordET = findViewById(R.id.passwordET);
+        phoneET = findViewById(R.id.name);
+        passwordET = findViewById(R.id.password);
         registerBtn = findViewById(R.id.registerChefBtn);
         descriptionET = findViewById(R.id.descriptionET);
         chefAtHomeCheck = findViewById(R.id.chefAtHomeCheck);
