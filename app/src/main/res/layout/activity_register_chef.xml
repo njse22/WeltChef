@@ -62,13 +62,13 @@
                 android:ems="10"
                 android:hint="@string/email"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/passwordET"
+                app:layout_constraintBottom_toTopOf="@+id/password"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nameET" />
 
             <EditText
-                android:id="@+id/passwordET"
+                android:id="@+id/password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="120dp"
@@ -94,13 +94,13 @@
                 android:ems="10"
                 android:hint="Confirmar Contraseña"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/phoneET"
+                app:layout_constraintBottom_toTopOf="@+id/name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passwordET" />
+                app:layout_constraintTop_toBottomOf="@+id/password" />
 
             <EditText
-                android:id="@+id/phoneET"
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="120dp"
@@ -150,7 +150,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/descriptionET"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phoneET"
+                app:layout_constraintTop_toBottomOf="@+id/name"
                 tools:listfooter="Comida Italiana"
                 tools:listheader="Comida Francesa" />
 
@@ -169,7 +169,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/registerChefBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phoneET" />
+                app:layout_constraintTop_toBottomOf="@+id/name" />
 
 
             <Button
@@ -189,7 +189,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phoneET" />
+                app:layout_constraintTop_toBottomOf="@+id/name" />
 
 
         </LinearLayout>
