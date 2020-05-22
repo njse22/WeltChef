@@ -2,6 +2,7 @@ package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,10 +11,13 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.DialogFragment;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -28,9 +32,11 @@ import java.io.File;
 import java.util.ArrayList;
 
 import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.entity.Chef;
 import appmoviles.com.weltchef.entity.Menu;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.Constants;
+import appmoviles.com.weltchef.util.HTTPSWebUtilDomi;
 import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.ChatRoomActivity;
 import appmoviles.com.weltchef.view.ChefProfileActivity;
@@ -38,22 +44,26 @@ import appmoviles.com.weltchef.view.CreatePlateActivity;
 import appmoviles.com.weltchef.view.DishViewActivity;
 import appmoviles.com.weltchef.view.EditProfileActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
+import appmoviles.com.weltchef.view.PhotoViewFragment;
 
 import static android.app.Activity.RESULT_OK;
 
 public class ChefProfileController implements View.OnClickListener, ValueEventListener, RecyclerTouchListener.ClickListener {
 
-    private final static String TAG = "ChefProfileController>>>";
+    private final static String TAG = "ChefProfileController";
 
     private ChefProfileActivity view;
-    private User chef;
+    private Chef chef;
     private File photo;
 
     @SuppressLint("LongLogTag")
     public ChefProfileController(ChefProfileActivity view) {
         Log.e(TAG, "-> true");
         this.view = view;
-        this.chef = (User) view.getIntent().getExtras().get("user");
+        this.chef = (Chef) view.getIntent().getExtras().get("user");
+        if (view.getIntent().getExtras().get("photo") != null)
+            photo = (File) view.getIntent().getExtras().get("photo");
+
         init();
     }
 
@@ -68,10 +78,12 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
         view.getEmail().setText(chef.getEmail());
         view.getTelephone().setText(chef.getEmail());
         view.getDescription().setText("El chef tiene un ranking de " + chef.getRanking());
+        loadImage();
         //Add needed listeers to buttons
         view.getChefPicture().setOnClickListener(this);
         view.getWeltChef().setOnClickListener(this);
         view.getFabAddDish().setOnClickListener(this);
+        view.getFabEditProfile().setOnClickListener(this);
 
         ActivityCompat.requestPermissions(view, new String[]{
                 Manifest.permission.CAMERA,
@@ -96,16 +108,16 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
 
     @Override
     public void onClick(View v) {
-        PhotoDialogFragment dialog = new PhotoDialogFragment(this);
         switch (v.getId()) {
             case R.id.chefPicture:
-                Intent i = new Intent(view, EditProfileActivity.class);
-                i.putExtra("user", chef);
-                view.startActivity(i);
+                DialogFragment dialogFragment = new PhotoViewFragment(this, view.getChefPicture());
+
+                dialogFragment.show(view.getSupportFragmentManager(), "photo_view");
                 break;
+
             case R.id.weltChefBtn:
                 Intent intentChat = new Intent(view, ChatRoomActivity.class);
-                intentChat.putExtra("user", (User) view.getIntent().getExtras().get("user"));
+                intentChat.putExtra("user",(User) view.getIntent().getExtras().get("user"));
                 view.startActivity(intentChat);
                 break;
 
@@ -118,8 +130,15 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
 
             case R.id.fabAddDish:
                 Intent intentAddDish = new Intent(view, CreatePlateActivity.class);
-                intentAddDish.putExtra("user",  (User) view.getIntent().getExtras().get("user"));
+                intentAddDish.putExtra("user",  chef);
                 view.startActivity(intentAddDish);
+                view.finish();
+                break;
+            case R.id.fabEditProfile:
+                Log.e(TAG, "onClick::fabEditProfile -> true");
+                Intent intentEditProfile = new Intent(view, EditProfileActivity.class);
+                intentEditProfile.putExtra("user", chef);
+                view.startActivity(intentEditProfile);
                 view.finish();
                 break;
         }
@@ -146,4 +165,40 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
     public void onLongClick(View view, int position) {
 
     }
+
+    public void loadImage(){
+        view.getChefPicture();
+        String nameImage = chef.getId();
+        photo = new File(view.getExternalFilesDir(null)+ "/"+ nameImage);
+
+        if (photo.exists()){
+            loadImage(view.getChefPicture(), photo);
+        }else {
+            FirebaseStorage.getInstance().getReference()
+                    .child(Constants.FIREBASE_USER_BRANCH)
+                    .child(chef.getId())
+                    .getDownloadUrl().addOnSuccessListener(
+                    uri -> {
+                        File f = new File(view.getExternalFilesDir(null)+ "/"+ nameImage);
+                        new Thread(
+                                () -> {
+                                    HTTPSWebUtilDomi utilDomi = new HTTPSWebUtilDomi();
+                                    utilDomi.saveURLImageOnFile(uri.toString(), f);
+                                    view.getChefPicture().post(
+                                            () -> {
+                                                loadImage(view.getChefPicture(),f);
+                                            }
+                                    );
+                                }
+                        ).start();
+                    }
+            );
+        }
+    }
+
+    private void loadImage(ImageButton chefPicture, File imageFile) {
+        Bitmap bitmap = BitmapFactory.decodeFile(imageFile.toString());
+        chefPicture.setImageBitmap(bitmap);
+    }
+
 }

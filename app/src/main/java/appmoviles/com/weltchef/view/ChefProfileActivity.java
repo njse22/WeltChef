@@ -21,12 +21,22 @@ import appmoviles.com.weltchef.control.viewcontrollers.ChefProfileController;
 
 public class ChefProfileActivity extends AppCompatActivity {
 
-    private TextView recipes, nameChef, email, description, telephone;
-    private ImageView titleapp;
     private ChefProfileController controller;
-    private Button weltChef, facebook, instagram, twitter;
+    private TextView recipes;
+    private TextView nameChef;
+    private TextView email;
+    private TextView description;
+    private TextView telephone;
+    private ImageView titleapp;
+    private Button weltChef;
+    private Button facebook;
+    private Button instagram;
+    private Button  twitter;
     private ImageButton chefPicture;
-    private FloatingActionButton mainFab, fabEditProfile, fabAddDish, fabCheckSchedule;
+    private FloatingActionButton mainFab;
+    private FloatingActionButton fabEditProfile;
+    private FloatingActionButton fabAddDish;
+    private FloatingActionButton  fabCheckSchedule;
     private boolean isFabMainOpen;
     private RecyclerView listPlates;
     private PlateImageAdapter plateImageAdapter;
@@ -49,10 +59,11 @@ public class ChefProfileActivity extends AppCompatActivity {
         this.listPlates.setLayoutManager(new GridLayoutManager(this,3));
         this.listPlates.setAdapter(plateImageAdapter);
 
-        fabEditProfile = (FloatingActionButton) findViewById(R.id.fabEditProfile);
-        fabAddDish = (FloatingActionButton) findViewById(R.id.fabAddDish);
-        fabCheckSchedule = (FloatingActionButton) findViewById(R.id.fabCheckSchedule);
-        mainFab = (FloatingActionButton) findViewById(R.id.mainFab);
+        fabEditProfile = findViewById(R.id.fabEditProfile);
+        fabAddDish = findViewById(R.id.fabAddDish);
+        fabCheckSchedule = findViewById(R.id.fabCheckSchedule);
+        mainFab = findViewById(R.id.mainFab);
+
         mainFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

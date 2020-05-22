@@ -9,14 +9,18 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 
@@ -25,10 +29,12 @@ import java.util.Timer;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.db.FirebaseDB;
+import appmoviles.com.weltchef.entity.Chef;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.util.HTTPSWebUtilDomi;
 import appmoviles.com.weltchef.util.ImageryUtl;
+import appmoviles.com.weltchef.view.ChefProfileActivity;
 import appmoviles.com.weltchef.view.EditProfileActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
 
@@ -36,33 +42,31 @@ import static android.app.Activity.RESULT_OK;
 
 public class EditProfileController implements View.OnClickListener {
 
+    private final static String TAG = "EditProfileController";
+
     private EditProfileActivity view;
-    private User user;
+    private Chef user;
     private File picture;
+    private Uri photoUri;
     private FirebaseDB database;
     private boolean imageChanged;
 
     public EditProfileController(EditProfileActivity view){
         this.view = view;
         this.imageChanged = false;
+        this.database = new FirebaseDB();
+        Log.e(TAG, "EditProfileController -> true");
 
         //Set buttons click listener
         view.getPicture().setOnClickListener(this);
+        view.getSave().setOnClickListener(this);
+
 
         //Get user from activity intent
-        user = (User) view.getIntent().getExtras().get("user");
+        user = (Chef) view.getIntent().getExtras().get("user");
 
         //Fill view elements
         view.getName().setText(user.getName());
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        storage.getReference()
-                .child(Constants.FIREBASE_MENU_BRANCH)
-                .child(user.getId())
-                .getDownloadUrl().addOnSuccessListener(
-                uri -> {
-                    Picasso.get().load(uri).centerCrop().into(view.getPicture());
-                }
-        );
 
     }
 
@@ -76,7 +80,7 @@ public class EditProfileController implements View.OnClickListener {
             case R.id.takePhoto:
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 picture = new File(view.getExternalFilesDir(null) + "/wc-"+user.getId()+".png");
-                Uri photoUri = FileProvider.getUriForFile(view, view.getPackageName(), picture);
+                photoUri = FileProvider.getUriForFile(view, view.getPackageName(), picture);
                 i.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 view.startActivityForResult(i, ImageryUtl.CAMERA_CALLBACK);
                 imageChanged = true;
@@ -88,7 +92,13 @@ public class EditProfileController implements View.OnClickListener {
                 imageChanged = true;
                 break;
             case R.id.save:
+                Log.e(TAG, "onClick::save -> true");
                 verifyAndSave();
+                Intent profile = new Intent(view, ChefProfileActivity.class);
+                profile.putExtra("user", user);
+                profile.putExtra("photo", picture);
+                view.startActivity(profile);
+                view.finish();
                 break;
         }
     }
@@ -96,13 +106,24 @@ public class EditProfileController implements View.OnClickListener {
     private void verifyAndSave() {
         String password = view.getPassword().getText().toString();
         String passwordVerify = view.getPassword().getText().toString();
+        String description = view.getDescriptionET().getText().toString();
+
         if(password.equals(passwordVerify)){
             user.setPassword(password);
-            database.sendInfo(user,user.getId(), Constants.FIREBASE_CHEF_BRANCH);
+            user.setDescription(description);
+            database.sendInfo(user,user.getId(), Constants.FIREBASE_USER_BRANCH);
+            FirebaseStorage.getInstance().getReference()
+                    .child(Constants.FIREBASE_USER_BRANCH)
+                    .child(user.getId())
+                    .putFile(photoUri);
+            FirebaseAuth.getInstance().getCurrentUser().updatePassword(password);
+        }
+        else {
+            Toast.makeText(view, "Las contarseñas no coinciden", Toast.LENGTH_LONG);
         }
         if(imageChanged){
             FirebaseStorage.getInstance().getReference()
-                    .child(Constants.FIREBASE_CHEF_BRANCH+ "/" + user.getId())
+                    .child(Constants.FIREBASE_USER_BRANCH+ "/" + user.getId())
                     .putFile(Uri.fromFile(picture));
         }
     }
@@ -120,4 +141,6 @@ public class EditProfileController implements View.OnClickListener {
             view.getPicture().setImageBitmap(image);
         }
     }
+
+    
 }

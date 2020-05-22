@@ -96,7 +96,7 @@ public class CreatePlateController implements View.OnClickListener {
                             .child(menu.getId())
                             .putFile(photoUri);
                 }
-                firebaseDB.addMenu(menu);
+                firebaseDB.addMenu(menu, chef.getId());
                 Intent intentCreatePlate = new Intent(activity, ChefProfileActivity.class);
                 intentCreatePlate.putExtra("user", chef);
                 intentCreatePlate.putExtra("menu", menu);

@@ -91,10 +91,11 @@ public class FirebaseDB {
                 .setValue(message);
     }
 
-    public void addMenu(Menu menu){
+    public void addMenu(Menu menu, String chefID){
         databaseReference
                 .child(Constants.FIREBASE_USER_BRANCH)
                 .child(Constants.FIREBASE_MENU_BRANCH)
+                .child(chefID)
                 .child(menu.getId())
                 .setValue(menu);
         databaseReference

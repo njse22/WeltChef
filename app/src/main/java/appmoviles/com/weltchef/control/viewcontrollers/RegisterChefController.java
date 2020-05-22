@@ -49,7 +49,6 @@ public class RegisterChefController implements View.OnClickListener {
 
     }
 
-    @SuppressLint("LongLogTag")
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -72,6 +71,10 @@ public class RegisterChefController implements View.OnClickListener {
         String email = activity.getEmailET().getText().toString();
         String phone = activity.getPhoneET().getText().toString();
         String password = activity.getPasswordET().getText().toString();
+        String conPassword = activity.getConPasswordET().getText().toString();
+        if(!password.equals(conPassword)){
+            Toast.makeText(activity, "Las contraseñas no coinciden", Toast.LENGTH_LONG);
+        }
         String description = activity.getDescriptionET().getText().toString();
         boolean chefAtHomeCheck = activity.getChefAtHomeCheck().isChecked();
         boolean chefKitchenCheck = activity.getChefKitchenCheck().isChecked();
@@ -98,6 +101,10 @@ public class RegisterChefController implements View.OnClickListener {
         String email = activity.getEmailET().getText().toString();
         String phone = activity.getPhoneET().getText().toString();
         String password = activity.getPasswordET().getText().toString();
+        String conPassword = activity.getConPasswordET().getText().toString();
+        if(!password.equals(conPassword)){
+            Toast.makeText(activity, "Las contraseñas no coinciden", Toast.LENGTH_LONG);
+        }
         String description = activity.getDescriptionET().getText().toString();
         boolean chefKitchenCheck = activity.getChefKitchenCheck().isChecked();
         boolean chefAtHomeCheck = activity.getChefAtHomeCheck().isChecked();
