@@ -45,8 +45,8 @@ public class DishViewController implements
         activity.getRecyclerView().addOnItemTouchListener(new RecyclerTouchListener(
                 activity.getApplicationContext(), activity.getRecyclerView(), this
         ));
-        order = new Order();
         menus = (ArrayList<Menu>)activity.getIntent().getExtras().get("menus");
+        order = (Order) activity.getIntent().getExtras().get("order");
         order.setPlates(menus);
         user = (User) activity.getIntent().getExtras().get("user");
 
@@ -71,6 +71,7 @@ public class DishViewController implements
                 Intent i = new Intent(activity, FoodOrderActivity.class);
                 i.putExtra("order", order);
                 i.putExtra("user", user);
+                i.putExtra("body", (String) activity.getIntent().getExtras().get("body"));
                 activity.startActivity(i);
                 activity.finish();
                 break;

@@ -35,7 +35,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class CreatePlateController implements View.OnClickListener {
 
-    private final static String TAG = "CreatePlateController>>>";
+    private final static String TAG = "CreatePlateController";
 
     private CreatePlateActivity activity;
     private FirebaseDB firebaseDB;

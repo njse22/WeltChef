@@ -147,7 +147,8 @@ public class FoodOrderController implements View.OnClickListener, ValueEventList
         String messageId = firebaseDB.createMessageId(messageContainer.getId());
 
         String body = "Plato: " +order.getPlates().get(index).getName() + "\n" +
-                      "Valor: "+ order.getPlates().get(index).getPrice();
+                      "Valor: "+ order.getPlates().get(index).getPrice() + "\n" +
+                (String) view.getIntent().getExtras().get("body").toString();
 
         Message message = new Message(
                 Message.TYPE_TEXT,

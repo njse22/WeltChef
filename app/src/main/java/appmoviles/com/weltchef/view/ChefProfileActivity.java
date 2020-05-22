@@ -1,12 +1,17 @@
 package appmoviles.com.weltchef.view;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -171,4 +176,34 @@ public class ChefProfileActivity extends AppCompatActivity {
         fabEditProfile.animate().translationY(0);
 
     }
+
+
+    public static class PhotoViewFragmentAC extends DialogFragment {
+
+        private View.OnClickListener listener;
+        private Dialog dialog;
+        private ImageView imageView;
+
+        public PhotoViewFragmentAC(View.OnClickListener listener) {
+            this.listener = listener;
+        }
+
+        public void setImageView(ImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = requireActivity().getLayoutInflater();
+            View view = inflater.inflate(R.layout.fragment_photo_view, null);
+            imageView = view.findViewById(R.id.picture);
+            builder.setView(view);
+            this.dialog = builder.create();
+            return this.dialog;
+        }
+
+    }
+
 }

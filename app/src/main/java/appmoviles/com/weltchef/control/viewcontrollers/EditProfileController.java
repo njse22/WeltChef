@@ -94,11 +94,6 @@ public class EditProfileController implements View.OnClickListener {
             case R.id.save:
                 Log.e(TAG, "onClick::save -> true");
                 verifyAndSave();
-                Intent profile = new Intent(view, ChefProfileActivity.class);
-                profile.putExtra("user", user);
-                profile.putExtra("photo", picture);
-                view.startActivity(profile);
-                view.finish();
                 break;
         }
     }
@@ -112,19 +107,21 @@ public class EditProfileController implements View.OnClickListener {
             user.setPassword(password);
             user.setDescription(description);
             database.sendInfo(user,user.getId(), Constants.FIREBASE_USER_BRANCH);
-            FirebaseStorage.getInstance().getReference()
-                    .child(Constants.FIREBASE_USER_BRANCH)
-                    .child(user.getId())
-                    .putFile(photoUri);
+            if(imageChanged) {
+                FirebaseStorage.getInstance().getReference()
+                        .child(Constants.FIREBASE_USER_BRANCH)
+                        .child(user.getId())
+                        .putFile(photoUri);
+            }
             FirebaseAuth.getInstance().getCurrentUser().updatePassword(password);
+            Intent profile = new Intent(view, ChefProfileActivity.class);
+            profile.putExtra("user", user);
+            profile.putExtra("photo", picture);
+            view.startActivity(profile);
+            view.finish();
         }
         else {
             Toast.makeText(view, "Las contarseñas no coinciden", Toast.LENGTH_LONG);
-        }
-        if(imageChanged){
-            FirebaseStorage.getInstance().getReference()
-                    .child(Constants.FIREBASE_USER_BRANCH+ "/" + user.getId())
-                    .putFile(Uri.fromFile(picture));
         }
     }
 
@@ -141,6 +138,4 @@ public class EditProfileController implements View.OnClickListener {
             view.getPicture().setImageBitmap(image);
         }
     }
-
-    
 }

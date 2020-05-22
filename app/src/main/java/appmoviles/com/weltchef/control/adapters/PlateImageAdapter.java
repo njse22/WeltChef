@@ -3,6 +3,7 @@ package appmoviles.com.weltchef.control.adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,13 +52,12 @@ public class PlateImageAdapter extends RecyclerView.Adapter<PlateImageHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PlateImageHolder holder, int position) {
-        ImageView imageView = holder.getImageView();
         imagePlate = holder.getImageView();
         String nameImage = menus.get(position).getId();
         File imageFile = new File(context.getExternalFilesDir(null)+ "/"+ nameImage);
         if(imageFile.exists()){
             loadImage(imagePlate, imageFile);
-        }else {
+        }else if(nameImage != null){
             FirebaseStorage storage = FirebaseStorage.getInstance();
             storage.getReference()
                     .child(Constants.FIREBASE_MENU_BRANCH)
@@ -71,7 +71,7 @@ public class PlateImageAdapter extends RecyclerView.Adapter<PlateImageHolder> {
                                     HTTPSWebUtilDomi utilDomi = new HTTPSWebUtilDomi();
                                     utilDomi.saveURLImageOnFile(uri.toString(), file);
 
-                                    holder.getImageView().post(
+                                    holder.getView().post(
                                             () ->{
                                                 loadImage(imagePlate, file);
                                             }

@@ -17,7 +17,7 @@
         <Button
             android:id="@+id/galBtn"
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginBottom="8dp"
             android:text="G"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -83,9 +83,9 @@
 
     <Spinner
         android:id="@+id/spinnerStatus"
-        android:layout_width="187dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
+        android:layout_width="155dp"
+        android:layout_height="45dp"
+        android:visibility22dp="gone"
         app:layout_constraintBottom_toTopOf="@+id/messagesList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"

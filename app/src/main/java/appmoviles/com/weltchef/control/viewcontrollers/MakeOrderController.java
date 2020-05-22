@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CalendarView;
 import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.db.FirebaseDB;
 import appmoviles.com.weltchef.entity.Menu;
+import appmoviles.com.weltchef.entity.Order;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.view.DishViewActivity;
 import appmoviles.com.weltchef.view.MakeOrderActivity;
@@ -27,18 +29,21 @@ public class MakeOrderController implements
         View.OnClickListener,
         AdapterView.OnItemSelectedListener,
         ChildEventListener,
-        CompoundButton.OnCheckedChangeListener {
+        CompoundButton.OnCheckedChangeListener, CalendarView.OnDateChangeListener {
 
     private final static String TAG = "MakeOrderController";
 
     private MakeOrderActivity activity;
     private FirebaseDB firebaseDB;
     private ArrayList<Menu> menus;
+    private Order order;
+    private String body;
 
     public MakeOrderController(MakeOrderActivity activity) {
         this.activity = activity;
         this.firebaseDB = new FirebaseDB();
         this.menus = new ArrayList<>();
+        this.order = new Order();
         init();
     }
 
@@ -46,6 +51,7 @@ public class MakeOrderController implements
         activity.getSearchService().setOnClickListener(this);
         activity.getSpinnerTypes().setOnItemSelectedListener(this);
         activity.getChefHomeCheck().setOnCheckedChangeListener(this);
+        activity.getCalendar().setOnDateChangeListener(this);
     }
 
     @Override
@@ -54,7 +60,9 @@ public class MakeOrderController implements
             case R.id.searchService:
                 Intent i = new Intent(activity, DishViewActivity.class);
                 i.putExtra("menus", menus);
+                i.putExtra("order", order);
                 i.putExtra("user", (User)activity.getIntent().getExtras().get("user"));
+                i.putExtra("body", body);
                 activity.startActivity(i);
                 activity.finish();
                 break;
@@ -121,6 +129,15 @@ public class MakeOrderController implements
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+    }
+
+    @Override
+    public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+            body =  "Fecha: " + dayOfMonth + " / " + month + " / " + year + "\n" +
+                    "Número de personas: " + activity.getNumPeopleET().getText().toString() + "\n" +
+                    "Lugar: " + activity.getPlaceET().getText().toString();
+
+            order.setNumPersonas(Integer.parseInt(activity.getNumPeopleET().getText().toString()));
     }
 
 }

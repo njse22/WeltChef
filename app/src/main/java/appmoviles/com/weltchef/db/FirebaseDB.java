@@ -94,8 +94,8 @@ public class FirebaseDB {
     public void addMenu(Menu menu, String chefID){
         databaseReference
                 .child(Constants.FIREBASE_USER_BRANCH)
-                .child(Constants.FIREBASE_MENU_BRANCH)
                 .child(chefID)
+                .child(Constants.FIREBASE_MENU_BRANCH)
                 .child(menu.getId())
                 .setValue(menu);
         databaseReference

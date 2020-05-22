@@ -32,6 +32,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.control.interfaces.OnProfileRequest;
 import appmoviles.com.weltchef.entity.Chef;
 import appmoviles.com.weltchef.entity.Menu;
 import appmoviles.com.weltchef.entity.User;
@@ -56,7 +57,6 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
     private Chef chef;
     private File photo;
 
-    @SuppressLint("LongLogTag")
     public ChefProfileController(ChefProfileActivity view) {
         Log.e(TAG, "-> true");
         this.view = view;
@@ -76,8 +76,8 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
         //Set user fields
         view.getNameChef().setText(chef.getName());
         view.getEmail().setText(chef.getEmail());
-        view.getTelephone().setText(chef.getEmail());
-        view.getDescription().setText("El chef tiene un ranking de " + chef.getRanking());
+        view.getTelephone().setText(chef.getPhone());
+        view.getDescription().setText(chef.getDescription());
         loadImage();
         //Add needed listeers to buttons
         view.getChefPicture().setOnClickListener(this);
@@ -91,11 +91,14 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
                 Manifest.permission.READ_EXTERNAL_STORAGE
         }, 0);
 
+        if(view.getIntent().getExtras().get("menu") != null){
+            view.getPlateImageAdapter().addMenu((Menu) view.getIntent().getExtras().get("menu"));
+        }
 
         Query listQuery = FirebaseDatabase.getInstance().getReference()
                 .child(Constants.FIREBASE_USER_BRANCH)
                 .child(chef.getId())
-                .child("menus")
+                .child(Constants.FIREBASE_MENU_BRANCH)
                 .limitToLast(10);
 
         listQuery.addListenerForSingleValueEvent(this);
@@ -105,13 +108,12 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
         ));
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.chefPicture:
-                DialogFragment dialogFragment = new PhotoViewFragment(this, view.getChefPicture());
-
+                DialogFragment dialogFragment = new PhotoViewFragment(this);
+                ((PhotoViewFragment)dialogFragment).setImageView(view.getChefPicture());
                 dialogFragment.show(view.getSupportFragmentManager(), "photo_view");
                 break;
 
@@ -150,6 +152,7 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
         }else {
             Menu menu = dataSnapshot.getValue(Menu.class);
             view.getPlateImageAdapter().addMenu(menu);
+            view.getPlateImageAdapter().notifyDataSetChanged();
         }
     }
 
