@@ -5,10 +5,12 @@ import com.facebook.FacebookSdk;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.facebook.AccessToken;
+import com.google.firebase.storage.FirebaseStorage;
 
 import appmoviles.com.weltchef.db.FirebaseDB;
 import appmoviles.com.weltchef.util.Constants;
@@ -26,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
 
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         isLoggedIn = accessToken != null && !accessToken.isExpired();
+
+
+        FirebaseStorage.getInstance().getReference();
+
 
         FirebaseDB firebaseDB = new FirebaseDB();
 

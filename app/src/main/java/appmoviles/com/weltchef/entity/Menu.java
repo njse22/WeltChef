@@ -38,13 +38,13 @@ public class Menu implements Serializable {
   public Menu(){
   }
 
-  public Menu(int type, int price, String description, String name, String id) {
+  public Menu(int type, int price, String description, String name, String id, String chefId) {
     this.type = type;
     this.price = price;
     this.description = description;
     this.name = name;
     this.id = id;
-    this.chefId = "";
+    this.chefId = chefId;
   }
 
   /**

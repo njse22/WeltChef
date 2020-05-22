@@ -9,18 +9,22 @@ import appmoviles.com.weltchef.R;
 
 public class PlateImageHolder extends RecyclerView.ViewHolder {
 
-
+    private View view;
     private ImageView imageView;
-    public PlateImageHolder(@NonNull View itemView) {
-        super(itemView);
-        imageView = itemView.findViewById(R.id.imagePlate);
+
+    public PlateImageHolder(@NonNull View view) {
+        super(view);
+        this.view = view;
+        imageView = view.findViewById(R.id.imagePlate);
+
+    }
+
+    public View getView() {
+        return view;
     }
 
     public ImageView getImageView() {
         return imageView;
     }
 
-    public void setImageView(ImageView imageView) {
-        this.imageView = imageView;
-    }
 }

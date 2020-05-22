@@ -25,12 +25,14 @@ public class Order implements Serializable {
    */
   private int totalPrice;
   private int status;
+  private int numPersonas;
 
   private String clientId;
 
   private String id;
 
   public Order() {
+    this.plates = new ArrayList<>();
   }
 
   public Order(ArrayList<Menu> plates, String id, String clientId) {
@@ -38,6 +40,7 @@ public class Order implements Serializable {
     this.id = id;
     this.clientId = clientId;
     this.totalPrice = calculatePrice();
+    this.numPersonas = 0;
 
   }
 
@@ -122,6 +125,14 @@ public class Order implements Serializable {
 
   public String getId() {
     return id;
+  }
+
+  public int getNumPersonas() {
+    return numPersonas;
+  }
+
+  public void setNumPersonas(int numPersonas) {
+    this.numPersonas = numPersonas;
   }
 
   public int calculatePrice(){

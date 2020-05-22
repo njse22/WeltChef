@@ -1,11 +1,10 @@
 package appmoviles.com.weltchef.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.CheckBox;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -18,8 +17,10 @@ public class MakeOrderActivity extends AppCompatActivity {
     private CheckBox chefKitchenCheck;
     private CheckBox ovenCheck;
     private EditText numPeopleET;
+    private EditText placeET;
     private Button searchService;
     private Spinner spinnerTypes;
+    private CalendarView calendar;
     private MakeOrderController controller;
 
     @Override
@@ -32,8 +33,12 @@ public class MakeOrderActivity extends AppCompatActivity {
         ovenCheck = findViewById(R.id.ovenCheck);
 
         numPeopleET = findViewById(R.id.numPeopleET);
+        placeET = findViewById(R.id.placeET);
         searchService = findViewById(R.id.searchService);
         spinnerTypes = findViewById(R.id.spinnerTypes);
+
+        calendar = findViewById(R.id.calendarSelect);
+
 
         controller = new MakeOrderController(this);
     }
@@ -55,6 +60,10 @@ public class MakeOrderActivity extends AppCompatActivity {
         return numPeopleET;
     }
 
+    public EditText getPlaceET() {
+        return placeET;
+    }
+
     public Button getSearchService() {
         return searchService;
     }
@@ -63,8 +72,7 @@ public class MakeOrderActivity extends AppCompatActivity {
         return spinnerTypes;
     }
 
-    public void setSpinnerTypes(Spinner spinnerTypes) {
-        this.spinnerTypes = spinnerTypes;
+    public CalendarView getCalendar() {
+        return calendar;
     }
-
 }

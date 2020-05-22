@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,7 +43,7 @@ import appmoviles.com.weltchef.view.ChatActivity;
 
 import static android.app.Activity.RESULT_OK;
 
-public class ChatController implements View.OnClickListener, ChildEventListener {
+public class ChatController implements View.OnClickListener, ChildEventListener, AdapterView.OnItemSelectedListener {
 
     private ChatActivity activity;
     private User user;
@@ -68,6 +69,14 @@ public class ChatController implements View.OnClickListener, ChildEventListener 
         activity.getSendBtn().setOnClickListener(this);
         activity.getGalBtn().setOnClickListener(this);
         adapter.setUserId(user.getId());
+
+        if(user.isChef()){
+            activity.showSpinner();
+        }else if (!user.isChef()){
+            activity.hideSpinner();
+        }
+
+        activity.getSpinnerStatus().setOnItemSelectedListener(this);
 
         Query query = FirebaseDatabase.getInstance().getReference()
                 .child(Constants.FIREBASE_CHATS_BRANCH)
@@ -105,10 +114,16 @@ public class ChatController implements View.OnClickListener, ChildEventListener 
                         .child(Constants.FIREBASE_CHATS_BRANCH)
                         .child(messageContainer.getId()).push().getKey();
 
+                String pushIdMessage = FirebaseDatabase.getInstance().getReference()
+                        .child(Constants.FIREBASE_CHATS_BRANCH)
+                        .child(messageContainer.getId())
+                        .child("messages")
+                        .push()
+                        .getKey();
 
                 Message message = new Message(
                         uri == null ? Message.TYPE_TEXT : Message.TYPE_IMAGE,
-                        pushId,
+                        pushIdMessage,
                         body,
                         Calendar.getInstance().getTime().getTime(),
                         user.getId()
@@ -128,21 +143,24 @@ public class ChatController implements View.OnClickListener, ChildEventListener 
 
                 if(uri != null){
                     FirebaseStorage storage = FirebaseStorage.getInstance();
-                    storage.getReference().child("chats").child(message.getId())
+                    storage.getReference()
+                            .child(Constants.FIREBASE_CHATS_BRANCH).child(message.getId())
                             .putFile(uri).addOnCompleteListener(
                             task -> {
                                 if(task.isSuccessful()){
                                     Log.e(">>","Foto subida con éxito");
                                     FirebaseDatabase.getInstance().getReference()
-                                            .child("chats").child(messageContainer.getId()).child(pushId).setValue(message);
+                                            .child("chats")
+                                            .child(messageContainer.getId())
+                                            .child("messages")
+                                            .child(pushId)
+                                            .setValue(message);
                                 }
                             }
                     );
                 }
                 else {
-                    String pushIdMessage = FirebaseDatabase.getInstance().getReference()
-                            .child(Constants.FIREBASE_CHATS_BRANCH)
-                            .child(messageContainer.getId()).push().getKey();
+
                     FirebaseDatabase.getInstance().getReference()
                             .child(Constants.FIREBASE_CHATS_BRANCH)
                             .child(messageContainer.getId())
@@ -186,4 +204,23 @@ public class ChatController implements View.OnClickListener, ChildEventListener 
         }
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (position){
+            case 0:
+
+                break;
+            case 1:
+                FirebaseDatabase.getInstance().getReference()
+                        .child(Constants.FIREBASE_CHATS_BRANCH)
+                        .child(messageContainer.getId())
+                        .setValue(null);
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

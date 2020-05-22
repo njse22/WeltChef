@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.db.FirebaseDB;
+import appmoviles.com.weltchef.entity.Chef;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.entity.UsersManager;
 import appmoviles.com.weltchef.util.Constants;
@@ -107,12 +108,12 @@ public class LoginController implements View.OnClickListener, ValueEventListener
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         Log.e(TAG, "onDataChange::dataSnapshot -> "+ dataSnapshot );
         user = dataSnapshot.getValue(User.class);
-        Log.e(TAG, "onDataChange::user -> "+ user );
 
         if (user.isChef()){
             Intent i = new Intent(activity, ChefProfileActivity.class);
-            i.putExtra("user",user);
+            i.putExtra("user", dataSnapshot.getValue(Chef.class));
             activity.startActivity(i);
+
         }else {
             Intent i = new Intent(activity, ClientProfileActivity.class);
             i.putExtra("user",user);

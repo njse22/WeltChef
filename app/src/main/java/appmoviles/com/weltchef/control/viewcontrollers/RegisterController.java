@@ -22,7 +22,6 @@ public class RegisterController implements View.OnClickListener {
 
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
