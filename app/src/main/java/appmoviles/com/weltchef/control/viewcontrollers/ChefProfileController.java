@@ -30,6 +30,7 @@ import appmoviles.com.weltchef.util.HTTPSWebUtilDomi;
 import appmoviles.com.weltchef.view.ChatRoomActivity;
 import appmoviles.com.weltchef.view.ChefProfileActivity;
 import appmoviles.com.weltchef.view.CreatePlateActivity;
+import appmoviles.com.weltchef.view.DishInfoActivity;
 import appmoviles.com.weltchef.view.EditProfileActivity;
 import appmoviles.com.weltchef.view.PhotoViewFragment;
 
@@ -42,12 +43,8 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
     private File photo;
 
     public ChefProfileController(ChefProfileActivity view) {
-        Log.e(TAG, "-> true");
         this.view = view;
         this.chef = (Chef) view.getIntent().getExtras().get("user");
-        if (view.getIntent().getExtras().get("photo") != null)
-            photo = (File) view.getIntent().getExtras().get("photo");
-
         init();
     }
 
@@ -145,7 +142,12 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
 
     @Override
     public void onClick(View view, int position) {
-
+        Intent intent = new Intent(this.view, DishInfoActivity.class);
+        Menu menu = this.view.getPlateImageAdapter().getMenus().get(position);
+        intent.putExtra("menu",menu);
+        if (menu != null){
+            this.view.startActivity(intent);
+        }
     }
 
     @Override

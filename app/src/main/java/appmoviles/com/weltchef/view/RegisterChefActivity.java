@@ -36,7 +36,7 @@ public class RegisterChefActivity extends AppCompatActivity {
         conPasswordET = findViewById(R.id.conPasswordET);
         registerBtn = findViewById(R.id.registerChefBtn);
         descriptionET = findViewById(R.id.descriptionET);
-        chefAtHomeCheck = findViewById(R.id.chefAtHomeCheck);
+        chefAtHomeCheck = findViewById(R.id.chefHomeCheck);
         chefKitchenCheck = findViewById(R.id.chefKitchenCheck);
 
         controller = new RegisterChefController(this);

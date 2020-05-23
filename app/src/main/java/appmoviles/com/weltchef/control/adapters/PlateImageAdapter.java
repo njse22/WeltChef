@@ -37,6 +37,10 @@ public class PlateImageAdapter extends RecyclerView.Adapter<PlateImageHolder> {
         this.menus = menus;
     }
 
+    public ArrayList<Menu> getMenus() {
+        return menus;
+    }
+
     public void addMenu(Menu menu){
         menus.add(menu);
         notifyDataSetChanged();
