@@ -40,7 +40,7 @@ import appmoviles.com.weltchef.view.PhotoDialogFragment;
 
 import static android.app.Activity.RESULT_OK;
 
-public class EditProfileController implements View.OnClickListener {
+public class  EditProfileController implements View.OnClickListener {
 
     private final static String TAG = "EditProfileController";
 
