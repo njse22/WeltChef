@@ -24,8 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Nombre"
         android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/chefPicture"
         app:layout_constraintTop_toBottomOf="@+id/tituloTxt" />
 
@@ -34,9 +36,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Correo"
         android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/chefPicture"
         app:layout_constraintTop_toBottomOf="@+id/nomUsuarioTxt" />
 
@@ -45,9 +49,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Teléfono"
         android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/chefPicture"
         app:layout_constraintTop_toBottomOf="@+id/correoTxt" />
 
@@ -68,7 +74,7 @@
         android:id="@+id/recetasTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Recetas"
         android:textColor="#FF0000"
@@ -84,6 +90,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif"
         android:text="Descripción"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.273"
@@ -152,7 +159,9 @@
         android:layout_height="152dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/profile_image"
+        app:layout_constraintBottom_toTopOf="@+id/instagramBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

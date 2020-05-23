@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/background_app"
     tools:context=".view.DishInfoActivity">
 
     <ImageView
@@ -25,8 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Nombre"
         android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/chefPicture"
         app:layout_constraintTop_toBottomOf="@+id/tituloTxt" />
 
@@ -35,9 +38,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Correo"
         android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/chefPicture"
         app:layout_constraintTop_toBottomOf="@+id/nomUsuarioTxt" />
 
@@ -46,9 +51,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Teléfono"
         android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/chefPicture"
         app:layout_constraintTop_toBottomOf="@+id/correoTxt" />
 
@@ -57,8 +64,8 @@
         android:id="@+id/chefPicture"
         android:layout_width="152dp"
         android:layout_height="152dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/profile_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -67,28 +74,29 @@
         android:id="@+id/infochefTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:text="Información del Plato"
         android:textColor="#FF0000"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/descriptionTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chefPicture"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/chefPicture" />
 
     <TextView
         android:id="@+id/descriptionTxt"
-        android:layout_width="415dp"
+        android:layout_width="0dp"
         android:layout_height="133dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif"
         android:text="Descripción"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chefPicture" />
+        app:layout_constraintTop_toBottomOf="@+id/infochefTxt" />
 
     <TextView
         android:id="@+id/recetasTxt"
@@ -100,15 +108,19 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionTxt" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/platesList"
-        android:layout_width="422dp"
+        android:layout_width="0dp"
         android:layout_height="324dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recetasTxt" />
 
