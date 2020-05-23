@@ -85,7 +85,7 @@
         android:id="@+id/spinnerStatus"
         android:layout_width="155dp"
         android:layout_height="45dp"
-        android:visibility22dp="gone"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/messagesList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"

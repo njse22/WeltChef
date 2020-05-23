@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".view.EditProfileActivity"></activity>
+        <activity android:name=".view.DishInfoActivity"></activity>
+        <activity android:name=".view.EditProfileActivity" />
         <activity android:name=".view.ChatRoomActivity" />
         <activity android:name=".view.MakeOrderActivity" />
         <activity android:name=".view.ChatActivity" />
@@ -37,7 +38,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
