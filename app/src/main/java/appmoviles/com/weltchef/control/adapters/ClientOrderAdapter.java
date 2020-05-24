@@ -69,6 +69,7 @@ public class ClientOrderAdapter extends BaseAdapter {
         String nameImage = menus.get(position).getId();
         File file = new File(parent.getContext().getExternalFilesDir(null)+"/"+nameImage);
 
+<<<<<<< HEAD
         if(file.exists()){
             loadImage(imageMenu, file);
         }else {
@@ -102,5 +103,4 @@ public class ClientOrderAdapter extends BaseAdapter {
         Bitmap bitmap = BitmapFactory.decodeFile(file.toString());
         imageMenu.setImageBitmap(bitmap);
     }
-
 }
