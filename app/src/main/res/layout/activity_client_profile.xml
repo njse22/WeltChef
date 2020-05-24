@@ -7,6 +7,16 @@
     android:layout_height="match_parent"
     android:background="@mipmap/background_app">
 
+    <ImageButton
+        android:id="@+id/clientPicture"
+        android:layout_width="152dp"
+        android:layout_height="152dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/profile_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/clientName"
         android:layout_width="wrap_content"
@@ -84,19 +94,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clientPicture" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="200dp"
-        android:text="Chefs preferidos"
-        android:textColor="#FF0000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/lastServices"
         android:layout_width="0dp"
@@ -111,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <LinearLayout
-            android:id="@+id/layoutOders"
+            android:id="@+id/layoutOrders"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -122,6 +119,19 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="200dp"
+        android:text="Chefs preferidos"
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/likedChefs"
@@ -136,21 +146,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-        <LinearLayout
+        <ListView
+            android:id="@+id/listChefs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_height="wrap_content" />
     </androidx.core.widget.NestedScrollView>
-
-    <ImageButton
-        android:id="@+id/clientPicture"
-        android:layout_width="152dp"
-        android:layout_height="152dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/profile_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

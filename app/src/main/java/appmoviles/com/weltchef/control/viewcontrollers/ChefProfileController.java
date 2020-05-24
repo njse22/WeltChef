@@ -149,58 +149,6 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
         }
     }
 
-    /**
-     * Este metodo obtiene las URLs de las imagenes asociaddas con los platos de un chef específico.
-     * Primero, busca todos los platos de un chef en FirebaseDatabase y luego obtiene las direcciones de las
-     * imagenes almacenadas en FirebaseStorage.
-     *
-     * @param chefId Identificador del chef para obtener las imagenes
-     * @return URL's de todos los platos realcionados con el chef
-     */
-    public ArrayList<String> getChefDishesImages(String chefId) {
-        ArrayList<String> urls = new ArrayList<>();
-
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-
-        Query listQuery = FirebaseDatabase.getInstance().getReference()
-                .child(Constants.FIREBASE_USER_BRANCH)
-                .child(chefId)
-                .child("menus")
-                .limitToLast(10);
-
-        listQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            @SuppressLint("LongLogTag")
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    Menu menu = child.getValue(Menu.class);
-
-                    //Consulta a FirebaseStorage para obtiner la dirección del recurso
-                    storage.getReference()
-                            .child(Constants.FIREBASE_MENU_BRANCH)
-                            .child(menu.getId())
-                            .getDownloadUrl()
-                            .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    urls.add(uri.toString());
-                                }
-                            });
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.i("Chef profile", "No hay registros de platos");
-            }
-        });
-
-        return urls;
-    }
-
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         if (dataSnapshot.getChildrenCount() == 0){

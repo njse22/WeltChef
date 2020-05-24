@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,6 +34,7 @@ public class ChefProfileActivity extends AppCompatActivity {
     private boolean isFabMainOpen;
     private RecyclerView listPlates;
     private PlateImageAdapter plateImageAdapter;
+    private ListView listChefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,7 @@ public class ChefProfileActivity extends AppCompatActivity {
         this.plateImageAdapter = new PlateImageAdapter(this);
         this.listPlates.setLayoutManager(new GridLayoutManager(this,3));
         this.listPlates.setAdapter(plateImageAdapter);
+
 
         fabEditProfile = (FloatingActionButton) findViewById(R.id.fabEditProfile);
         fabAddDish = (FloatingActionButton) findViewById(R.id.fabAddDish);
