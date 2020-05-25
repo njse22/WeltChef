@@ -102,5 +102,4 @@ public class ClientOrderAdapter extends BaseAdapter {
         Bitmap bitmap = BitmapFactory.decodeFile(file.toString());
         imageMenu.setImageBitmap(bitmap);
     }
-
 }

@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import android.view.View;
 
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -19,6 +20,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
+
+import java.util.ArrayList;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.control.adapters.ClientOrderAdapter;
@@ -36,6 +39,8 @@ public class ClientProfileActivity extends AppCompatActivity  {
     private NestedScrollView likedChefs;
     private ClientOrderAdapter orderAdapter;
     private ListView listOrders;
+    private ListView listChefs;
+    private ArrayAdapter<String> chefs;
     private ClientProfileController controller;
 
     @Override
@@ -52,8 +57,14 @@ public class ClientProfileActivity extends AppCompatActivity  {
         lastServices = findViewById(R.id.lastServices);
         likedChefs = findViewById(R.id.likedChefs);
         listOrders = findViewById(R.id.listOrders);
+
+        chefs = new ArrayAdapter<>(this, android.R.layout.simple_list_item_2, new ArrayList<>());
+        listChefs = findViewById(R.id.listChefs);
+        listChefs.setAdapter(chefs);
+
         orderAdapter = new ClientOrderAdapter();
         listOrders.setAdapter(orderAdapter);
+
 
         controller = new ClientProfileController(this);
     }
@@ -90,6 +101,14 @@ public class ClientProfileActivity extends AppCompatActivity  {
         return listOrders;
     }
 
+    public ListView getListChefs() {
+        return listChefs;
+    }
+
+    public ArrayAdapter<String> getChefs() {
+        return chefs;
+    }
+
     public ClientOrderAdapter getOrderAdapter() {
         return orderAdapter;
     }
@@ -115,4 +134,8 @@ public class ClientProfileActivity extends AppCompatActivity  {
         controller.onActivityResult(requestCode,resultCode, data);
     }
 
+    public void updateListChef(ArrayList<String> chefs) {
+        this.chefs = new ArrayAdapter<>(this, android.R.layout.simple_list_item_2, chefs);
+        listChefs.setAdapter(this.chefs);
+    }
 }

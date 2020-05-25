@@ -127,6 +127,21 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
         }
     }
 
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == ImageryUtl.CAMERA_CALLBACK && resultCode == RESULT_OK) {
+            Bitmap image = BitmapFactory.decodeFile(photo.getPath());
+            Bitmap thumbnail = Bitmap.createScaledBitmap(image, image.getWidth() / 4, image.getHeight() / 4, false);
+            view.getChefPicture().setImageBitmap(thumbnail);
+        } else if (requestCode == ImageryUtl.GALLERY_CALLBACK && resultCode == RESULT_OK) {
+            Uri uri = data.getData();
+            photo = new File(ImageryUtl.getPath(this.view, uri));
+            Bitmap image = BitmapFactory.decodeFile(photo.getPath());
+            Drawable d = Drawable.createFromPath(ImageryUtl.getPath(this.view, uri));
+            view.getChefPicture().setImageBitmap(image);
+        }
+    }
+
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         if (dataSnapshot.getChildrenCount() == 0){
