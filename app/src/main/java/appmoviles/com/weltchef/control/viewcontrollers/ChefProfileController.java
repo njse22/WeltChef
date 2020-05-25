@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -27,12 +29,15 @@ import appmoviles.com.weltchef.entity.Menu;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.util.HTTPSWebUtilDomi;
+import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.ChatRoomActivity;
 import appmoviles.com.weltchef.view.ChefProfileActivity;
 import appmoviles.com.weltchef.view.CreatePlateActivity;
 import appmoviles.com.weltchef.view.DishInfoActivity;
 import appmoviles.com.weltchef.view.EditProfileActivity;
 import appmoviles.com.weltchef.view.PhotoViewFragment;
+
+import static android.app.Activity.RESULT_OK;
 
 public class ChefProfileController implements View.OnClickListener, ValueEventListener, RecyclerTouchListener.ClickListener {
 

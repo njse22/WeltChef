@@ -72,17 +72,15 @@ public class ChefProfileActivity extends AppCompatActivity {
         fabCheckSchedule = findViewById(R.id.fabCheckSchedule);
         mainFab = findViewById(R.id.mainFab);
 
-
-        mainFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isFabMainOpen) {
-                    showFabMenu();
-                } else {
-                    closeFabMenu();
+        mainFab.setOnClickListener(
+                v -> {
+                    if (!isFabMainOpen) {
+                        showFabMenu();
+                    } else {
+                        closeFabMenu();
+                    }
                 }
-            }
-        });
+        );
 
         weltChef = findViewById(R.id.weltChefBtn);
         facebook = findViewById(R.id.facebookBtn);

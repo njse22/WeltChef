@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 import appmoviles.com.weltchef.R;
@@ -31,16 +33,21 @@ public class ClientProfileActivity extends AppCompatActivity  {
 
     private View dishLayau;
     private TextView clientName;
-    private ImageButton clientPicture;
-    private Button searchChef;
-    private Button askService;
+    private TextView searchChef;
+    private TextView askService;
     private Button chatBtn;
+    private ImageButton clientPicture;
     private NestedScrollView lastServices;
     private NestedScrollView likedChefs;
     private ClientOrderAdapter orderAdapter;
     private ListView listOrders;
     private ListView listChefs;
     private ArrayAdapter<String> chefs;
+    private boolean isFabMainOpen;
+    private FloatingActionButton mainFab;
+    private FloatingActionButton searchChefFab;
+    private FloatingActionButton seaechServiceFab;
+    private FloatingActionButton chatFab;
     private ClientProfileController controller;
 
     @Override
@@ -52,11 +59,11 @@ public class ClientProfileActivity extends AppCompatActivity  {
         this.clientName = findViewById(R.id.clientName);
         searchChef = findViewById(R.id.searchChef);
         askService = findViewById(R.id.askService);
-        chatBtn = findViewById(R.id.chatBtn);
         clientPicture = findViewById(R.id.clientPicture);
         lastServices = findViewById(R.id.lastServices);
         likedChefs = findViewById(R.id.likedChefs);
         listOrders = findViewById(R.id.listOrders);
+        chatBtn = findViewById(R.id.chatBtn);
 
         chefs = new ArrayAdapter<>(this, android.R.layout.simple_list_item_2, new ArrayList<>());
         listChefs = findViewById(R.id.listChefs);
@@ -65,6 +72,20 @@ public class ClientProfileActivity extends AppCompatActivity  {
         orderAdapter = new ClientOrderAdapter();
         listOrders.setAdapter(orderAdapter);
 
+        chatFab = findViewById(R.id.chatFab);
+        seaechServiceFab = findViewById(R.id.seaechServiceFab);
+        searchChefFab = findViewById(R.id.searchChefFab);
+        mainFab = findViewById(R.id.mainFab);
+
+        mainFab.setOnClickListener(
+                v -> {
+                    if (!isFabMainOpen) {
+                        showFabMenu();
+                    } else {
+                        closeFabMenu();
+                    }
+                }
+        );
 
         controller = new ClientProfileController(this);
     }
@@ -73,11 +94,11 @@ public class ClientProfileActivity extends AppCompatActivity  {
         return clientName;
     }
 
-    public Button getSearchChef() {
+    public TextView getSearchChef() {
         return searchChef;
     }
 
-    public Button getAskService() {
+    public TextView getAskService() {
         return askService;
     }
 
@@ -87,6 +108,18 @@ public class ClientProfileActivity extends AppCompatActivity  {
 
     public ImageButton getClientPicture() {
         return clientPicture;
+    }
+
+    public FloatingActionButton getSearchChefFab() {
+        return searchChefFab;
+    }
+
+    public FloatingActionButton getSeaechServiceFab() {
+        return seaechServiceFab;
+    }
+
+    public FloatingActionButton getChatFab() {
+        return chatFab;
     }
 
     public NestedScrollView getLastServices() {
@@ -115,6 +148,20 @@ public class ClientProfileActivity extends AppCompatActivity  {
 
     public void setOrderAdapter(ClientOrderAdapter orderAdapter) {
         this.orderAdapter = orderAdapter;
+    }
+
+    private void closeFabMenu() {
+        isFabMainOpen = false;
+        seaechServiceFab.animate().translationY(0);
+        searchChefFab.animate().translationY(0);
+        chatFab.animate().translationY(0);
+    }
+
+    private void showFabMenu() {
+        isFabMainOpen = true;
+        seaechServiceFab.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
+        searchChefFab.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
+        chatFab.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
     }
 
     @Override

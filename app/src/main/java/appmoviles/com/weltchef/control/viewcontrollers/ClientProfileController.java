@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,6 +34,7 @@ import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.ChatRoomActivity;
 import appmoviles.com.weltchef.view.ClientProfileActivity;
+import appmoviles.com.weltchef.view.LogingActivity;
 import appmoviles.com.weltchef.view.MakeOrderActivity;
 import appmoviles.com.weltchef.view.MapsActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
@@ -51,12 +53,15 @@ public class ClientProfileController implements View.OnClickListener, ValueEvent
         this.view = view;
         this.client =  (User) view.getIntent().getExtras().get("user");
         this.view.getClientName().setText(client.getName());
+        this.view.getSearchChef().setText(client.getEmail());
+        this.view.getAskService().setText(client.getPhone());
         this.order = (Order) view.getIntent().getExtras().get("order");
         chefs = new ArrayList<>();
-        view.getAskService().setOnClickListener(this);
-        view.getSearchChef().setOnClickListener(this);
-        view.getChatBtn().setOnClickListener(this);
+        view.getSeaechServiceFab().setOnClickListener(this);
+        view.getSearchChefFab().setOnClickListener(this);
+        view.getChatFab().setOnClickListener(this);
         view.getClientPicture().setOnClickListener(this);
+        view.getChatBtn().setOnClickListener(this);
 
         FirebaseDatabase.getInstance().getApp().getOptions().getDatabaseUrl();
 
@@ -104,14 +109,14 @@ public class ClientProfileController implements View.OnClickListener, ValueEvent
                 this.view.startActivityForResult(gallery, ImageryUtl.GALLERY_CALLBACK);
                 break;
 
-            case R.id.askService:
+            case R.id.seaechServiceFab:
                 Intent intentMakeOrder = new Intent(view, MakeOrderActivity.class);
                 intentMakeOrder.putExtra("user", client);
                 view.startActivity(intentMakeOrder);
                 view.finish();
                 break;
 
-            case R.id.searchChef:
+            case R.id.searchChefFab:
                 Intent mapIntent = new Intent(view, MapsActivity.class);
                 ActivityCompat.requestPermissions(view, new String[]{
                         Manifest.permission.ACCESS_FINE_LOCATION,
@@ -126,10 +131,17 @@ public class ClientProfileController implements View.OnClickListener, ValueEvent
                 }
                 break;
 
-            case R.id.chatBtn:
+            case R.id.chatFab:
                 Intent intentChat = new Intent(view, ChatRoomActivity.class);
                 intentChat.putExtra("user", (User) view.getIntent().getExtras().get("user"));
                 view.startActivity(intentChat);
+                break;
+
+            case R.id.chatBtn:
+                FirebaseAuth.getInstance().signOut();
+                Intent intentLogout = new Intent(this.view, LogingActivity.class);
+                this.view.startActivity(intentLogout);
+                this.view.finish();
                 break;
         }
     }

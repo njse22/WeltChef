@@ -172,8 +172,17 @@ public class LoginController implements View.OnClickListener, ValueEventListener
 
     public void onResume() {
         if (activity.isLoggedInFacebook()){
-            activity.getLoginTxt().setText("CONTINUA COMO "+
-                    FirebaseAuth.getInstance().getCurrentUser().getDisplayName().toUpperCase()  );
+            activity.getLoginTxt().setText("CONTINUAR SESIÓN");
+            activity.getLoginBtn().setVisibility(View.GONE);
+            FirebaseDatabase.getInstance().getReference()
+                    .child(Constants.FIREBASE_USER_BRANCH)
+                    .child(FirebaseAuth.getInstance().getUid())
+                    .addListenerForSingleValueEvent(this);
+        }
+        if(FirebaseAuth.getInstance().getUid() != null){
+            Log.e(TAG, "onResume::email --> true");
+            activity.getLoginTxt().setText("CONTINUAR SESIÓN");
+            activity.getLoginBtn().setVisibility(View.GONE);
             FirebaseDatabase.getInstance().getReference()
                     .child(Constants.FIREBASE_USER_BRANCH)
                     .child(FirebaseAuth.getInstance().getUid())
@@ -181,4 +190,5 @@ public class LoginController implements View.OnClickListener, ValueEventListener
         }
 
     }
+
 }
