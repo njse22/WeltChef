@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CalendarView;
 import android.widget.CompoundButton;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -63,8 +65,12 @@ public class MakeOrderController implements
                 i.putExtra("order", order);
                 i.putExtra("user", (User)activity.getIntent().getExtras().get("user"));
                 i.putExtra("body", body);
-                activity.startActivity(i);
-                activity.finish();
+                try {
+                    int numP = Integer.parseInt(activity.getNumPeopleET().getText().toString());
+                    activity.startActivity(i);
+                }catch (NumberFormatException e){
+                    Toast.makeText(activity,"El Número de personas debe ser un valor entero", Toast.LENGTH_LONG);
+                }
                 break;
         }
     }
@@ -136,8 +142,12 @@ public class MakeOrderController implements
             body =  "Fecha: " + dayOfMonth + " / " + month + " / " + year + "\n" +
                     "Número de personas: " + activity.getNumPeopleET().getText().toString() + "\n" +
                     "Lugar: " + activity.getPlaceET().getText().toString();
-
+        try {
+            int numP = Integer.parseInt(activity.getNumPeopleET().getText().toString());
             order.setNumPersonas(Integer.parseInt(activity.getNumPeopleET().getText().toString()));
+        }catch (NumberFormatException e){
+            Toast.makeText(activity,"El Número de personas debe ser un valor entero", Toast.LENGTH_LONG);
+        }
     }
 
 }

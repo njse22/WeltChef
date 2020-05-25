@@ -85,7 +85,6 @@ public class LoginController implements View.OnClickListener, ValueEventListener
                                 Toast.makeText(activity,e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                             }
                 );
-                activity.finish();
                 break;
             case R.id.registerTextButton:
                 Intent intent = new Intent(activity, RegisterActivity.class);

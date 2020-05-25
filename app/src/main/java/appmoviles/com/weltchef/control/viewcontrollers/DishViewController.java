@@ -80,10 +80,14 @@ public class DishViewController implements
 
     @Override
     public void onClick(View view, int position) {
-        activity.getAdapter().getHolder().getDishList().setBackgroundColor(22222);
         order.getPlates().add(menus.get(position));
         firebaseDB.sendInfo(order, order.getId(), Constants.FIREBASE_ORDER_BRANCH);
-
+        Intent i = new Intent(activity, FoodOrderActivity.class);
+        i.putExtra("order", order);
+        i.putExtra("user", user);
+        i.putExtra("body", (String) activity.getIntent().getExtras().get("body"));
+        activity.startActivity(i);
+        activity.finish();
     }
 
     @Override

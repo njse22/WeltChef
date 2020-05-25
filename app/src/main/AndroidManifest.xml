@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".view.DishInfoActivity"></activity>
+        <activity android:name=".view.RegisterClientActivity"></activity>
+        <activity android:name=".view.DishInfoActivity" />
         <activity android:name=".view.EditProfileActivity" />
         <activity android:name=".view.ChatRoomActivity" />
         <activity android:name=".view.MakeOrderActivity" />
