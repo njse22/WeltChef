@@ -116,8 +116,13 @@ public class MakeOrderController implements
 
     @Override
     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-        Menu menu = dataSnapshot.getValue(Menu.class);
-        menus.add(menu);
+        if(dataSnapshot.getChildrenCount() == 0){
+            Toast.makeText(activity,"No hay platos de este tipo", Toast.LENGTH_LONG);
+        }
+        else {
+            Menu menu = dataSnapshot.getValue(Menu.class);
+            menus.add(menu);
+        }
     }
 
     @Override
