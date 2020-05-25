@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.db.FirebaseDB;
+import appmoviles.com.weltchef.entity.Chef;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.entity.UsersManager;
 import appmoviles.com.weltchef.util.Constants;
@@ -39,7 +40,7 @@ import appmoviles.com.weltchef.view.RegisterActivity;
 
 public class LoginController implements View.OnClickListener, ValueEventListener, FacebookCallback<LoginResult> {
 
-    private final static String TAG = "LoginController >>>";
+    private final static String TAG = "LoginController";
 
     private LogingActivity activity;
     private UsersManager manager;
@@ -65,7 +66,6 @@ public class LoginController implements View.OnClickListener, ValueEventListener
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.loginBtn:
-                Log.e(TAG, "onClick::loginBtn -> true");
                 String email = activity.getUserNameEditText().getText().toString();
                 String password = activity.getPasswordEditText().getText().toString();
 
@@ -84,7 +84,6 @@ public class LoginController implements View.OnClickListener, ValueEventListener
                                 Toast.makeText(activity,e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                             }
                 );
-                activity.finish();
                 break;
             case R.id.registerTextButton:
                 Intent intent = new Intent(activity, RegisterActivity.class);
@@ -105,12 +104,11 @@ public class LoginController implements View.OnClickListener, ValueEventListener
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        Log.e(TAG, "onDataChange::dataSnapshot -> "+ dataSnapshot );
         user = dataSnapshot.getValue(User.class);
 
         if (user.isChef()){
             Intent i = new Intent(activity, ChefProfileActivity.class);
-            i.putExtra("user",user);
+            i.putExtra("user", dataSnapshot.getValue(Chef.class));
             activity.startActivity(i);
 
         }else {
@@ -172,13 +170,22 @@ public class LoginController implements View.OnClickListener, ValueEventListener
 
     public void onResume() {
         if (activity.isLoggedInFacebook()){
-            activity.getLoginTxt().setText("CONTINUA COMO "+
-                    FirebaseAuth.getInstance().getCurrentUser().getDisplayName().toUpperCase()  );
+            activity.getLoginTxt().setText("CONTINUAR SESIÓN");
+            activity.getLoginBtn().setVisibility(View.GONE);
             FirebaseDatabase.getInstance().getReference()
                     .child(Constants.FIREBASE_USER_BRANCH)
                     .child(FirebaseAuth.getInstance().getUid())
                     .addListenerForSingleValueEvent(this);
         }
-
+        if(FirebaseAuth.getInstance().getUid() != null){
+            Log.e(TAG, "onResume::email --> true");
+            activity.getLoginTxt().setText("CONTINUAR SESIÓN");
+            activity.getLoginBtn().setVisibility(View.GONE);
+            FirebaseDatabase.getInstance().getReference()
+                    .child(Constants.FIREBASE_USER_BRANCH)
+                    .child(FirebaseAuth.getInstance().getUid())
+                    .addListenerForSingleValueEvent(this);
+        }
     }
+
 }

@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CalendarView;
 import android.widget.CompoundButton;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,26 +15,37 @@ import androidx.annotation.Nullable;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.db.FirebaseDB;
 import appmoviles.com.weltchef.entity.Menu;
+import appmoviles.com.weltchef.entity.Order;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.view.DishViewActivity;
 import appmoviles.com.weltchef.view.MakeOrderActivity;
 
-public class MakeOrderController implements View.OnClickListener, AdapterView.OnItemSelectedListener, ChildEventListener, CompoundButton.OnCheckedChangeListener {
+public class MakeOrderController implements
+        View.OnClickListener,
+        AdapterView.OnItemSelectedListener,
+        ChildEventListener,
+        CompoundButton.OnCheckedChangeListener, CalendarView.OnDateChangeListener {
+
+    private final static String TAG = "MakeOrderController";
 
     private MakeOrderActivity activity;
     private FirebaseDB firebaseDB;
     private ArrayList<Menu> menus;
+    private Order order;
+    private String body;
 
     public MakeOrderController(MakeOrderActivity activity) {
         this.activity = activity;
         this.firebaseDB = new FirebaseDB();
         this.menus = new ArrayList<>();
+        this.order = new Order();
         init();
     }
 
@@ -39,6 +53,7 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
         activity.getSearchService().setOnClickListener(this);
         activity.getSpinnerTypes().setOnItemSelectedListener(this);
         activity.getChefHomeCheck().setOnCheckedChangeListener(this);
+        activity.getCalendar().setOnDateChangeListener(this);
     }
 
     @Override
@@ -47,17 +62,25 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
             case R.id.searchService:
                 Intent i = new Intent(activity, DishViewActivity.class);
                 i.putExtra("menus", menus);
+                i.putExtra("order", order);
                 i.putExtra("user", (User)activity.getIntent().getExtras().get("user"));
-                activity.startActivity(i);
-                activity.finish();
+                i.putExtra("body", body);
+                try {
+                    int numP = Integer.parseInt(activity.getNumPeopleET().getText().toString());
+                    activity.startActivity(i);
+                }catch (NumberFormatException e){
+                    Toast.makeText(activity,"El Número de personas debe ser un valor entero", Toast.LENGTH_LONG);
+                }
                 break;
         }
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Log.e(TAG, "onItemSelected::parent.getSelectedItemPosition() -> " + (parent.getSelectedItemPosition()));
         switch (parent.getSelectedItemPosition()){
             case Menu.COLOMBIANA:
+                Log.e(TAG, "onItemSelected::Menu.COLOMBIANA -> true ");
                 firebaseDB.getMenus(Menu.COLOMBIANA);
                 firebaseDB.getQuerySearch().addChildEventListener(this);
                 break;
@@ -93,9 +116,13 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
 
     @Override
     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-        Menu menu = dataSnapshot.getValue(Menu.class);
-        menus.add(menu);
-
+        if(dataSnapshot.getChildrenCount() == 0){
+            Toast.makeText(activity,"No hay platos de este tipo", Toast.LENGTH_LONG);
+        }
+        else {
+            Menu menu = dataSnapshot.getValue(Menu.class);
+            menus.add(menu);
+        }
     }
 
     @Override
@@ -114,4 +141,18 @@ public class MakeOrderController implements View.OnClickListener, AdapterView.On
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
     }
+
+    @Override
+    public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+            body =  "Fecha: " + dayOfMonth + " / " + month + " / " + year + "\n" +
+                    "Número de personas: " + activity.getNumPeopleET().getText().toString() + "\n" +
+                    "Lugar: " + activity.getPlaceET().getText().toString();
+        try {
+            int numP = Integer.parseInt(activity.getNumPeopleET().getText().toString());
+            order.setNumPersonas(Integer.parseInt(activity.getNumPeopleET().getText().toString()));
+        }catch (NumberFormatException e){
+            Toast.makeText(activity,"El Número de personas debe ser un valor entero", Toast.LENGTH_LONG);
+        }
+    }
+
 }

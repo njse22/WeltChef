@@ -1,16 +1,23 @@
 package appmoviles.com.weltchef.view;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,16 +28,22 @@ import appmoviles.com.weltchef.control.viewcontrollers.ChefProfileController;
 
 public class ChefProfileActivity extends AppCompatActivity {
 
-
-    private TextView recipes, nameChef, email, description, telephone;
-    private ImageView titleapp;
     private ChefProfileController controller;
-    private Button weltChef, facebook, instagram, twitter;
+    private TextView recipes;
+    private TextView nameChef;
+    private TextView email;
+    private TextView description;
+    private TextView telephone;
+    private ImageView titleapp;
     private ImageButton chefPicture;
-    private FloatingActionButton mainFab, fabEditProfile, fabAddDish, fabCheckSchedule;
+    private FloatingActionButton mainFab;
+    private FloatingActionButton fabEditProfile;
+    private FloatingActionButton fabAddDish;
+    private FloatingActionButton  fabCheckSchedule;
     private boolean isFabMainOpen;
     private RecyclerView listPlates;
     private PlateImageAdapter plateImageAdapter;
+    private ListView listChefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,25 +63,20 @@ public class ChefProfileActivity extends AppCompatActivity {
         this.listPlates.setLayoutManager(new GridLayoutManager(this,3));
         this.listPlates.setAdapter(plateImageAdapter);
 
-        fabEditProfile = (FloatingActionButton) findViewById(R.id.fabEditProfile);
-        fabAddDish = (FloatingActionButton) findViewById(R.id.fabAddDish);
-        fabCheckSchedule = (FloatingActionButton) findViewById(R.id.fabCheckSchedule);
-        mainFab = (FloatingActionButton) findViewById(R.id.mainFab);
-        mainFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isFabMainOpen) {
-                    showFabMenu();
-                } else {
-                    closeFabMenu();
-                }
-            }
-        });
+        fabEditProfile = findViewById(R.id.fabEditProfile);
+        fabAddDish = findViewById(R.id.fabAddDish);
+        fabCheckSchedule = findViewById(R.id.fabCheckSchedule);
+        mainFab = findViewById(R.id.mainFab);
 
-        weltChef = findViewById(R.id.weltChefBtn);
-        facebook = findViewById(R.id.facebookBtn);
-        instagram = findViewById(R.id.instagramBtn);
-        twitter = findViewById(R.id.twitterBtn);
+        mainFab.setOnClickListener(
+                v -> {
+                    if (!isFabMainOpen) {
+                        showFabMenu();
+                    } else {
+                        closeFabMenu();
+                    }
+                }
+        );
 
         controller = new ChefProfileController(this);
     }
@@ -99,22 +107,6 @@ public class ChefProfileActivity extends AppCompatActivity {
 
     public ChefProfileController getController() {
         return controller;
-    }
-
-    public Button getWeltChef() {
-        return weltChef;
-    }
-
-    public Button getFacebook() {
-        return facebook;
-    }
-
-    public Button getInstagram() {
-        return instagram;
-    }
-
-    public Button getTwitter() {
-        return twitter;
     }
 
     public ImageButton getChefPicture() {
@@ -162,9 +154,33 @@ public class ChefProfileActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        controller.onActivityResult(requestCode, resultCode, data);
+
+    public static class PhotoViewFragmentAC extends DialogFragment {
+
+        private View.OnClickListener listener;
+        private Dialog dialog;
+        private ImageView imageView;
+
+        public PhotoViewFragmentAC(View.OnClickListener listener) {
+            this.listener = listener;
+        }
+
+        public void setImageView(ImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = requireActivity().getLayoutInflater();
+            View view = inflater.inflate(R.layout.fragment_photo_view, null);
+            imageView = view.findViewById(R.id.picture);
+            builder.setView(view);
+            this.dialog = builder.create();
+            return this.dialog;
+        }
+
     }
+
 }

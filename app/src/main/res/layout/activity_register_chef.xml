@@ -62,13 +62,13 @@
                 android:ems="10"
                 android:hint="@string/email"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/passwordET"
+                app:layout_constraintBottom_toTopOf="@+id/password"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nameET" />
 
             <EditText
-                android:id="@+id/passwordET"
+                android:id="@+id/password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="120dp"
@@ -94,13 +94,13 @@
                 android:ems="10"
                 android:hint="Confirmar Contraseña"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/phoneET"
+                app:layout_constraintBottom_toTopOf="@+id/name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passwordET" />
+                app:layout_constraintTop_toBottomOf="@+id/password" />
 
             <EditText
-                android:id="@+id/phoneET"
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="120dp"
@@ -117,23 +117,33 @@
 
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints">
 
                 <CheckBox
-                    android:id="@+id/chefAtHomeCheck"
+                    android:id="@+id/chefHomeCheck"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Chef en Casa " />
+                    android:layout_marginStart="35dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Chef a Domicilio"
+                    android:textSize="16sp" />
+
+                <Space
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"></Space>
 
                 <CheckBox
                     android:id="@+id/chefKitchenCheck"
-                    android:layout_width="wrap_content"
+                    android:layout_width="167dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Clases de Cosina " />
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Clases de Cocina"
+                    android:textSize="16sp" />
 
 
             </LinearLayout>
@@ -150,7 +160,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/descriptionET"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phoneET"
+                app:layout_constraintTop_toBottomOf="@+id/name"
                 tools:listfooter="Comida Italiana"
                 tools:listheader="Comida Francesa" />
 
@@ -169,14 +179,14 @@
                 app:layout_constraintBottom_toTopOf="@+id/registerChefBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phoneET" />
+                app:layout_constraintTop_toBottomOf="@+id/name" />
 
 
             <Button
                 android:id="@+id/registerChefBtn"
                 android:layout_width="156dp"
                 android:layout_height="47dp"
-                android:layout_marginStart="125dp"
+                android:layout_marginStart="135dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="100dp"
                 android:layout_marginBottom="10dp"
@@ -189,7 +199,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phoneET" />
+                app:layout_constraintTop_toBottomOf="@+id/name" />
 
 
         </LinearLayout>

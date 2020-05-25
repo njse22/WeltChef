@@ -7,6 +7,8 @@ public class Message implements Serializable {
     public final static int TYPE_TEXT = 0;
     public final static int TYPE_IMAGE = 1;
 
+    public static final String ORDER_MESSAGE = "Tienes una nueva orden pendiente, revisa tu chat: ";
+
     private int type;
     private String id;
     private String body;

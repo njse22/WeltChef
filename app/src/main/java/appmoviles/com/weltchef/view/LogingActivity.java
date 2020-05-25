@@ -24,7 +24,7 @@ public class LogingActivity extends AppCompatActivity {
     private Button loginBtn;
     private LoginButton loginFacebookBtn;
     private Button registerTextButton;
-    private TextView loginTxt;
+    private Button loginTxt;
     private boolean isLoggedInFacebook;
     private CallbackManager callbackManager;
     private LoginController controller;
@@ -49,32 +49,18 @@ public class LogingActivity extends AppCompatActivity {
         loginFacebookBtn.registerCallback(callbackManager, controller);
         /** End Facebook Login **/
 
-
-
     }
 
     public EditText getUserNameEditText() {
         return userNameEditText;
     }
 
-    public void setUserNameEditText(EditText userNameEditText) {
-        this.userNameEditText = userNameEditText;
-    }
-
     public EditText getPasswordEditText() {
         return passwordEditText;
     }
 
-    public void setPasswordEditText(EditText passwordEditText) {
-        this.passwordEditText = passwordEditText;
-    }
-
     public Button getLoginBtn() {
         return loginBtn;
-    }
-
-    public void setLoginBtn(Button loginBtn) {
-        this.loginBtn = loginBtn;
     }
 
     public Button getRegisterTextButton() {
@@ -85,11 +71,7 @@ public class LogingActivity extends AppCompatActivity {
         return isLoggedInFacebook;
     }
 
-    public void setRegisterTextButton(Button registerTextButton) {
-        this.registerTextButton = registerTextButton;
-    }
-
-    public TextView getLoginTxt() {
+    public Button getLoginTxt() {
         return loginTxt;
     }
 
@@ -97,7 +79,6 @@ public class LogingActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode,resultCode, data);
-
     }
 
     @Override

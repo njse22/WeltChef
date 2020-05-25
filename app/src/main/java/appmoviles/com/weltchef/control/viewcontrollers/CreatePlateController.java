@@ -35,7 +35,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class CreatePlateController implements View.OnClickListener {
 
-    private final static String TAG = "CreatePlateController>>>";
+    private final static String TAG = "CreatePlateController";
 
     private CreatePlateActivity activity;
     private FirebaseDB firebaseDB;
@@ -44,13 +44,11 @@ public class CreatePlateController implements View.OnClickListener {
     private Uri photoUri;
     private File photo;
 
-    @SuppressLint("LongLogTag")
     public CreatePlateController(CreatePlateActivity activity) {
         this.activity = activity;
         this.firebaseDB = new FirebaseDB();
         this.menu = new Menu();
         this.chef = (User)activity.getIntent().getExtras().get("user");
-        Log.e(TAG, "CreatePlateController::user -> " + chef);
         init();
     }
 
@@ -60,7 +58,6 @@ public class CreatePlateController implements View.OnClickListener {
         activity.getCancelBtn().setOnClickListener(this);
     }
 
-    @SuppressLint("LongLogTag")
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -84,7 +81,7 @@ public class CreatePlateController implements View.OnClickListener {
                 break;
 
             case R.id.saveBtn:
-                int type =  activity.getTypeSpinner().getSelectedItemPosition();
+                int type =  activity.getTypeSpinner().getSelectedItemPosition()+1;
                 int price = Integer.parseInt(activity.getPriceET().getText().toString());
                 String description =  activity.getDescriptionET().getText().toString();
                 String name = activity.getNamePlateET().getText().toString();
@@ -99,8 +96,7 @@ public class CreatePlateController implements View.OnClickListener {
                             .child(menu.getId())
                             .putFile(photoUri);
                 }
-                firebaseDB.sendInfo(menu,menu.getId(), Constants.FIREBASE_MENU_BRANCH);
-
+                firebaseDB.addMenu(menu, chef.getId());
                 Intent intentCreatePlate = new Intent(activity, ChefProfileActivity.class);
                 intentCreatePlate.putExtra("user", chef);
                 intentCreatePlate.putExtra("menu", menu);
@@ -114,11 +110,10 @@ public class CreatePlateController implements View.OnClickListener {
         }
     }
 
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == ImageryUtl.CAMERA_CALLBACK && resultCode == RESULT_OK){
             Bitmap image = BitmapFactory.decodeFile(photo.getPath());
-            Bitmap thumbnail = Bitmap.createScaledBitmap(image, image.getWidth()/4, image.getHeight()/4, false);
+            Bitmap thumbnail = Bitmap.createScaledBitmap(image, image.getWidth(), image.getHeight(), false);
             activity.getPlateIB().setImageBitmap(thumbnail);
         }else if(requestCode == ImageryUtl.GALLERY_CALLBACK && resultCode == RESULT_OK){
             Uri uri = data.getData();

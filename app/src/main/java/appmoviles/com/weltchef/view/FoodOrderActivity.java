@@ -61,4 +61,16 @@ public class FoodOrderActivity extends AppCompatActivity {
         return nameDish;
     }
 
+    @Override
+    protected void onPause() {
+        controller.beforePause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        controller.beforeResume();
+        super.onResume();
+    }
+
 }

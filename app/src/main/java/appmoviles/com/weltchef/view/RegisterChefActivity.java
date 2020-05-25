@@ -17,6 +17,7 @@ public class RegisterChefActivity extends AppCompatActivity {
     private EditText emailET;
     private EditText phoneET;
     private EditText passwordET;
+    private EditText conPasswordET;
     private EditText descriptionET;
     private Button registerBtn;
     private CheckBox chefAtHomeCheck;
@@ -30,11 +31,12 @@ public class RegisterChefActivity extends AppCompatActivity {
 
         nameET = findViewById(R.id.nameET);
         emailET = findViewById(R.id.emailET);
-        phoneET = findViewById(R.id.phoneET);
-        passwordET = findViewById(R.id.passwordET);
+        phoneET = findViewById(R.id.name);
+        passwordET = findViewById(R.id.password);
+        conPasswordET = findViewById(R.id.conPasswordET);
         registerBtn = findViewById(R.id.registerChefBtn);
         descriptionET = findViewById(R.id.descriptionET);
-        chefAtHomeCheck = findViewById(R.id.chefAtHomeCheck);
+        chefAtHomeCheck = findViewById(R.id.chefHomeCheck);
         chefKitchenCheck = findViewById(R.id.chefKitchenCheck);
 
         controller = new RegisterChefController(this);
@@ -70,6 +72,14 @@ public class RegisterChefActivity extends AppCompatActivity {
 
     public void setPasswordET(EditText passwordET) {
         this.passwordET = passwordET;
+    }
+
+    public EditText getConPasswordET() {
+        return conPasswordET;
+    }
+
+    public void setConPasswordET(EditText conPasswordET) {
+        this.conPasswordET = conPasswordET;
     }
 
     public EditText getDescriptionET() {

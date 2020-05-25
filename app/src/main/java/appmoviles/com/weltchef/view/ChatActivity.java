@@ -3,10 +3,12 @@ package appmoviles.com.weltchef.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -18,12 +20,18 @@ import appmoviles.com.weltchef.control.viewcontrollers.ChatController;
 
 public class ChatActivity extends AppCompatActivity {
 
+    private final String[] status = {
+            "Aceptada",
+            "Completa",};
+
     private TextView usernameTV;
     private ListView messagesList;
     private EditText messageET;
     private Button galBtn, sendBtn;
     private ImageView messageIV;
     private ConstraintLayout controlsContainer;
+    private ArrayAdapter<String> statusAdapter;
+    private Spinner spinnerStatus;
 
     private ChatController controller;
 
@@ -39,6 +47,11 @@ public class ChatActivity extends AppCompatActivity {
         sendBtn = findViewById(R.id.sendBtn);
         messageIV = findViewById(R.id.messageIV);
         controlsContainer = findViewById(R.id.controlsContainer);
+
+        spinnerStatus = findViewById(R.id.spinnerStatus);
+        statusAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, status);
+        statusAdapter.notifyDataSetChanged();
+        spinnerStatus.setAdapter(statusAdapter);
 
         controller = new ChatController(this);
 
@@ -100,6 +113,14 @@ public class ChatActivity extends AppCompatActivity {
         this.controlsContainer = controlsContainer;
     }
 
+    public ArrayAdapter<String> getStatusAdapter() {
+        return statusAdapter;
+    }
+
+    public Spinner getSpinnerStatus() {
+        return spinnerStatus;
+    }
+
     //Mi actividad pierde el primer plano
     @Override
     protected void onPause() {
@@ -127,6 +148,11 @@ public class ChatActivity extends AppCompatActivity {
     public void showImage(){
         messageIV.setVisibility(View.VISIBLE);
     }
+
+    public void hideSpinner(){ spinnerStatus.setVisibility(View.GONE); }
+
+    public void showSpinner(){ spinnerStatus.setVisibility(View.VISIBLE); }
+
 
 }
 

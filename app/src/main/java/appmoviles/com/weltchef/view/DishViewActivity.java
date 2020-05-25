@@ -1,6 +1,7 @@
 package appmoviles.com.weltchef.view;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ public class DishViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dish_view);
 
         askDish = findViewById(R.id.askDish);
+        askDish.setVisibility(View.INVISIBLE);
         recyclerView = findViewById(R.id.dishList);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);

@@ -1,6 +1,7 @@
 package appmoviles.com.weltchef.control.viewcontrollers;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,12 @@ import appmoviles.com.weltchef.util.Constants;
 import appmoviles.com.weltchef.view.DishViewActivity;
 import appmoviles.com.weltchef.view.FoodOrderActivity;
 
-public class DishViewController implements View.OnClickListener, RecyclerTouchListener.ClickListener, ValueEventListener {
+public class DishViewController implements
+        View.OnClickListener,
+        RecyclerTouchListener.ClickListener,
+        ValueEventListener {
+
+    private final static String TAG = "DishViewController";
 
     private DishViewActivity activity;
     private ArrayList<Menu> menus;
@@ -40,6 +46,8 @@ public class DishViewController implements View.OnClickListener, RecyclerTouchLi
                 activity.getApplicationContext(), activity.getRecyclerView(), this
         ));
         menus = (ArrayList<Menu>)activity.getIntent().getExtras().get("menus");
+        order = (Order) activity.getIntent().getExtras().get("order");
+        order.setPlates(menus);
         user = (User) activity.getIntent().getExtras().get("user");
 
         firebaseDB.searchOrder(user.getId());
@@ -48,6 +56,7 @@ public class DishViewController implements View.OnClickListener, RecyclerTouchLi
         activity.runOnUiThread(
                 () -> {
                     for (Menu item : menus) {
+                        Log.e(TAG, "init::item -> " + item);
                         activity.getAdapter().getDishes().add(item);
                         activity.getAdapter().notifyDataSetChanged();
                     }
@@ -62,6 +71,7 @@ public class DishViewController implements View.OnClickListener, RecyclerTouchLi
                 Intent i = new Intent(activity, FoodOrderActivity.class);
                 i.putExtra("order", order);
                 i.putExtra("user", user);
+                i.putExtra("body", (String) activity.getIntent().getExtras().get("body"));
                 activity.startActivity(i);
                 activity.finish();
                 break;
@@ -70,10 +80,14 @@ public class DishViewController implements View.OnClickListener, RecyclerTouchLi
 
     @Override
     public void onClick(View view, int position) {
-        activity.getAdapter().getHolder().getDishList().setBackgroundColor(22222);
         order.getPlates().add(menus.get(position));
         firebaseDB.sendInfo(order, order.getId(), Constants.FIREBASE_ORDER_BRANCH);
-
+        Intent i = new Intent(activity, FoodOrderActivity.class);
+        i.putExtra("order", order);
+        i.putExtra("user", user);
+        i.putExtra("body", (String) activity.getIntent().getExtras().get("body"));
+        activity.startActivity(i);
+        activity.finish();
     }
 
     @Override
@@ -93,7 +107,7 @@ public class DishViewController implements View.OnClickListener, RecyclerTouchLi
                 break;
             }
         }
-        order.setTotalPrice(order.calculatePrice());
+
     }
 
     @Override
