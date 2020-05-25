@@ -159,20 +159,16 @@ public class ClientProfileController implements View.OnClickListener, ValueEvent
         }
     }
 
-
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         for(DataSnapshot ds : dataSnapshot.getChildren()){
             Menu m = ds.getValue(Menu.class);
             chefs.add(m.getChefId());
         }
-
         view.updateListChef(chefs);
-
     }
 
     @Override
-    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-    }
+    public void onCancelled(@NonNull DatabaseError databaseError) { }
+    
 }

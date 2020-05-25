@@ -40,7 +40,7 @@ import appmoviles.com.weltchef.view.RegisterActivity;
 
 public class LoginController implements View.OnClickListener, ValueEventListener, FacebookCallback<LoginResult> {
 
-    private final static String TAG = "LoginController >>>";
+    private final static String TAG = "LoginController";
 
     private LogingActivity activity;
     private UsersManager manager;
@@ -66,7 +66,6 @@ public class LoginController implements View.OnClickListener, ValueEventListener
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.loginBtn:
-                Log.e(TAG, "onClick::loginBtn -> true");
                 String email = activity.getUserNameEditText().getText().toString();
                 String password = activity.getPasswordEditText().getText().toString();
 
@@ -105,7 +104,6 @@ public class LoginController implements View.OnClickListener, ValueEventListener
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        Log.e(TAG, "onDataChange::dataSnapshot -> "+ dataSnapshot );
         user = dataSnapshot.getValue(User.class);
 
         if (user.isChef()){
@@ -188,7 +186,6 @@ public class LoginController implements View.OnClickListener, ValueEventListener
                     .child(FirebaseAuth.getInstance().getUid())
                     .addListenerForSingleValueEvent(this);
         }
-
     }
 
 }

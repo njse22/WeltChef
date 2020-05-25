@@ -67,9 +67,9 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
         loadImage();
         //Add needed listeers to buttons
         view.getChefPicture().setOnClickListener(this);
-        view.getWeltChef().setOnClickListener(this);
         view.getFabAddDish().setOnClickListener(this);
         view.getFabEditProfile().setOnClickListener(this);
+        view.getFabCheckSchedule().setOnClickListener(this);
 
         ActivityCompat.requestPermissions(view, new String[]{
                 Manifest.permission.CAMERA,
@@ -103,17 +103,10 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
                 dialogFragment.show(view.getSupportFragmentManager(), "photo_view");
                 break;
 
-            case R.id.weltChefBtn:
+            case R.id.fabCheckSchedule:
                 Intent intentChat = new Intent(view, ChatRoomActivity.class);
                 intentChat.putExtra("user",(User) view.getIntent().getExtras().get("user"));
                 view.startActivity(intentChat);
-                break;
-
-            case R.id.facebookBtn:
-                break;
-            case R.id.instagramBtn:
-                break;
-            case R.id.twitterBtn:
                 break;
 
             case R.id.fabAddDish:
@@ -127,7 +120,6 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
                 Intent intentEditProfile = new Intent(view, EditProfileActivity.class);
                 intentEditProfile.putExtra("user", chef);
                 view.startActivity(intentEditProfile);
-                view.finish();
                 break;
         }
     }

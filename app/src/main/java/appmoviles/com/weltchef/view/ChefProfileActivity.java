@@ -35,10 +35,6 @@ public class ChefProfileActivity extends AppCompatActivity {
     private TextView description;
     private TextView telephone;
     private ImageView titleapp;
-    private Button weltChef;
-    private Button facebook;
-    private Button instagram;
-    private Button  twitter;
     private ImageButton chefPicture;
     private FloatingActionButton mainFab;
     private FloatingActionButton fabEditProfile;
@@ -82,11 +78,6 @@ public class ChefProfileActivity extends AppCompatActivity {
                 }
         );
 
-        weltChef = findViewById(R.id.weltChefBtn);
-        facebook = findViewById(R.id.facebookBtn);
-        instagram = findViewById(R.id.instagramBtn);
-        twitter = findViewById(R.id.twitterBtn);
-
         controller = new ChefProfileController(this);
     }
 
@@ -116,22 +107,6 @@ public class ChefProfileActivity extends AppCompatActivity {
 
     public ChefProfileController getController() {
         return controller;
-    }
-
-    public Button getWeltChef() {
-        return weltChef;
-    }
-
-    public Button getFacebook() {
-        return facebook;
-    }
-
-    public Button getInstagram() {
-        return instagram;
-    }
-
-    public Button getTwitter() {
-        return twitter;
     }
 
     public ImageButton getChefPicture() {
