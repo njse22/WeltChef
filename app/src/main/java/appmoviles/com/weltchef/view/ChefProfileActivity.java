@@ -34,6 +34,7 @@ public class ChefProfileActivity extends AppCompatActivity {
     private TextView email;
     private TextView description;
     private TextView telephone;
+    private Button singoutBtn;
     private ImageView titleapp;
     private ImageButton chefPicture;
     private FloatingActionButton mainFab;
@@ -57,6 +58,7 @@ public class ChefProfileActivity extends AppCompatActivity {
         this.chefPicture = findViewById(R.id.chefPicture);
         this.titleapp = findViewById(R.id.tituloTxt);
         this.description = findViewById(R.id.descriptionTxt);
+        this.singoutBtn = findViewById(R.id.singoutBtn);
 
         this.listPlates = findViewById(R.id.platesList);
         this.plateImageAdapter = new PlateImageAdapter(this);
@@ -79,6 +81,10 @@ public class ChefProfileActivity extends AppCompatActivity {
         );
 
         controller = new ChefProfileController(this);
+    }
+
+    public Button getSingoutBtn() {
+        return singoutBtn;
     }
 
     public TextView getRecipes() {

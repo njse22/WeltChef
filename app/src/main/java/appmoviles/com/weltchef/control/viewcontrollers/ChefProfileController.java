@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -35,6 +36,7 @@ import appmoviles.com.weltchef.view.ChefProfileActivity;
 import appmoviles.com.weltchef.view.CreatePlateActivity;
 import appmoviles.com.weltchef.view.DishInfoActivity;
 import appmoviles.com.weltchef.view.EditProfileActivity;
+import appmoviles.com.weltchef.view.LogingActivity;
 import appmoviles.com.weltchef.view.PhotoViewFragment;
 
 import static android.app.Activity.RESULT_OK;
@@ -70,6 +72,7 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
         view.getFabAddDish().setOnClickListener(this);
         view.getFabEditProfile().setOnClickListener(this);
         view.getFabCheckSchedule().setOnClickListener(this);
+        view.getSingoutBtn().setOnClickListener(this);
 
         ActivityCompat.requestPermissions(view, new String[]{
                 Manifest.permission.CAMERA,
@@ -120,6 +123,13 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
                 Intent intentEditProfile = new Intent(view, EditProfileActivity.class);
                 intentEditProfile.putExtra("user", chef);
                 view.startActivity(intentEditProfile);
+                break;
+
+            case R.id.singoutBtn:
+                FirebaseAuth.getInstance().signOut();
+                Intent signout = new Intent(view, LogingActivity.class);
+                view.startActivity(signout);
+                view.finish();
                 break;
         }
     }
