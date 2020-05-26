@@ -54,9 +54,6 @@ public class RegisterController implements View.OnClickListener {
                 activity.finish();
 
                 break;
-
-
-
         }
 
     }
