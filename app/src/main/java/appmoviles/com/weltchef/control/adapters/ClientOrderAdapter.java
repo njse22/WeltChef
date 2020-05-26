@@ -59,7 +59,6 @@ public class ClientOrderAdapter extends BaseAdapter {
         View menuList = inflater.inflate(R.layout.adapter_order, null);
 
         TextView nameMenu = menuList.findViewById(R.id.nameMenu);
-        TextView chefMenu = menuList.findViewById(R.id.chefMenu);
         TextView priceMenu = menuList.findViewById(R.id.priceMenu);
 
         nameMenu.setText("Plato: "+ menus.get(position).getName());
