@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class LogingActivity extends AppCompatActivity {
     private LoginButton loginFacebookBtn;
     private Button registerTextButton;
     private Button loginTxt;
+    private Button forgotPasswordTextButton;
     private boolean isLoggedInFacebook;
     private CallbackManager callbackManager;
     private LoginController controller;
@@ -39,7 +41,8 @@ public class LogingActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
         registerTextButton = findViewById(R.id.registerTextButton);
         loginTxt = findViewById(R.id.loginTxt);
-
+        forgotPasswordTextButton = findViewById(R.id.forgotPasswordTextButton);
+        forgotPasswordTextButton.setVisibility(View.GONE);
         controller = new LoginController(this);
         
         /** Facebook login  **/
