@@ -11,9 +11,10 @@
         android:layout_width="163dp"
         android:layout_height="34dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/chefPicture"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/welt_chef_name" />
@@ -62,13 +63,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         android:text="Información del Chef"
         android:textColor="#FF0000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chefPicture" />
+        app:layout_constraintTop_toBottomOf="@+id/singoutBtn" />
 
     <TextView
         android:id="@+id/recetasTxt"
@@ -130,7 +131,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@android:color/background_dark"
         android:src="@mipmap/editprofile"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -142,7 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@android:color/background_dark"
         android:src="@mipmap/adddish"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -154,8 +155,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:src="@mipmap/checkschedule"
+        android:backgroundTint="@android:color/background_dark"
+        android:src="@mipmap/message"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -166,22 +167,22 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@android:color/holo_red_dark"
         android:src="@mipmap/cheffab"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
     <Button
         android:id="@+id/singoutBtn"
         android:layout_width="187dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/round_button"
-        android:text="Logout"
 
+        android:text="Logout"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:typeface="normal"

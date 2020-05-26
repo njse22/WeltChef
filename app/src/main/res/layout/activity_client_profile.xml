@@ -7,12 +7,25 @@
     android:layout_height="match_parent"
     android:background="@mipmap/background_app">
 
+    <ImageView
+        android:id="@+id/tituloTxt2"
+        android:layout_width="163dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/clientPicture"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/welt_chef_name" />
+
     <ImageButton
         android:id="@+id/clientPicture"
         android:layout_width="152dp"
         android:layout_height="152dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/profile_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,17 +35,16 @@
         android:layout_width="187dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="sans-serif-black"
-        android:background="@drawable/round_button"
         android:hint="Nombre"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/clientPicture"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloTxt2" />
 
     <TextView
         android:id="@+id/searchChef"
@@ -42,7 +54,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="sans-serif-black"
-        android:background="@drawable/round_button"
         android:hint="@string/phone"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
@@ -57,7 +68,6 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/round_button"
         android:hint="@string/email"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
@@ -71,34 +81,29 @@
         android:id="@+id/chatBtn"
         android:layout_width="187dp"
         android:layout_height="30dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/round_button"
         android:text="Logout"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/lastServices"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/clientPicture"
-        app:layout_constraintTop_toBottomOf="@+id/askService"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clientPicture" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:text="Últimos pedidos"
         android:textColor="#FF0000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clientPicture" />
+        app:layout_constraintTop_toBottomOf="@+id/chatBtn" />
 
     <TextView
         android:id="@+id/textView4"
@@ -165,8 +170,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:src="@mipmap/telephone"
+        android:backgroundTint="@android:"
+        android:src="@mipmap/message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
@@ -177,7 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@android:color/background_dark"
         android:src="@mipmap/foob"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -190,7 +195,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@android:color/background_dark"
         android:src="@mipmap/map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -202,7 +207,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@android:color/holo_red_dark"
         android:src="@mipmap/cheffab"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
