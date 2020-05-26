@@ -26,6 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 import appmoviles.com.weltchef.R;
+import appmoviles.com.weltchef.control.adapters.ClientLastChefAdapter;
 import appmoviles.com.weltchef.control.adapters.ClientOrderAdapter;
 import appmoviles.com.weltchef.control.viewcontrollers.ClientProfileController;
 
@@ -40,6 +41,7 @@ public class ClientProfileActivity extends AppCompatActivity  {
     private NestedScrollView lastServices;
     private NestedScrollView likedChefs;
     private ClientOrderAdapter orderAdapter;
+    private ClientLastChefAdapter chefAdapter;
     private ListView listOrders;
     private ListView listChefs;
     private ArrayAdapter<String> chefs;
@@ -65,7 +67,7 @@ public class ClientProfileActivity extends AppCompatActivity  {
         listOrders = findViewById(R.id.listOrders);
         chatBtn = findViewById(R.id.chatBtn);
 
-        chefs = new ArrayAdapter<>(this, android.R.layout.simple_list_item_2, new ArrayList<>());
+        chefAdapter = new ClientLastChefAdapter();
         listChefs = findViewById(R.id.listChefs);
         listChefs.setAdapter(chefs);
 
@@ -185,4 +187,5 @@ public class ClientProfileActivity extends AppCompatActivity  {
         this.chefs = new ArrayAdapter<>(this, android.R.layout.simple_list_item_2, chefs);
         listChefs.setAdapter(this.chefs);
     }
+
 }
