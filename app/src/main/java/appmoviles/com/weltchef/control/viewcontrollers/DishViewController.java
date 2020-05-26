@@ -103,7 +103,7 @@ public class DishViewController implements
         }
         else {
             for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    order = data.getValue(Order.class);
+                    //order = data.getValue(Order.class);
                 break;
             }
         }

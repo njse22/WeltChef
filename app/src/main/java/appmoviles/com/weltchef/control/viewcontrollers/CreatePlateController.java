@@ -30,6 +30,7 @@ import appmoviles.com.weltchef.util.ImageryUtl;
 import appmoviles.com.weltchef.view.ChefProfileActivity;
 import appmoviles.com.weltchef.view.CreatePlateActivity;
 import appmoviles.com.weltchef.view.PhotoDialogFragment;
+import appmoviles.com.weltchef.view.PlateViewFragment;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -65,7 +66,7 @@ public class CreatePlateController implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.plateIB:
-                DialogFragment dialogFragment = new PhotoDialogFragment(this);
+                DialogFragment dialogFragment = new PlateViewFragment(this);
                 dialogFragment.show(activity.getSupportFragmentManager(), Constants.PHOTO_MENU_TAG);
                 break;
 

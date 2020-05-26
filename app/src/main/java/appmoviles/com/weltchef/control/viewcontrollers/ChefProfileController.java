@@ -153,9 +153,12 @@ public class ChefProfileController implements View.OnClickListener, ValueEventLi
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         if (dataSnapshot.getChildrenCount() == 0){
         }else {
-            Menu menu = dataSnapshot.getValue(Menu.class);
-            view.getPlateImageAdapter().addMenu(menu);
-            view.getPlateImageAdapter().notifyDataSetChanged();
+            for (DataSnapshot data : dataSnapshot.getChildren()) {
+                Menu menu = data.getValue(Menu.class);
+                view.getPlateImageAdapter().addMenu(menu);
+                view.getPlateImageAdapter().notifyDataSetChanged();
+                break;
+            }
         }
     }
 

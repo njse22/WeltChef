@@ -27,9 +27,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.db.FirebaseDB;
 import appmoviles.com.weltchef.entity.Chef;
+import appmoviles.com.weltchef.entity.Menu;
 import appmoviles.com.weltchef.entity.User;
 import appmoviles.com.weltchef.entity.UsersManager;
 import appmoviles.com.weltchef.util.Constants;
@@ -104,15 +107,26 @@ public class LoginController implements View.OnClickListener, ValueEventListener
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        user = dataSnapshot.getValue(User.class);
+        boolean isChef = dataSnapshot.child("chef").getValue(Boolean.class);
 
-        if (user.isChef()){
+        if (isChef){
             Intent i = new Intent(activity, ChefProfileActivity.class);
-            i.putExtra("user", dataSnapshot.getValue(Chef.class));
+            boolean chefHome = dataSnapshot.child("chefHome").getValue(Boolean.class);
+            boolean chefKitchen = dataSnapshot.child("chefKitchen").getValue(Boolean.class);
+            String description = dataSnapshot.child("description").getValue(String.class);
+            String email = dataSnapshot.child("email").getValue(String.class);
+            String id = dataSnapshot.child("id").getValue(String.class);
+            String name = dataSnapshot.child("name").getValue(String.class);
+            String password = dataSnapshot.child("password").getValue(String.class);
+            String phone = dataSnapshot.child("phone").getValue(String.class);
+            int ranking = dataSnapshot.child("ranking").getValue(Integer.class);
+            Chef chef = new Chef(chefHome,chefKitchen,description, email, name, password, phone, id);
+            i.putExtra("user", chef);
             activity.startActivity(i);
 
         }else {
             Intent i = new Intent(activity, ClientProfileActivity.class);
+            User user = dataSnapshot.getValue(User.class);
             i.putExtra("user",user);
             activity.startActivity(i);
         }

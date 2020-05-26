@@ -38,7 +38,7 @@ public class DishInfoController implements ValueEventListener, RecyclerTouchList
     public void init(){
         loadImage();
         activity.getNameChef().setText(menu.getName());
-        activity.getEmail().setText(menu.getPrice());
+        activity.getEmail().setText(menu.getPrice()+"" );
 
         activity.getDescription().setText(menu.getDescription());
 
