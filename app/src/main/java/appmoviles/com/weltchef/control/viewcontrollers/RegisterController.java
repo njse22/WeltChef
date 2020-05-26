@@ -6,6 +6,7 @@ import android.view.View;
 import appmoviles.com.weltchef.R;
 import appmoviles.com.weltchef.view.RegisterActivity;
 import appmoviles.com.weltchef.view.RegisterChefActivity;
+import appmoviles.com.weltchef.view.RegisterClientActivity;
 
 public class RegisterController implements View.OnClickListener {
 
@@ -40,11 +41,19 @@ public class RegisterController implements View.OnClickListener {
                 break;
 
             case R.id.clientBtn:
-                //Intent i = new Intent(activity, )
+                Intent i = new Intent(activity, RegisterClientActivity.class);
+                String namec =  (String) activity.getIntent().getExtras().get("name");
+                String emailc =  (String) activity.getIntent().getExtras().get("email");
+                String phonec =  (String) activity.getIntent().getExtras().get("phone");
+                i.putExtra("facebookLogin", (Boolean) activity.getIntent().getExtras().get("facebookLogin"));
+
+                i.putExtra("name",namec != null ? namec : "");
+                i.putExtra("email",emailc != null ? emailc : "");
+                i.putExtra("phone", phonec != null ? phonec : "");
+                activity.startActivity(i);
+                activity.finish();
+
                 break;
-
-
-
         }
 
     }

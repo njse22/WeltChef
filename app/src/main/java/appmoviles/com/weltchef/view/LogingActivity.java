@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.login.widget.LoginButton;
 
@@ -42,7 +43,8 @@ public class LogingActivity extends AppCompatActivity {
         controller = new LoginController(this);
         
         /** Facebook login  **/
-        isLoggedInFacebook = (Boolean) this.getIntent().getExtras().get("facebookLogin");
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        isLoggedInFacebook = accessToken != null && !accessToken.isExpired();;
         callbackManager = CallbackManager.Factory.create();
         loginFacebookBtn = findViewById(R.id.loginFacebookBtn);
         loginFacebookBtn.setReadPermissions("email", "public_profile");

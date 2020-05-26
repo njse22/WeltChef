@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 
@@ -106,7 +107,13 @@ public class  EditProfileController implements View.OnClickListener {
         if(password.equals(passwordVerify)){
             user.setPassword(password);
             user.setDescription(description);
-            database.sendInfo(user,user.getId(), Constants.FIREBASE_USER_BRANCH);
+
+            user.setMenus(user.getMenus());
+            FirebaseDatabase.getInstance().getReference()
+                    .child(Constants.FIREBASE_USER_BRANCH)
+                    .child(user.getId())
+                    .setValue(user);
+
             if(imageChanged) {
                 FirebaseStorage.getInstance().getReference()
                         .child(Constants.FIREBASE_USER_BRANCH)

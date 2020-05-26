@@ -63,12 +63,10 @@ public class ChatRoomController implements ValueEventListener, AdapterView.OnIte
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         if(dataSnapshot.getChildrenCount() == 0){
-            Log.e(TAG, "onDataChange::dataSnapshot --> " + dataSnapshot);
+
         }
         else {
-            Log.e(TAG, "onDataChange::dataSnapshot --> " + dataSnapshot);
             for (DataSnapshot data : dataSnapshot.getChildren()) {
-                Log.e(TAG, "onDataChange::dataSnapshot::for --> " + dataSnapshot);
                 messageContainer = dataSnapshot.getValue(MessageContainer.class);
                 activity.getAdapter().addChat(messageContainer);
                 break;
@@ -81,11 +79,6 @@ public class ChatRoomController implements ValueEventListener, AdapterView.OnIte
         String id = dataSnapshot.child("id").getValue(String.class);
         String idChef = dataSnapshot.child("userIDChef").getValue(String.class);
         String idClient = dataSnapshot.child("userIDClient").getValue(String.class);
-
-        Log.e(TAG, "onChildAdded::id --> " + id);
-        Log.e(TAG, "onChildAdded::idChef --> " + idChef);
-        Log.e(TAG, "onChildAdded::idClient --> " + idClient);
-
         messageContainer.setId(id);
         messageContainer.setUserIDChef(idChef);
         messageContainer.setUserIDClient(idClient);
@@ -122,7 +115,5 @@ public class ChatRoomController implements ValueEventListener, AdapterView.OnIte
                     activity.startActivity(intent);
                 }
         ).start();
-
-        Log.e(">>>", "Message Container");
     }
 }

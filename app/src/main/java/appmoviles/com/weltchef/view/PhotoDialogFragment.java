@@ -2,7 +2,6 @@ package appmoviles.com.weltchef.view;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import appmoviles.com.weltchef.R;
-import appmoviles.com.weltchef.control.interfaces.OnDialogListener;
-import appmoviles.com.weltchef.control.viewcontrollers.ClientProfileController;
 import appmoviles.com.weltchef.util.Constants;
 
 public class PhotoDialogFragment extends DialogFragment {

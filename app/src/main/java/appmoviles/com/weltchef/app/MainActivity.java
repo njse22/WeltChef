@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDB firebaseDB = new FirebaseDB();
 
         Intent intent = new Intent(this, LogingActivity.class);
-        intent.putExtra("facebookLogin", isLoggedIn);
         this.startActivity(intent);
 
     }

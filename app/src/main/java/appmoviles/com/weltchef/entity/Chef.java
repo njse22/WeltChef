@@ -37,6 +37,14 @@ public class Chef extends User {
 
   }
 
+  public ArrayList<Menu> getMenus() {
+    return menus;
+  }
+
+  public void setMenus(ArrayList<Menu> menus) {
+    this.menus = menus;
+  }
+
   /**
    * Set the value of chefHome
    * indica si el chef es un chef a domicilio
