@@ -76,6 +76,10 @@ public class ClientProfileController implements View.OnClickListener, ValueEvent
                 view.getOrderAdapter().addMenu(menu);
         }
 
+
+
+
+
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(android.R.layout.simple_list_item_2, chefs);
 //        view.getListChefs().setAdapter(adapter);
 
