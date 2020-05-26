@@ -144,9 +144,10 @@ public class MakeOrderController implements
 
     @Override
     public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-            body =  "Fecha: " + dayOfMonth + " / " + month + " / " + year + "\n" +
-                    "Número de personas: " + activity.getNumPeopleET().getText().toString() + "\n" +
-                    "Lugar: " + activity.getPlaceET().getText().toString();
+            body =  "Lugar: " + activity.getPlaceET().getText().toString() + "\n"+
+                    "Fecha: " + dayOfMonth + " / " + month + " / " + year + "\n" +
+                    "Número de personas: " + activity.getNumPeopleET().getText().toString() + "\n" ;
+
         try {
             int numP = Integer.parseInt(activity.getNumPeopleET().getText().toString());
             order.setNumPersonas(Integer.parseInt(activity.getNumPeopleET().getText().toString()));
