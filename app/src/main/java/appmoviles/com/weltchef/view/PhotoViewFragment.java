@@ -2,8 +2,6 @@ package appmoviles.com.weltchef.view;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.google.firebase.storage.FirebaseStorage;
-
-import java.io.File;
-
 import appmoviles.com.weltchef.R;
-import appmoviles.com.weltchef.control.interfaces.OnProfileRequest;
-import appmoviles.com.weltchef.entity.User;
-import appmoviles.com.weltchef.util.Constants;
-import appmoviles.com.weltchef.util.HTTPSWebUtilDomi;
 
 public class PhotoViewFragment extends DialogFragment{
 

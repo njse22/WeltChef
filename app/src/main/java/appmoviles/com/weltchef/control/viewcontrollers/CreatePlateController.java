@@ -56,6 +56,9 @@ public class CreatePlateController implements View.OnClickListener {
         activity.getPlateIB().setOnClickListener(this);
         activity.getSaveBtn().setOnClickListener(this);
         activity.getCancelBtn().setOnClickListener(this);
+        activity.getCancelBtn().setVisibility(View.GONE);
+        activity.getNameChefTV().setText(chef.getName());
+
     }
 
     @Override

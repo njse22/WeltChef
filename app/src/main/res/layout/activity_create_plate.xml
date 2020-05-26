@@ -95,7 +95,7 @@
         android:ems="10"
         android:gravity="top"
         android:inputType="textPersonName"
-        android:text="@string/description"
+        android:hint="@string/description"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/saveBtn"
         app:layout_constraintEnd_toEndOf="parent"

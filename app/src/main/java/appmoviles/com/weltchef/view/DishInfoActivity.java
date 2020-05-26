@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -33,6 +34,7 @@ public class DishInfoActivity extends AppCompatActivity {
         this.nameChef = findViewById(R.id.nomUsuarioTxt);
         this.email = findViewById(R.id.correoTxt);
         this.telephone = findViewById(R.id.telefonoTxt);
+        this.telephone.setVisibility(View.GONE);
         this.chefPicture = findViewById(R.id.chefPicture);
         this.description = findViewById(R.id.descriptionTxt);
 

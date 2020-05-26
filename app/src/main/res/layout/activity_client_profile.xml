@@ -166,7 +166,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/colorPrimary"
-        android:src="@mipmap/chat"
+        android:src="@mipmap/telephone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
@@ -178,7 +178,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/colorPrimary"
-        android:src="@mipmap/room_service"
+        android:src="@mipmap/foob"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
@@ -191,7 +191,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/colorPrimary"
-        android:src="@mipmap/place"
+        android:src="@mipmap/map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
