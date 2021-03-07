@@ -13,7 +13,7 @@ import appmoviles.com.weltchef.util.NotificationUtils;
 
 public class FCMService extends FirebaseMessagingService {
 
-    public static final String API_KEY = "AAAAaOBoGVw:APA91bEg1UZFQx4R75j6uesoB7_Qp2ZPcmRGnD1kzsz8raNBmwfcbYkw_Q51cLZg0EzQ9qoQAdrQVf_hlWf5h5pWAMxyeH5sfxQqTcMzD5l4NTx8-P3oEZsRuH5rjS4LNCRt6TaQxRyn";
+    public static final String API_KEY = "";
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
